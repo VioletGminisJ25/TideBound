@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=384
+window/size/viewport_height=216
+window/size/window_width_override=640
+window/size/window_height_override=360
+
+[dotnet]
+
+project/assembly_name="Nuevo Proyecto de Juego"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
+[importer_defaults]
+
+animation_library={
+"animation/fps": 60.0
+}
