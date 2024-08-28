@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwu4pv3h1svyj"]
+
+[ext_resource type="TileSet" uid="uid://8j210w2qgbcc" path="res://TileSet/TileSet.tres" id="1_kuoty"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = ExtResource("1_kuoty")
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="Layer 0" type="ParallaxLayer" parent="Background"]
