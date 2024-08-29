@@ -10,14 +10,15 @@ config_version=5
 
 [application]
 
+config/name="Pirate Game"
 run/main_scene="res://Scenes/Level1.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=384
-window/size/viewport_height=216
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/window_width_override=640
 window/size/window_height_override=360
 
