@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cus6qous1vuhg"]
+
+[ext_resource type="Texture2D" uid="uid://cicytmo3k133k" path="res://assets/Treasure Hunters/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/01-Idle/Idle 01.png" id="1_l31km"]
+[ext_resource type="Texture2D" uid="uid://c3g4gtulru4k" path="res://assets/Treasure Hunters/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/01-Idle/Idle 02.png" id="2_qtlvc"]
+[ext_resource type="Texture2D" uid="uid://bw3a8eyfvex2y" path="res://assets/Treasure Hunters/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/01-Idle/Idle 03.png" id="3_s8w6p"]
+[ext_resource type="Texture2D" uid="uid://dakoguk88td3i" path="res://assets/Treasure Hunters/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/01-Idle/Idle 04.png" id="4_2u4an"]
+[ext_resource type="Texture2D" uid="uid://bhne6lenqv8da" path="res://assets/Treasure Hunters/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/01-Idle/Idle 05.png" id="5_878ka"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l31km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qtlvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s8w6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2u4an")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_878ka")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}]

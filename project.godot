@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://Scenes/Level1.tscn"
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
