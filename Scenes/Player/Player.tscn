@@ -28,6 +28,7 @@ frame_4/duration = 1.0
 position = Vector2(277, 193)
 collision_layer = 2
 script = ExtResource("1_xogcc")
+Speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -44,11 +45,10 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(-4, 7)
 scale = Vector2(0.6, 0.6)
+emitting = false
 amount = 1
 lifetime = 0.5
 local_coords = true
 texture = SubResource("AnimatedTexture_18duk")
 spread = 0.0
-gravity = Vector2(0, 0)
-
-[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]
+gravity = Vector2(-20, 25)

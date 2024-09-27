@@ -4,8 +4,10 @@ using System.Numerics;
 
 public partial class Player : CharacterBody2D
 {
-    public const float Speed = 170.0f;
-    public const float JumpVelocity = -300.0f;
+    [Export]
+    public float Speed = 170.0f;
+    [Export]
+    public float JumpVelocity = -300.0f;
     private static AnimatedSprite2D animationPlayer;
     private Godot.Vector2 velocity;
     private Godot.Vector2 particlesScale;
@@ -22,7 +24,7 @@ public partial class Player : CharacterBody2D
         particles.Emitting = false;
         velocity = Velocity;
 
-       //Vertical movement
+        //Vertical movement
         if (!IsOnFloor())
         {
 
@@ -38,7 +40,6 @@ public partial class Player : CharacterBody2D
 
             }
         }
-
         //Horizontal movement
         Godot.Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
         if (direction != Godot.Vector2.Zero)
@@ -61,6 +62,7 @@ public partial class Player : CharacterBody2D
         }
 
         Velocity = velocity; //Actualizar velocidad mediante una variable no a pelo??
+
         MoveAndSlide();
         Animations();
     }
@@ -95,27 +97,33 @@ public partial class Player : CharacterBody2D
     }
     public void Particles()
     {
-        particles.Emitting = true;
 
         if (velocity.X > 0)
         {
+            particles.Emitting = true;
             particlesScale.X = (float)0.6;
             particlesPosition.X = -4;
             particles.Scale = particlesScale;
             particles.Position = particlesPosition;
         }
-        else
+        if (velocity.X < 0)
         {
+            particles.Emitting = true;
             particlesScale.X = (float)-0.6;
             particlesPosition.X = 4;
             particles.Scale = particlesScale;
             particles.Position = particlesPosition;
         }
+        if (velocity.X == 0)
+        {
+            particles.Emitting = false;
+        }
+
     }
-    public static void _on_cpu_particles_2d_finished()
-    {
-        particles.Emitting = false;
-    }
+    //public static void _on_cpu_particles_2d_finished()
+    //{
+    //    particles.Emitting = false;
+    //}
 }
 
 
