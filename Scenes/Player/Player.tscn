@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ch6rye1b6rpyf" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Run 05.png" id="7_4d1vh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf6ob"]
-size = Vector2(16, 24)
+size = Vector2(14, 24)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_18duk"]
 frames = 5
@@ -40,6 +40,8 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." groups=["particles"]]
+texture_filter = 1
+texture_repeat = 1
 position = Vector2(-4, 7)
 scale = Vector2(0.6, 0.6)
 amount = 1
