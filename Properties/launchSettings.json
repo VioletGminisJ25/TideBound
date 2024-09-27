@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Nuevo Proyecto de Juego": {
+      "commandName": "Project",
+      "commandLineArgs": "-e --path C:\\Users\\javie\\Documents\\PirateGame"
+    }
+  }
+}
