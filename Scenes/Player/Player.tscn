@@ -1,28 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5wxkdm4h2g5p"]
+[gd_scene load_steps=8 format=3 uid="uid://c5wxkdm4h2g5p"]
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Player/PlayerFrames.tres" id="2_5wx5r"]
-[ext_resource type="Texture2D" uid="uid://dvjnork22dr06" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Run 01.png" id="3_d5tqj"]
-[ext_resource type="Texture2D" uid="uid://ddj8bwqa3hrtk" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Run 02.png" id="4_1q6ki"]
-[ext_resource type="Texture2D" uid="uid://cfmjgyamqeej6" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Run 03.png" id="5_mnqxx"]
-[ext_resource type="Texture2D" uid="uid://cmvjsi3dywdpq" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Run 04.png" id="6_cqoos"]
-[ext_resource type="Texture2D" uid="uid://ch6rye1b6rpyf" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Run 05.png" id="7_4d1vh"]
+[ext_resource type="Texture2D" uid="uid://btutrap76sxdf" path="res://Player/ParticlesRunning.tres" id="3_sfkps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf6ob"]
 size = Vector2(14, 24)
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_18duk"]
-frames = 5
-speed_scale = 9.1
-frame_0/texture = ExtResource("3_d5tqj")
-frame_1/texture = ExtResource("4_1q6ki")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("5_mnqxx")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("6_cqoos")
-frame_3/duration = 1.0
-frame_4/texture = ExtResource("7_4d1vh")
-frame_4/duration = 1.0
+[sub_resource type="Gradient" id="Gradient_rfbu7"]
+offsets = PackedFloat32Array(0.571429, 0.84127)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_blt6w"]
+offsets = PackedFloat32Array(0, 0.735751)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xvotf"]
+gradient = SubResource("Gradient_blt6w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(277, 193)
@@ -31,6 +27,7 @@ script = ExtResource("1_xogcc")
 Speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_gf6ob")
 
@@ -39,16 +36,27 @@ texture_filter = 1
 sprite_frames = ExtResource("2_5wx5r")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.378211
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." groups=["particles"]]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D" groups=["particles"]]
+show_behind_parent = true
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(-4, 7)
-scale = Vector2(0.6, 0.6)
+position = Vector2(-8, 8)
+scale = Vector2(0.4, 0.4)
 emitting = false
 amount = 1
-lifetime = 0.5
+lifetime = 0.3
 local_coords = true
-texture = SubResource("AnimatedTexture_18duk")
+draw_order = 1
+texture = ExtResource("3_sfkps")
 spread = 0.0
 gravity = Vector2(-20, 25)
+color = Color(0.589191, 0.783892, 0.38388, 1)
+color_ramp = SubResource("Gradient_rfbu7")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(7, 2)
+energy = 0.7
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xvotf")

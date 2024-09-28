@@ -4,6 +4,12 @@
       "commandName": "Project",
       "commandLineArgs": "-e --path C:\\Users\\javie\\Documents\\PirateGame",
       "workingDirectory": "C:\\Users\\javie\\Documents\\PirateGame"
+    },
+    "Perfil 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\javie\\Documents\\Godot_v4.3-stable_mono_win64\\Godot_v4.3-stable_mono_win64.exe",
+      "commandLineArgs": ".",
+      "nativeDebugging": true
     }
   }
 }

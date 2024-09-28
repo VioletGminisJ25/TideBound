@@ -12,15 +12,16 @@ public partial class Player : CharacterBody2D
     private Godot.Vector2 velocity;
     private Godot.Vector2 particlesScale;
     private Godot.Vector2 particlesPosition;
+    private Godot.Vector2 lightPosition;
+    private static PointLight2D playerlight;
     private static CpuParticles2D particles;
 
     public override void _PhysicsProcess(double delta)
     {
         // Vector2 position = Position;
-        animationPlayer = GetTree().GetNodesInGroup("Player")[0].GetChild(1) as AnimatedSprite2D;
-        particles = GetTree().GetNodesInGroup("Player")[0].GetChild(2) as CpuParticles2D;
-        particlesScale = particles.Scale;
-        particlesPosition = particles.Position;
+        animationPlayer = this.GetChild(1) as AnimatedSprite2D;
+        particles = animationPlayer.GetChild(0) as CpuParticles2D;
+        playerlight = this.GetChild(2) as PointLight2D;
         particles.Emitting = false;
         velocity = Velocity;
 
@@ -49,10 +50,15 @@ public partial class Player : CharacterBody2D
             if (velocity.X > 0)
             {
                 animationPlayer.FlipH = false;
+                lightPosition.X = 7;
+                playerlight.Position = lightPosition;
+
             }
             else
             {
                 animationPlayer.FlipH = true;
+                lightPosition.X = -7;
+                playerlight.Position = lightPosition;
             }
         }
         else
@@ -102,7 +108,7 @@ public partial class Player : CharacterBody2D
         {
             particles.Emitting = true;
             particlesScale.X = (float)0.6;
-            particlesPosition.X = -4;
+            particlesPosition.X = -8;
             particles.Scale = particlesScale;
             particles.Position = particlesPosition;
         }
@@ -110,7 +116,7 @@ public partial class Player : CharacterBody2D
         {
             particles.Emitting = true;
             particlesScale.X = (float)-0.6;
-            particlesPosition.X = 4;
+            particlesPosition.X = 8;
             particles.Scale = particlesScale;
             particles.Position = particlesPosition;
         }
