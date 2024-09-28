@@ -1,0 +1,47 @@
+using Godot;
+using System;
+using System.Runtime.CompilerServices;
+
+public partial class FadeArea : Area2D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+
+	public void _on_body_entered(Node2D body)
+	{
+		if(body is Player)
+		{
+			Node2D parent = (Node2D)this.GetParent();
+			Color parentModulate = Color.Color8(255, 255, 255, 255); ;
+
+			if(parent != null)
+			{
+				parentModulate.A = 0.1f;
+				parent.Modulate = parentModulate;
+			}
+
+		}
+	}
+    public void _on_body_exited(Node2D body)
+    {
+        if (body is Player)
+        {
+            Node2D parent = (Node2D)this.GetParent();
+            Color parentModulate = Color.Color8(255,255, 255, 255);
+
+            if (parent != null)
+            {
+                parentModulate.A = 1;
+                parent.Modulate = parentModulate;
+            }
+
+        }
+    }
+}
