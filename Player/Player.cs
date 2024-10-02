@@ -15,15 +15,21 @@ public partial class Player : CharacterBody2D
     private Godot.Vector2 lightPosition;
     private static PointLight2D playerlight;
     private static CpuParticles2D particles;
+    private bool attack;
+    private bool animationFinished;
 
     public override void _PhysicsProcess(double delta)
     {
-        // Vector2 position = Position;
         animationPlayer = this.GetChild(1) as AnimatedSprite2D;
         particles = animationPlayer.GetChild(0) as CpuParticles2D;
+        Movement(delta);
+        //Attack();
+        Animations();
+        MoveAndSlide();
+    }
+    private void Movement(double delta)
+    {
         playerlight = this.GetChild(2) as PointLight2D;
-        particles.Emitting = false;
-        velocity = Velocity;
 
         //Vertical movement
         if (!IsOnFloor())
@@ -34,11 +40,14 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            Particles();
             if (Input.IsActionJustPressed("ui_space"))
             {
                 velocity.Y = JumpVelocity;
+            }
+            else
+            {
 
+                Particles();
             }
         }
         //Horizontal movement
@@ -67,10 +76,21 @@ public partial class Player : CharacterBody2D
 
         }
 
+
+
         Velocity = velocity; //Actualizar velocidad mediante una variable no a pelo??
 
-        MoveAndSlide();
-        Animations();
+    }
+    private void Attack()
+    {
+        if (Input.IsActionJustPressed("attack"))
+        {
+            attack = true;
+        }
+        if (Input.IsActionJustReleased("attack"))
+        {
+            attack = false;
+        }
     }
     private void Animations()
     {
@@ -100,25 +120,23 @@ public partial class Player : CharacterBody2D
                 animationPlayer.Play("jump");
             }
         }
+
+
     }
-    public void Particles()
+
+    private void Particles()
     {
 
         if (velocity.X > 0)
         {
             particles.Emitting = true;
-            particlesScale.X = (float)0.6;
-            particlesPosition.X = -8;
-            particles.Scale = particlesScale;
-            particles.Position = particlesPosition;
+            particles.Gravity = new Godot.Vector2(-90, 20);
         }
         if (velocity.X < 0)
         {
             particles.Emitting = true;
-            particlesScale.X = (float)-0.6;
-            particlesPosition.X = 8;
-            particles.Scale = particlesScale;
-            particles.Position = particlesPosition;
+            particles.Gravity = new Godot.Vector2(90, 0);
+
         }
         if (velocity.X == 0)
         {
@@ -126,10 +144,7 @@ public partial class Player : CharacterBody2D
         }
 
     }
-    //public static void _on_cpu_particles_2d_finished()
-    //{
-    //    particles.Emitting = false;
-    //}
+
 }
 
 

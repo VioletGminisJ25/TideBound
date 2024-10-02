@@ -18,12 +18,13 @@ public partial class FadeArea : Area2D
 	{
 		if(body is Player)
 		{
-			Node2D parent = (Node2D)this.GetParent();
+			TileMapLayer parent = (TileMapLayer)this.GetParent();
 			Color parentModulate = Color.Color8(255, 255, 255, 255); ;
 
 			if(parent != null)
 			{
 				parentModulate.A = 0.1f;
+				parent.Enabled = false;
 				parent.Modulate = parentModulate;
 			}
 
@@ -33,11 +34,12 @@ public partial class FadeArea : Area2D
     {
         if (body is Player)
         {
-            Node2D parent = (Node2D)this.GetParent();
+            TileMapLayer parent = (TileMapLayer)this.GetParent();
             Color parentModulate = Color.Color8(255,255, 255, 255);
 
             if (parent != null)
             {
+                parent.Enabled = true;
                 parentModulate.A = 1;
                 parent.Modulate = parentModulate;
             }

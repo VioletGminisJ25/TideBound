@@ -2,14 +2,18 @@
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Player/PlayerFrames.tres" id="2_5wx5r"]
-[ext_resource type="Texture2D" uid="uid://btutrap76sxdf" path="res://Player/ParticlesRunning.tres" id="3_sfkps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf6ob"]
 size = Vector2(14, 24)
 
-[sub_resource type="Gradient" id="Gradient_rfbu7"]
-offsets = PackedFloat32Array(0.571429, 0.84127)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_kaon7"]
+offsets = PackedFloat32Array(0.0687831, 0.269841, 0.396825)
+colors = PackedColorArray(0, 0.231373, 0, 1, 0.489933, 0.607948, 0.489933, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_8x72b"]
+min_value = -1.0
+_data = [Vector2(0.0184332, 0.758242), 0.0, 0.0, 0, 0, Vector2(0.391705, 0.450549), 0.0, 0.0, 0, 0, Vector2(0.83871, 0.538462), 0.0, 0.0, 0, 0, Vector2(1, 0.67033), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_blt6w"]
 offsets = PackedFloat32Array(0, 0.735751)
@@ -24,7 +28,6 @@ fill_from = Vector2(0.5, 0.5)
 position = Vector2(277, 193)
 collision_layer = 2
 script = ExtResource("1_xogcc")
-Speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -32,31 +35,32 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_gf6ob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 3
 texture_filter = 1
 sprite_frames = ExtResource("2_5wx5r")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.378211
+frame = 4
+frame_progress = 1.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D" groups=["particles"]]
 show_behind_parent = true
-texture_filter = 1
-texture_repeat = 1
-position = Vector2(-8, 8)
-scale = Vector2(0.4, 0.4)
-emitting = false
-amount = 1
-lifetime = 0.3
-local_coords = true
-draw_order = 1
-texture = ExtResource("3_sfkps")
-spread = 0.0
-gravity = Vector2(-20, 25)
-color = Color(0.589191, 0.783892, 0.38388, 1)
-color_ramp = SubResource("Gradient_rfbu7")
+position = Vector2(-5, 9)
+rotation = 3.47436
+lifetime = 0.6
+gravity = Vector2(-90, 0)
+initial_velocity_max = 16.17
+color = Color(0.47451, 1, 0.615686, 1)
+color_ramp = SubResource("Gradient_kaon7")
+hue_variation_min = -0.03
+hue_variation_max = 0.21
+hue_variation_curve = SubResource("Curve_8x72b")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(7, 2)
-energy = 0.7
+enabled = false
+energy = 0.44
 shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 19.9
 texture = SubResource("GradientTexture2D_xvotf")

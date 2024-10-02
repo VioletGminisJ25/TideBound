@@ -8,6 +8,7 @@
 
 [resource]
 frames = 5
+one_shot = true
 speed_scale = 9.1
 frame_0/texture = ExtResource("1_j8cwq")
 frame_1/texture = ExtResource("2_girnr")
