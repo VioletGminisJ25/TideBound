@@ -58,9 +58,11 @@ hue_variation_curve = SubResource("Curve_8x72b")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(7, 2)
-enabled = false
+color = Color(0.466667, 1, 0.576471, 0.443137)
 energy = 0.44
 shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
-shadow_filter_smooth = 19.9
+shadow_filter_smooth = 5.4
+shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_xvotf")
