@@ -23,6 +23,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_blt6w")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.794872, 0.0897436)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(277, 193)
@@ -38,17 +39,17 @@ shape = SubResource("RectangleShape2D_gf6ob")
 light_mask = 3
 texture_filter = 1
 sprite_frames = ExtResource("2_5wx5r")
-animation = &"idle"
+animation = &"attack1"
 autoplay = "idle"
-frame = 4
-frame_progress = 1.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D" groups=["particles"]]
 show_behind_parent = true
 position = Vector2(-5, 9)
 rotation = 3.47436
-lifetime = 0.6
-gravity = Vector2(-90, 0)
+emitting = false
+amount = 6
+lifetime = 0.4
+gravity = Vector2(-90, 90)
 initial_velocity_max = 16.17
 color = Color(0.47451, 1, 0.615686, 1)
 color_ramp = SubResource("Gradient_kaon7")
@@ -58,11 +59,14 @@ hue_variation_curve = SubResource("Curve_8x72b")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(7, 2)
-color = Color(0.466667, 1, 0.576471, 0.443137)
-energy = 0.44
+color = Color(0.466667, 1, 0.576471, 0.494118)
+energy = 0.24
+range_layer_min = -100
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 shadow_filter_smooth = 5.4
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_xvotf")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_animation_finished"]

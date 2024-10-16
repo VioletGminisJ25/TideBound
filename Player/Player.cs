@@ -7,7 +7,7 @@ public partial class Player : CharacterBody2D
     [Export]
     public float Speed = 170.0f;
     [Export]
-    public float JumpVelocity = -300.0f;
+    public float JumpVelocity = -340.0f;
     private static AnimatedSprite2D animationPlayer;
     private Godot.Vector2 velocity;
     private Godot.Vector2 particlesScale;
@@ -17,6 +17,7 @@ public partial class Player : CharacterBody2D
     private static CpuParticles2D particles;
     private bool attack;
     private bool animationFinished;
+    Random random = new Random();
 
     public override void _PhysicsProcess(double delta)
     {
@@ -47,7 +48,7 @@ public partial class Player : CharacterBody2D
             else
             {
 
-                Particles();
+                //Particles();
             }
         }
         //Horizontal movement
@@ -81,71 +82,82 @@ public partial class Player : CharacterBody2D
         Velocity = velocity; //Actualizar velocidad mediante una variable no a pelo??
 
     }
-    private void Attack()
+    private void Animations()
     {
         if (Input.IsActionJustPressed("attack"))
         {
+            int num = random.Next(1, 4);
+            animationPlayer.Play($"attack{num}");
             attack = true;
         }
-        if (Input.IsActionJustReleased("attack"))
-        {
-            attack = false;
-        }
-    }
-    private void Animations()
-    {
-        if (IsOnFloor())
+
+        if (!attack)
         {
 
-            if (velocity.X != 0)
+            if (IsOnFloor())
             {
-                animationPlayer.Play("run");
+
+                if (velocity.X != 0)
+                {
+                    animationPlayer.Play("run");
 
 
+                }
+                else
+                {
+                    animationPlayer.Play("idle");
+                }
             }
             else
             {
-                animationPlayer.Play("idle");
+
+                if (velocity.Y > 0)
+                {
+                    animationPlayer.Play("fall");
+                }
+                else
+                {
+                    animationPlayer.Play("jump");
+                }
             }
+
+
         }
-        else
-        {
-
-            if (velocity.Y > 0)
-            {
-                animationPlayer.Play("fall");
-            }
-            else
-            {
-                animationPlayer.Play("jump");
-            }
-        }
-
-
     }
 
     private void Particles()
     {
 
-        if (velocity.X > 0)
+        if (Convert.ToInt32(GetRealVelocity().Y) > 0)
         {
-            particles.Emitting = true;
-            particles.Gravity = new Godot.Vector2(-90, 20);
-        }
-        if (velocity.X < 0)
-        {
-            particles.Emitting = true;
-            particles.Gravity = new Godot.Vector2(90, 0);
 
-        }
-        if (velocity.X == 0)
-        {
-            particles.Emitting = false;
-        }
+            if (velocity.X > 0)
+            {
+                particles.Emitting = true;
+                particles.Gravity = new Godot.Vector2(-90, 90);
+            }
+            if (velocity.X < 0)
+            {
+                particles.Emitting = true;
+                particles.Gravity = new Godot.Vector2(90, 90);
 
+            }
+            if (velocity.X == 0)
+            {
+                particles.Emitting = false;
+            }
+        }
+    }
+    private void _animation_finished()
+    {
+        if (animationPlayer.Animation == "attack1" || animationPlayer.Animation == "attack2" || animationPlayer.Animation == "attack3")
+        {
+            attack = false;
+        }
     }
 
 }
+
 
 
 
