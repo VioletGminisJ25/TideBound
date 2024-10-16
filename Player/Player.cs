@@ -41,6 +41,7 @@ public partial class Player : CharacterBody2D
         }
         else
         {
+            velocity.Y = 0;
             if (Input.IsActionJustPressed("ui_space"))
             {
                 velocity.Y = JumpVelocity;
