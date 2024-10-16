@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5wxkdm4h2g5p"]
+[gd_scene load_steps=10 format=3 uid="uid://c5wxkdm4h2g5p"]
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Player/PlayerFrames.tres" id="2_5wx5r"]
+[ext_resource type="Texture2D" uid="uid://chqrb03wi24wl" path="res://Player/hat.png" id="3_br8iy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf6ob"]
 size = Vector2(14, 24)
@@ -25,6 +26,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.794872, 0.0897436)
 
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_rbrea"]
+enabled = true
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(277, 193)
 collision_layer = 2
@@ -39,7 +43,7 @@ shape = SubResource("RectangleShape2D_gf6ob")
 light_mask = 3
 texture_filter = 1
 sprite_frames = ExtResource("2_5wx5r")
-animation = &"attack1"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D" groups=["particles"]]
@@ -68,5 +72,38 @@ shadow_filter = 2
 shadow_filter_smooth = 5.4
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_xvotf")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+visible = false
+modification_stack = SubResource("SkeletonModificationStack2D_rbrea")
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(53.3788, 36.5204)
+rotation = 0.00872642
+scale = Vector2(0.999996, 0.999996)
+rest = Transform2D(5, 0, 0, 0, 0, 0)
+
+[node name="Hat" type="Sprite2D" parent="Skeleton2D/Bone2D"]
+texture = ExtResource("3_br8iy")
+region_enabled = true
+region_rect = Rect2(20, 1, 24, 13)
+
+[node name="head" type="Sprite2D" parent="Skeleton2D"]
+position = Vector2(53.5, 46.5)
+texture = ExtResource("3_br8iy")
+region_enabled = true
+region_rect = Rect2(25, 16, 16, 7)
+
+[node name="body" type="Sprite2D" parent="Skeleton2D"]
+position = Vector2(52, 52.5)
+texture = ExtResource("3_br8iy")
+region_enabled = true
+region_rect = Rect2(20, 23, 19, 11)
+
+[node name="hand" type="Sprite2D" parent="Skeleton2D"]
+position = Vector2(63.3855, 51.4709)
+texture = ExtResource("3_br8iy")
+region_enabled = true
+region_rect = Rect2(42, 24, 4, 7)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_animation_finished"]
