@@ -1,12 +1,36 @@
-[gd_scene format=3 uid="uid://cknq4cq3bhmxx"]
+[gd_scene load_steps=5 format=3 uid="uid://cknq4cq3bhmxx"]
 
-[node name="Menu" type="Control"]
+[ext_resource type="Texture2D" uid="uid://brd11f2wfya0" path="res://assets/Health & Stamina 1.2/Health&Stamina/Red/Colors.png" id="1_wbu85"]
+[ext_resource type="Texture2D" uid="uid://bto0f7xed0cxo" path="res://assets/Health & Stamina 1.2/Health&Stamina/Red/Border.png" id="2_x2eha"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xt01"]
+atlas = ExtResource("2_x2eha")
+region = Rect2(96, 320, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5841o"]
+atlas = ExtResource("1_wbu85")
+region = Rect2(104, 320, 40, 16)
+
+[node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 93.0
 offset_bottom = 43.0
 
-[node name="Panel" type="Panel" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-offset_right = 93.0
-offset_bottom = 43.0
+texture = SubResource("AtlasTexture_5xt01")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/TextureRect"]
+z_index = -1
+layout_mode = 2
+offset_left = 1.0
+offset_right = 128.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_5841o")

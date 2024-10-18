@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chqrb03wi24wl"
-path="res://.godot/imported/hat.png-3ce19d0658f8156a04284b00c0f7cb41.ctex"
+uid="uid://cquk0h6pa2niu"
+path="res://.godot/imported/BorderBG.png-81537671004ec67985996877c3019043.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/hat.png"
-dest_files=["res://.godot/imported/hat.png-3ce19d0658f8156a04284b00c0f7cb41.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/16-Attack 2/Health & Stamina 1.2/Health&Stamina/Red/BorderBG.png"
+dest_files=["res://.godot/imported/BorderBG.png-81537671004ec67985996877c3019043.ctex"]
 
 [params]
 

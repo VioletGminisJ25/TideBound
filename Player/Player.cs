@@ -49,9 +49,11 @@ public partial class Player : CharacterBody2D
             else
             {
 
-                //Particles();
+                Particles();
             }
         }
+
+        //TODO IF DIRECOTION KEY IS JUST PRESSED PARTICLE ON
         //Horizontal movement
         Godot.Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
         if (direction != Godot.Vector2.Zero)
@@ -129,18 +131,18 @@ public partial class Player : CharacterBody2D
     private void Particles()
     {
 
-        if (Convert.ToInt32(GetRealVelocity().Y) > 0)
+        if (Convert.ToInt32(GetRealVelocity().Y) == 0)
         {
 
             if (velocity.X > 0)
             {
                 particles.Emitting = true;
-                particles.Gravity = new Godot.Vector2(-90, 90);
+                particles.Gravity = new Godot.Vector2(0, 0);
             }
             if (velocity.X < 0)
             {
                 particles.Emitting = true;
-                particles.Gravity = new Godot.Vector2(90, 90);
+                particles.Gravity = new Godot.Vector2(0, 0);
 
             }
             if (velocity.X == 0)

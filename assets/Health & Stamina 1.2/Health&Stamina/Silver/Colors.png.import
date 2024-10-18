@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckaqscw7xhlvf"
-path="res://.godot/imported/Idle Sword 01.png-bc47ab10ea2b64a1ae28fc49d84a9d26.ctex"
+uid="uid://bc3kmkn0hs4w0"
+path="res://.godot/imported/Colors.png-fe04c00f5273bbe677a7c4465f86f3ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Idle Sword 01.png"
-dest_files=["res://.godot/imported/Idle Sword 01.png-bc47ab10ea2b64a1ae28fc49d84a9d26.ctex"]
+source_file="res://assets/Health & Stamina 1.2/Health&Stamina/Silver/Colors.png"
+dest_files=["res://.godot/imported/Colors.png-fe04c00f5273bbe677a7c4465f86f3ff.ctex"]
 
 [params]
 
