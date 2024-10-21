@@ -37,6 +37,8 @@ version_control/autoload_on_startup=true
 
 Player=""
 particles=""
+sword=""
+hurt=""
 
 [importer_defaults]
 
