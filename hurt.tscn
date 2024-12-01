@@ -1,3 +1,0 @@
-[gd_scene format=3 uid="uid://dmqi4vjhdpqki"]
-
-[node name="hurt" type="Area2D" groups=["hurt"]]

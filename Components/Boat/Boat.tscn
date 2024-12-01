@@ -1,0 +1,258 @@
+[gd_scene load_steps=30 format=3 uid="uid://437ynqvvoatr"]
+
+[ext_resource type="Texture2D" uid="uid://blm0c35q8qxft" path="res://assets/Ship/Sail/No Wind/1.png" id="1_4n43e"]
+[ext_resource type="Texture2D" uid="uid://db854heiahpq0" path="res://assets/Ship/Sail/No Wind/2.png" id="2_up6ig"]
+[ext_resource type="Texture2D" uid="uid://ds22be2ipjh2x" path="res://assets/Ship/Sail/No Wind/3.png" id="3_15hvv"]
+[ext_resource type="Texture2D" uid="uid://dlwrcfvthrb5o" path="res://assets/Ship/Sail/No Wind/4.png" id="4_i1a7k"]
+[ext_resource type="Texture2D" uid="uid://do1mps0dg2tpg" path="res://assets/Ship/Sail/No Wind/5.png" id="5_sires"]
+[ext_resource type="Texture2D" uid="uid://trtrrw36k7e3" path="res://assets/Ship/Sail/No Wind/6.png" id="6_57ttq"]
+[ext_resource type="Texture2D" uid="uid://cyyytkr0btbry" path="res://assets/Ship/Sail/No Wind/7.png" id="7_pfbqs"]
+[ext_resource type="Texture2D" uid="uid://dj0nlhue8046u" path="res://assets/Ship/Sail/No Wind/8.png" id="8_uhe01"]
+[ext_resource type="Texture2D" uid="uid://3mfixf4vpg0c" path="res://assets/Ship/Sail/Transition to No Wind/1.png" id="9_03tef"]
+[ext_resource type="Texture2D" uid="uid://bs2tejqjn3qgt" path="res://assets/Ship/Sail/Transition to No Wind/2.png" id="10_k5i7y"]
+[ext_resource type="Texture2D" uid="uid://b1vv7202hx66l" path="res://assets/Ship/Sail/Transition to No Wind/3.png" id="11_136n2"]
+[ext_resource type="Texture2D" uid="uid://cutdn8fudqa6t" path="res://assets/Ship/Sail/Wind/1.png" id="12_4mfs0"]
+[ext_resource type="Texture2D" uid="uid://buhin83p57vrn" path="res://assets/Ship/Sail/Wind/2.png" id="13_b5cb2"]
+[ext_resource type="Texture2D" uid="uid://uiefwogk6jmb" path="res://assets/Ship/Sail/Wind/3.png" id="14_sjg4q"]
+[ext_resource type="Texture2D" uid="uid://bxb78tab0bebu" path="res://assets/Ship/Sail/Wind/4.png" id="15_esv7l"]
+[ext_resource type="Texture2D" uid="uid://d343n7t66rvwx" path="res://assets/Ship/Ship/Idle/1.png" id="16_4rpmq"]
+[ext_resource type="Texture2D" uid="uid://bej3ttkcek3op" path="res://assets/Ship/Ship/Idle/2.png" id="17_bto4m"]
+[ext_resource type="Texture2D" uid="uid://df7dt77xg46di" path="res://assets/Ship/Ship/Idle/3.png" id="18_6ad1f"]
+[ext_resource type="Texture2D" uid="uid://b344ivwxtqlj4" path="res://assets/Ship/Ship/Idle/4.png" id="19_yuhgg"]
+[ext_resource type="Texture2D" uid="uid://d05myl1meuq1u" path="res://assets/Ship/Ship/Idle/5.png" id="20_bto2y"]
+[ext_resource type="Texture2D" uid="uid://cg5fk3twg51n5" path="res://assets/Ship/Ship/Idle/6.png" id="21_hhsv3"]
+
+[sub_resource type="Animation" id="Animation_3d06d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"no wind"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8c1gj"]
+resource_name = "nowind"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"no wind"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.7, 0.833333, 1)
+}
+
+[sub_resource type="Animation" id="Animation_g3als"]
+resource_name = "transitionNoWind"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"transition no wind"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_8jkbj"]
+resource_name = "wind"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"wind"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.666667, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4pb3v"]
+_data = {
+"RESET": SubResource("Animation_3d06d"),
+"nowind": SubResource("Animation_8c1gj"),
+"transitionNoWind": SubResource("Animation_g3als"),
+"wind": SubResource("Animation_8jkbj")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdiko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4n43e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_up6ig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_15hvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i1a7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sires")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_57ttq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pfbqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uhe01")
+}],
+"loop": true,
+"name": &"no wind",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_03tef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_k5i7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_136n2")
+}],
+"loop": true,
+"name": &"transition no wind",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_4mfs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_b5cb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_sjg4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_esv7l")
+}],
+"loop": true,
+"name": &"wind",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h58im"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_4rpmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bto4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6ad1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_yuhgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bto2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_hhsv3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exbmh"]
+size = Vector2(77, 20)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(10, -36)
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../sail")
+libraries = {
+"": SubResource("AnimationLibrary_4pb3v")
+}
+speed_scale = 2.255
+
+[node name="sail" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tdiko")
+animation = &"no wind"
+autoplay = "no wind"
+
+[node name="ship" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, 36)
+sprite_frames = SubResource("SpriteFrames_h58im")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ship"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ship/StaticBody2D"]
+visible = false
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_exbmh")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c27jsbsb4kqne"]
+
+[ext_resource type="Script" path="res://Scripts/Hurt/Hurt.cs" id="1_f1v1h"]
+
+[node name="hurt" type="Area2D" groups=["hurt"]]
+script = ExtResource("1_f1v1h")
