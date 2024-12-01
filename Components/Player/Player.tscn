@@ -1,0 +1,410 @@
+[gd_scene load_steps=21 format=3 uid="uid://c5wxkdm4h2g5p"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_xogcc"]
+[ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Material/Player/PlayerFrames.tres" id="2_5wx5r"]
+[ext_resource type="Texture2D" uid="uid://cl8lueckn0erm" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 03.png" id="5_rljeg"]
+[ext_resource type="Texture2D" uid="uid://devq86n0at7jj" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 05.png" id="7_o1ueq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf6ob"]
+size = Vector2(9.68124, 21.8493)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_0oaoo"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("5_rljeg")
+frame_1/texture = ExtResource("7_o1ueq")
+frame_1/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_6nuxl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("swordHit/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xjy0m"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack1"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("swordHit/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_w41bn"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack2"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("swordHit/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_687tx"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack3"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.233333, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("swordHit/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_1epde"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dead"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.333333, 0.7, 1)
+}
+
+[sub_resource type="Animation" id="Animation_v4153"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fall"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_w607y"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1)
+}
+
+[sub_resource type="Animation" id="Animation_c0xi2"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.8, 1)
+}
+
+[sub_resource type="Animation" id="Animation_hjom6"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.233333, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_fdg6p"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mnqeo"]
+_data = {
+"RESET": SubResource("Animation_6nuxl"),
+"attack1": SubResource("Animation_xjy0m"),
+"attack2": SubResource("Animation_w41bn"),
+"attack3": SubResource("Animation_687tx"),
+"dead": SubResource("Animation_1epde"),
+"fall": SubResource("Animation_v4153"),
+"hit": SubResource("Animation_w607y"),
+"idle": SubResource("Animation_c0xi2"),
+"jump": SubResource("Animation_hjom6"),
+"run": SubResource("Animation_fdg6p")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rd81"]
+size = Vector2(17.2315, 7.90673)
+
+[sub_resource type="Gradient" id="Gradient_blt6w"]
+offsets = PackedFloat32Array(0, 0.735751)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xvotf"]
+gradient = SubResource("Gradient_blt6w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.794872, 0.0897436)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(277, 193)
+collision_layer = 2
+script = ExtResource("1_xogcc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.475616, -0.924652)
+shape = SubResource("RectangleShape2D_gf6ob")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 3
+texture_filter = 1
+sprite_frames = ExtResource("2_5wx5r")
+animation = &"attack2"
+autoplay = "idle"
+frame = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0.815686)
+z_index = -1
+position = Vector2(1.57489, 13.0717)
+emitting = false
+amount = 1
+lifetime = 0.66
+one_shot = true
+draw_order = 1
+texture = SubResource("AnimatedTexture_0oaoo")
+gravity = Vector2(0, -100)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_mnqeo")
+}
+autoplay = "idle"
+speed_scale = 1.5
+
+[node name="swordHit" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/swordHit"]
+position = Vector2(20.22, 5.27985)
+shape = SubResource("RectangleShape2D_2rd81")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.158997, 0.248032)
+color = Color(0.466667, 1, 0.576471, 0.494118)
+energy = 0.24
+range_layer_min = -100
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+shadow_filter_smooth = 5.4
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_xvotf")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="AnimatedSprite2D/swordHit" to="." method="_on_sword_hit_area_entered"]
