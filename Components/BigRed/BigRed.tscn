@@ -1,7 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7m1fecdodnd8"]
+[gd_scene load_steps=16 format=3 uid="uid://c7m1fecdodnd8"]
 
 [ext_resource type="Script" path="res://Scripts/BigRed/BigRed.cs" id="1_nsvnc"]
 [ext_resource type="Texture2D" uid="uid://eiaqfynjw3f4" path="res://assets/Big_Red/Idle_(32 x 32).png" id="2_g2paw"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_mw8ih"]
+[ext_resource type="Script" path="res://Scripts/BigRed/States/Idle.cs" id="4_r7txt"]
+[ext_resource type="Script" path="res://Scripts/BigRed/States/Run.cs" id="5_fp0be"]
+[ext_resource type="Script" path="res://Scripts/BigRed/States/Jump.cs" id="6_cus76"]
+[ext_resource type="Script" path="res://Scripts/BigRed/States/Attack.cs" id="7_hwyv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6bhy"]
 size = Vector2(20, 21)
@@ -77,12 +82,18 @@ frame = 2
 frame_progress = 0.943312
 flip_h = true
 
-[node name="Node" type="Node" parent="."]
+[node name="FSM" type="Node" parent="."]
+script = ExtResource("3_mw8ih")
+initialState = NodePath("Idle")
 
-[node name="Node" type="Node" parent="Node"]
+[node name="Idle" type="Node" parent="FSM"]
+script = ExtResource("4_r7txt")
 
-[node name="Node2" type="Node" parent="Node"]
+[node name="Run" type="Node" parent="FSM"]
+script = ExtResource("5_fp0be")
 
-[node name="Node3" type="Node" parent="Node"]
+[node name="Jump" type="Node" parent="FSM"]
+script = ExtResource("6_cus76")
 
-[node name="Node4" type="Node" parent="Node"]
+[node name="Attack" type="Node" parent="FSM"]
+script = ExtResource("7_hwyv5")
