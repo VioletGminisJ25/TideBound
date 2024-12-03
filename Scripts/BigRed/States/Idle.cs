@@ -3,13 +3,28 @@ using System;
 
 public partial class Idle : State
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+    [Export] RayCast2D raycast;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+    public override void Enter() {
+        raycast.Enabled = true;
+        GD.Print("ENEMY: Idle State");
 	}
+    public override void Exit() {
+    }
+
+    public override void Update(float delta) {
+        if (raycast.IsColliding())
+        {
+            if(raycast.GetCollider() is Player)
+            {
+
+                GD.Print("ENEMY: Detected player!!");
+                fsm.TransitionTo("Run");
+            }
+        }
+    }
+    public override void PhysicsUpdate(float delta) {
+        
+    }
+    public override void HandleInput(InputEvent @event) { }
 }

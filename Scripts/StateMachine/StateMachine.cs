@@ -15,9 +15,9 @@ public partial class StateMachine : Node
 		{
 			if(node is State s)
 			{
-				states[node.Name] = s;
+				states.Add(node.Name, s);
 				s.fsm = this;
-				s.Ready();
+				s.Enter();
 				s.Exit(); //reset
 			}
 		}
@@ -32,10 +32,10 @@ public partial class StateMachine : Node
 		currentState.Update((float)delta);
 
 	}
-    public virtual void PhysicsUpdate(float delta) {
-		currentState.PhysicsUpdate(delta);
+    public override void _PhysicsProcess(double delta) {
+		currentState.PhysicsUpdate((float)delta);
 	}
-	public virtual void HandleInput(InputEvent @event)
+	public override void _UnhandledInput(InputEvent @event)
 	{
 		currentState.HandleInput(@event);
 	}
@@ -47,7 +47,7 @@ public partial class StateMachine : Node
 			return;
 		}
 		currentState.Exit();
-		states[key] = currentState;
+		currentState = states[key];
 		currentState.Enter();
 	}
 	

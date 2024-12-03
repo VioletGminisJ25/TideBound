@@ -8,6 +8,8 @@ public partial class Enemy : CharacterBody2D
 	[Export]
 	 double damage;
 
+	[Export] public Player player;
+
 	[Export]
 	CollisionShape2D collisionShape;
 
@@ -18,8 +20,10 @@ public partial class Enemy : CharacterBody2D
     {
     }
     public override void _PhysicsProcess(double delta)
-    { 
-        MoveAndSlide();
+    {   
+
+        
+
     }
 
     // Called when the node enters the scene tree for the first time.
@@ -30,5 +34,8 @@ public partial class Enemy : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
+        this.Velocity = this.GetGravity() * (float)delta;
+        MoveAndSlide();
+  
+    }
 }

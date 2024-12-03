@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/BigRed/States/Attack.cs" id="7_hwyv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6bhy"]
-size = Vector2(20, 21)
+size = Vector2(23.0979, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7vp6"]
 atlas = ExtResource("2_g2paw")
@@ -63,6 +63,7 @@ animations = [{
 
 [node name="BigRed" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape", "animatedSprite")]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_nsvnc")
 health = 20.0
 damage = 5.0
@@ -70,7 +71,7 @@ collisionShape = NodePath("CollisionShape2D")
 animatedSprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6.45455)
+position = Vector2(-0.5, 5)
 scale = Vector2(0.995763, 0.909091)
 shape = SubResource("RectangleShape2D_n6bhy")
 
@@ -86,14 +87,33 @@ flip_h = true
 script = ExtResource("3_mw8ih")
 initialState = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="FSM"]
+[node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("raycast")]
 script = ExtResource("4_r7txt")
+raycast = NodePath("../../RayCast2D")
 
-[node name="Run" type="Node" parent="FSM"]
+[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("navigationAgent2D", "enemy")]
 script = ExtResource("5_fp0be")
+navigationAgent2D = NodePath("../../NavigationAgent2D")
+enemy = NodePath("../..")
+speed = 50.0
+
+[node name="Timer" type="Timer" parent="FSM/Run"]
+wait_time = 0.5
+autostart = true
 
 [node name="Jump" type="Node" parent="FSM"]
 script = ExtResource("6_cus76")
 
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("7_hwyv5")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.5708
+collision_mask = 3
+
+[connection signal="timeout" from="FSM/Run/Timer" to="FSM/Run" method="_on_timer_timeout"]
