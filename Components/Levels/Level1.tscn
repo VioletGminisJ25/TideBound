@@ -1249,8 +1249,8 @@ motion_mirroring = Vector2(460, 0)
 [node name="TextureRect" type="TextureRect" parent="Background/Layer 4"]
 modulate = Color(0.164964, 0.350636, 0.34343, 1)
 anchors_preset = -1
-anchor_left = 0.368995
-anchor_top = 0.000162986
+anchor_left = 0.364307
+anchor_top = -0.0239111
 anchor_right = 0.364307
 anchor_bottom = -0.0239111
 offset_left = -408.0
