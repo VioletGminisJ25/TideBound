@@ -6,4 +6,8 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>NuevoProyectodeJuego</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Components\**" />
+    <EmbeddedResource Remove="Components\**" />
+  </ItemGroup>
 </Project>

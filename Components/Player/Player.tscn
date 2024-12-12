@@ -349,10 +349,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.794872, 0.0897436)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "moveEffects", "playerlight", "animationPlayer") groups=["Player"]]
 position = Vector2(277, 193)
 collision_layer = 2
 script = ExtResource("1_xogcc")
+Speed = 170.0
+JumpVelocity = -340.0
+animatedSprite = NodePath("AnimatedSprite2D")
+moveEffects = NodePath("AnimatedSprite2D/CPUParticles2D")
+playerlight = NodePath("PointLight2D")
+animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.475616, -0.924652)
@@ -362,9 +369,8 @@ shape = SubResource("RectangleShape2D_gf6ob")
 light_mask = 3
 texture_filter = 1
 sprite_frames = ExtResource("2_5wx5r")
-animation = &"attack2"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
 modulate = Color(1, 1, 1, 0.815686)
