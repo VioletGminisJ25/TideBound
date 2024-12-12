@@ -14,7 +14,7 @@ public partial class Enemy : CharacterBody2D
 	CollisionShape2D collisionShape;
 
 	[Export]
-	AnimatedSprite2D animatedSprite;
+	public AnimatedSprite2D animatedSprite;
 
     public Enemy()
     {
@@ -34,8 +34,6 @@ public partial class Enemy : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        this.Velocity = this.GetGravity() * (float)delta;
-        MoveAndSlide();
-  
+
     }
 }

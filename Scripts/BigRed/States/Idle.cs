@@ -4,11 +4,13 @@ using System;
 public partial class Idle : State
 {
     [Export] RayCast2D raycast;
+    [Export] Enemy enemy;
 
     public override void Enter() {
         raycast.Enabled = true;
         GD.Print("ENEMY: Idle State");
-	}
+        enemy.animatedSprite.Play("idle");
+    }
     public override void Exit() {
     }
 

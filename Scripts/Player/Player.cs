@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 
 public partial class Player : CharacterBody2D
 {
+   
     [Export]
     private float Speed;
     [Export]
@@ -25,7 +26,7 @@ public partial class Player : CharacterBody2D
 
     //private static CpuParticles2D particles;
     private bool animationFinished;
-    private Godot.Vector2 push_force = new Godot.Vector2(40, 40);
+    private Godot.Vector2 push_force = new Godot.Vector2(20, 20);
     Random random = new Random();
 
     private bool attack;
@@ -61,7 +62,7 @@ public partial class Player : CharacterBody2D
         for (int i = 0; i < this.GetSlideCollisionCount(); i++)
         {
             var c = this.GetSlideCollision(i);
-            if (c.GetCollider() is RigidBody2D)
+            if (c.GetCollider() is RigidBody2D || c.GetCollider() is CharacterBody2D)
             {
                 //((RigidBody2D)c.GetCollider()).ApplyCentralForce(-c.GetNormal() * push_force);
                 ((RigidBody2D)c.GetCollider()).ApplyCentralImpulse(-c.GetNormal() * push_force);
