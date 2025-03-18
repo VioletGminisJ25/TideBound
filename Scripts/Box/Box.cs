@@ -24,7 +24,7 @@ public partial class Box : RigidBody2D
 
     public Box()
     {
-        heath = 3;
+        heath = 1;
     }
 
     // Called when the node enters the scene tree for the first time.
@@ -59,7 +59,6 @@ public partial class Box : RigidBody2D
     {
         if (heath < 0)
         {
-          
             destroyed = true;
         }
         if (destroyed)
@@ -71,18 +70,12 @@ public partial class Box : RigidBody2D
 
             }
         }
-
-
     }
-    public void _on_animation_player_animation_finished(String anim)
+
+    public void Destroy()
     {
-        if (anim == "destroyed")
-        {
-            area.Monitorable = false;
-            area.Monitoring= false;
-            this.QueueFree();
-        }
+        area.SetDeferred("monitorable", false);
+        QueueFree();
     }
-
 
 }

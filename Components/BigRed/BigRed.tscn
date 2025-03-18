@@ -1,17 +1,69 @@
-[gd_scene load_steps=23 format=3 uid="uid://c7m1fecdodnd8"]
+[gd_scene load_steps=43 format=3 uid="uid://c7m1fecdodnd8"]
 
 [ext_resource type="Script" path="res://Scripts/BigRed/BigRed.cs" id="1_nsvnc"]
 [ext_resource type="Texture2D" uid="uid://eiaqfynjw3f4" path="res://assets/Big_Red/Idle_(32 x 32).png" id="2_g2paw"]
+[ext_resource type="Texture2D" uid="uid://thq3y5kwl326" path="res://assets/Big_Red/Punching_(48 x 32).png" id="2_lujts"]
 [ext_resource type="Texture2D" uid="uid://cd3tofj2kvxsf" path="res://assets/Big_Red/Running_(32 x 32).png" id="3_ch2sg"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_mw8ih"]
 [ext_resource type="Texture2D" uid="uid://dfbnobmv0wg6d" path="res://assets/Big_Red/Jumping_&_Falling_(32 x 32).png" id="3_nxfr5"]
+[ext_resource type="Texture2D" uid="uid://b7wjl87c8r8u8" path="res://assets/Big_Red/Super_Punch_(64 x 32).png" id="3_tr71n"]
+[ext_resource type="Texture2D" uid="uid://cbg03e24x7va1" path="res://assets/Big_Red/Hurt_(32 x 32).png" id="4_0c6hn"]
 [ext_resource type="Script" path="res://Scripts/BigRed/States/Idle.cs" id="4_r7txt"]
 [ext_resource type="Script" path="res://Scripts/BigRed/States/Run.cs" id="5_fp0be"]
 [ext_resource type="Script" path="res://Scripts/BigRed/States/Jump.cs" id="6_cus76"]
 [ext_resource type="Script" path="res://Scripts/BigRed/States/Attack.cs" id="7_hwyv5"]
+[ext_resource type="Script" path="res://Scripts/Hurt/Hurt.cs" id="13_lvhit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6bhy"]
 size = Vector2(23.0979, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0doy7"]
+atlas = ExtResource("2_lujts")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wynva"]
+atlas = ExtResource("2_lujts")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5hwf"]
+atlas = ExtResource("2_lujts")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp81a"]
+atlas = ExtResource("2_lujts")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ylf1"]
+atlas = ExtResource("2_lujts")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxey1"]
+atlas = ExtResource("2_lujts")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llfq1"]
+atlas = ExtResource("2_lujts")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsasc"]
+atlas = ExtResource("2_lujts")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0udu"]
+atlas = ExtResource("3_tr71n")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty4ph"]
+atlas = ExtResource("3_tr71n")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1egdu"]
+atlas = ExtResource("3_tr71n")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1q55"]
+atlas = ExtResource("4_0c6hn")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7vp6"]
 atlas = ExtResource("2_g2paw")
@@ -61,6 +113,57 @@ region = Rect2(64, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0doy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wynva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5hwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp81a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ylf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxey1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llfq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsasc")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0udu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty4ph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1egdu")
+}],
+"loop": true,
+"name": &"attack2",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1q55")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_w7vp6")
 }, {
 "duration": 1.0,
@@ -91,7 +194,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -108,7 +211,47 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Animation" id="Animation_k8h2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+
+[sub_resource type="Animation" id="Animation_wgar3"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67m76"]
+_data = {
+"RESET": SubResource("Animation_k8h2x"),
+"hit": SubResource("Animation_wgar3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i8pw"]
+size = Vector2(25, 21)
+
 [node name="BigRed" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape", "animatedSprite")]
+z_index = -1
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_nsvnc")
@@ -126,9 +269,14 @@ shape = SubResource("RectangleShape2D_n6bhy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jq83g")
-animation = &"jump"
+animation = &"hit"
 autoplay = "idle"
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_67m76")
+}
 
 [node name="FSM" type="Node" parent="."]
 script = ExtResource("3_mw8ih")
@@ -160,10 +308,17 @@ script = ExtResource("7_hwyv5")
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(1.81899e-12, 5)
 rotation = 1.5708
-target_position = Vector2(8.58307e-05, 24.4625)
+scale = Vector2(3.88, 1)
+target_position = Vector2(3.17097e-05, 34)
 collision_mask = 3
+
+[node name="Damegeable" type="Area2D" parent="."]
+script = ExtResource("13_lvhit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damegeable"]
+position = Vector2(-1.5, 6)
+shape = SubResource("RectangleShape2D_2i8pw")
 
 [connection signal="timeout" from="FSM/Run/Timer" to="FSM/Run" method="_on_timer_timeout"]

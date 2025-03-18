@@ -14,7 +14,6 @@ public partial class Hurt : Area2D
     }
     public void dameage()
     {
-        this.SetDeferred("monitoreable", false);
 
         if (this.GetParent() is Box)
         {

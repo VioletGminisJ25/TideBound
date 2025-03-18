@@ -18,6 +18,7 @@ public partial class Enemy : CharacterBody2D
 
     public Enemy()
     {
+
     }
     public override void _PhysicsProcess(double delta)
     {   
