@@ -1,8 +1,9 @@
 # Ideas para el juego de piratas en Godot
 
-## 1. Plataformas y Exploración Lineal con Backtracking Opcional
-- Diseño de niveles interconectados con rutas alternativas.
-- Algunas áreas requieren objetos o llaves para regresar y desbloquear contenido opcional.
+## 1. Metroidvania Pirata
+- Mundo interconectado con diferentes biomas y atajos.
+- Progresión basada en mejoras (gancho, doble salto, habilidades de combate).
+- Exploración con backtracking para desbloquear nuevas áreas.
 
 ## 2. Sistema de Combate Dinámico
 - Ataques rápidos con espada para combates cuerpo a cuerpo.
@@ -13,15 +14,12 @@
 - Historia contada a través de objetos ocultos como mapas del tesoro o pergaminos.
 - Minimizar diálogos complejos para optimizar el desarrollo.
 
-## 4. Sistema de Misiones Simples
-- Objetivos pequeños en cada nivel, como recuperar un tesoro o derrotar un jefe.
-- NPCs que den pistas sobre las misiones.
+## 4. Mundo Interconectado con Exploración
+- Diferentes zonas como la Fortaleza Pirata, Cueva de los Ecos y el Galeón Fantasma.
+- Backtracking con habilidades nuevas para acceder a zonas ocultas.
+- Puzzles que requieran el uso de mecánicas desbloqueables.
 
-## 5. Mecánica de Navegación con Riesgo
-- Viaje entre islas a través de un sistema de selección ("overworld").
-- Cada isla tiene peligros y recompensas diferentes.
-
-## 6. Mecánica de Gancho para Dinamismo
+## 5. Mecánica de Gancho para Dinamismo
 ### Movimiento y Plataformas
 - Engancharse a puntos específicos y balancearse.
 - Usar el gancho para subir a plataformas inaccesibles.
@@ -61,21 +59,25 @@
 ✅ Implementar movimiento del personaje y controles básicos.
 ✅ Implementar la mecánica del gancho (aunque sea en versión simple).
 ✅ Crear un nivel prototipo para probar físicas y mecánicas.
+✅ Diseñar el mapa del metroidvania con conexiones lógicas.
 
 ## Semana 3-4 (Abril) → Construcción de niveles y combate
-✅ Crear al menos 2 niveles jugables con plataformas y exploración.
+✅ Crear zonas principales del mundo interconectado.
 ✅ Implementar enemigos básicos con IA sencilla.
 ✅ Refinar la mecánica del gancho y añadir colisiones precisas.
+✅ Agregar obstáculos que requieran habilidades específicas para superarlos.
 
 ## Semana 5-6 (Mediados de Abril - Principios de Mayo) → Más contenido
-✅ Agregar más niveles (fortaleza pirata, galeón fantasma, etc.).
-✅ Incorporar puzzles simples que usen el gancho.
+✅ Agregar más áreas secretas y caminos alternativos.
+✅ Incorporar puzzles que usen el gancho y otras mecánicas.
 ✅ Ajustar combate y mejorar animaciones.
+✅ Implementar mejoras desbloqueables para fomentar la exploración.
 
 ## Semana 7 (Mayo) → Pulido y pruebas
 ✅ Ajustar la dificultad y probar niveles.
 ✅ Optimizar gráficos, sonidos y efectos.
 ✅ Implementar coleccionables y elementos narrativos.
+✅ Corregir errores en las conexiones del mapa.
 
 ## Semana 8 (Última semana antes del 20 de mayo) → Presentación final
 ✅ Corregir bugs y hacer pruebas finales.
