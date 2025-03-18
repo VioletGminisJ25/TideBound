@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bbogme8t44hul"]
 
-[ext_resource type="Script" path="res://Scripts/Key/Key.cs" id="1_3uwkc"]
+[ext_resource type="Script" uid="uid://b0kr4r1l0jlpx" path="res://Scripts/Key/Key.cs" id="1_3uwkc"]
 [ext_resource type="Texture2D" uid="uid://b0xdpxprtsjrh" path="res://assets/Chest/Chest Key/Idle/1.png" id="1_wnl1u"]
 [ext_resource type="Texture2D" uid="uid://eytcunhf848n" path="res://assets/Chest/Chest Key/Idle/2.png" id="2_t3j16"]
 [ext_resource type="Texture2D" uid="uid://b0slp803xeenk" path="res://assets/Chest/Chest Key/Idle/3.png" id="3_m850q"]
@@ -79,8 +79,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y7hvr"]
 _data = {
-"RESET": SubResource("Animation_t7fm7"),
-"idle": SubResource("Animation_qthri")
+&"RESET": SubResource("Animation_t7fm7"),
+&"idle": SubResource("Animation_qthri")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7lie"]

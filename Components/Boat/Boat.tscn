@@ -130,10 +130,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4pb3v"]
 _data = {
-"RESET": SubResource("Animation_3d06d"),
-"nowind": SubResource("Animation_8c1gj"),
-"transitionNoWind": SubResource("Animation_g3als"),
-"wind": SubResource("Animation_8jkbj")
+&"RESET": SubResource("Animation_3d06d"),
+&"nowind": SubResource("Animation_8c1gj"),
+&"transitionNoWind": SubResource("Animation_g3als"),
+&"wind": SubResource("Animation_8jkbj")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tdiko"]

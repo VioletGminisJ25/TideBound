@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://e3dekuxm6d55"]
 
-[ext_resource type="Script" path="res://Scripts/FadeArea/FadeArea.cs" id="1_6072c"]
+[ext_resource type="Script" uid="uid://nfeimu8jqxnm" path="res://Scripts/FadeArea/FadeArea.cs" id="1_6072c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_av4q1"]
 

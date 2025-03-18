@@ -1,18 +1,18 @@
 [gd_scene load_steps=43 format=3 uid="uid://c7m1fecdodnd8"]
 
-[ext_resource type="Script" path="res://Scripts/BigRed/BigRed.cs" id="1_nsvnc"]
+[ext_resource type="Script" uid="uid://dpochhmyi6wko" path="res://Scripts/BigRed/BigRed.cs" id="1_nsvnc"]
 [ext_resource type="Texture2D" uid="uid://eiaqfynjw3f4" path="res://assets/Big_Red/Idle_(32 x 32).png" id="2_g2paw"]
 [ext_resource type="Texture2D" uid="uid://thq3y5kwl326" path="res://assets/Big_Red/Punching_(48 x 32).png" id="2_lujts"]
 [ext_resource type="Texture2D" uid="uid://cd3tofj2kvxsf" path="res://assets/Big_Red/Running_(32 x 32).png" id="3_ch2sg"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.cs" id="3_mw8ih"]
+[ext_resource type="Script" uid="uid://cuuupveo6tbfu" path="res://Scripts/StateMachine/StateMachine.cs" id="3_mw8ih"]
 [ext_resource type="Texture2D" uid="uid://dfbnobmv0wg6d" path="res://assets/Big_Red/Jumping_&_Falling_(32 x 32).png" id="3_nxfr5"]
 [ext_resource type="Texture2D" uid="uid://b7wjl87c8r8u8" path="res://assets/Big_Red/Super_Punch_(64 x 32).png" id="3_tr71n"]
 [ext_resource type="Texture2D" uid="uid://cbg03e24x7va1" path="res://assets/Big_Red/Hurt_(32 x 32).png" id="4_0c6hn"]
-[ext_resource type="Script" path="res://Scripts/BigRed/States/Idle.cs" id="4_r7txt"]
-[ext_resource type="Script" path="res://Scripts/BigRed/States/Run.cs" id="5_fp0be"]
-[ext_resource type="Script" path="res://Scripts/BigRed/States/Jump.cs" id="6_cus76"]
-[ext_resource type="Script" path="res://Scripts/BigRed/States/Attack.cs" id="7_hwyv5"]
-[ext_resource type="Script" path="res://Scripts/Hurt/Hurt.cs" id="13_lvhit"]
+[ext_resource type="Script" uid="uid://bdxcd071844uk" path="res://Scripts/BigRed/States/Idle.cs" id="4_r7txt"]
+[ext_resource type="Script" uid="uid://7fydh6perlf1" path="res://Scripts/BigRed/States/Run.cs" id="5_fp0be"]
+[ext_resource type="Script" uid="uid://crxupke25qnog" path="res://Scripts/BigRed/States/Jump.cs" id="6_cus76"]
+[ext_resource type="Script" uid="uid://bn0dbrijjbuoa" path="res://Scripts/BigRed/States/Attack.cs" id="7_hwyv5"]
+[ext_resource type="Script" uid="uid://t77r33k0uvmw" path="res://Scripts/Hurt/Hurt.cs" id="13_lvhit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6bhy"]
 size = Vector2(23.0979, 22)
@@ -243,8 +243,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_67m76"]
 _data = {
-"RESET": SubResource("Animation_k8h2x"),
-"hit": SubResource("Animation_wgar3")
+&"RESET": SubResource("Animation_k8h2x"),
+&"hit": SubResource("Animation_wgar3")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i8pw"]
@@ -275,7 +275,7 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_67m76")
+&"": SubResource("AnimationLibrary_67m76")
 }
 
 [node name="FSM" type="Node" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://c5wxkdm4h2g5p"]
 
-[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_xogcc"]
+[ext_resource type="Script" uid="uid://c6gf8srd0rbuj" path="res://Scripts/Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Material/Player/PlayerFrames.tres" id="2_5wx5r"]
 [ext_resource type="Texture2D" uid="uid://cl8lueckn0erm" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 03.png" id="5_rljeg"]
 [ext_resource type="Texture2D" uid="uid://devq86n0at7jj" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 05.png" id="7_o1ueq"]
@@ -324,16 +324,16 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mnqeo"]
 _data = {
-"RESET": SubResource("Animation_6nuxl"),
-"attack1": SubResource("Animation_xjy0m"),
-"attack2": SubResource("Animation_w41bn"),
-"attack3": SubResource("Animation_687tx"),
-"dead": SubResource("Animation_1epde"),
-"fall": SubResource("Animation_v4153"),
-"hit": SubResource("Animation_w607y"),
-"idle": SubResource("Animation_c0xi2"),
-"jump": SubResource("Animation_hjom6"),
-"run": SubResource("Animation_fdg6p")
+&"RESET": SubResource("Animation_6nuxl"),
+&"attack1": SubResource("Animation_xjy0m"),
+&"attack2": SubResource("Animation_w41bn"),
+&"attack3": SubResource("Animation_687tx"),
+&"dead": SubResource("Animation_1epde"),
+&"fall": SubResource("Animation_v4153"),
+&"hit": SubResource("Animation_w607y"),
+&"idle": SubResource("Animation_c0xi2"),
+&"jump": SubResource("Animation_hjom6"),
+&"run": SubResource("Animation_fdg6p")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rd81"]
@@ -378,16 +378,16 @@ z_index = -1
 position = Vector2(1.57489, 13.0717)
 emitting = false
 amount = 1
+texture = SubResource("AnimatedTexture_0oaoo")
 lifetime = 0.66
 one_shot = true
 draw_order = 1
-texture = SubResource("AnimatedTexture_0oaoo")
 gravity = Vector2(0, -100)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 reset_on_save = false
 libraries = {
-"": SubResource("AnimationLibrary_mnqeo")
+&"": SubResource("AnimationLibrary_mnqeo")
 }
 autoplay = "idle"
 speed_scale = 1.5
