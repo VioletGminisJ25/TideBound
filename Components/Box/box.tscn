@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://c5vj5ew83tb5m"]
 
-[ext_resource type="Script" uid="uid://d1j7a5w77w35a" path="res://Scripts/Box/Box.cs" id="1_lo41w"]
+[ext_resource type="Script" uid="uid://d1j7a5w77w35a" path="res://Scripts/Box/Box.cs" id="1_les6k"]
 [ext_resource type="Texture2D" uid="uid://cewycdnsfi0lh" path="res://assets/Box/Idle/1.png" id="2_6sdk4"]
 [ext_resource type="Texture2D" uid="uid://51grcoftrwvc" path="res://assets/Box/Destroyed/1.png" id="3_1fmk1"]
 [ext_resource type="Texture2D" uid="uid://bxoj71mh8nyx3" path="res://assets/Box/Hit/1.png" id="3_ut4c3"]
@@ -398,7 +398,7 @@ _data = {
 [node name="box" type="RigidBody2D"]
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_lo41w")
+script = ExtResource("1_les6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.434972, 0.0112185)

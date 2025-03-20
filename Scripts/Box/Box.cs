@@ -74,8 +74,11 @@ public partial class Box : RigidBody2D
 
     public void Destroy()
     {
-        area.SetDeferred("monitorable", false);
-        QueueFree();
+        area.CallDeferred("eliminarCaja");
+    }
+    public void eliminarCaja()
+    {
+        this.QueueFree();
     }
 
 }

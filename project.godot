@@ -30,7 +30,7 @@ window/stretch/aspect="expand"
 
 [dotnet]
 
-project/assembly_name="Nuevo Proyecto de Juego"
+project/assembly_name="TideBound"
 
 [editor]
 

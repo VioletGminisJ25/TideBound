@@ -1,13 +1,28 @@
-﻿<Project Sdk="Godot.NET.Sdk/4.3.0">
+<Project Sdk="Godot.NET.Sdk/4.4.0">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
-    <RootNamespace>NuevoProyectodeJuego</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Components\**" />
-    <EmbeddedResource Remove="Components\**" />
+    <None Include="Scripts\BigRed\BigRed.cs.uid" />
+    <None Include="Scripts\BigRed\States\Attack.cs.uid" />
+    <None Include="Scripts\BigRed\States\Idle.cs.uid" />
+    <None Include="Scripts\BigRed\States\Jump.cs.uid" />
+    <None Include="Scripts\BigRed\States\Run.cs.uid" />
+    <None Include="Scripts\Box\Box.cs.uid" />
+    <None Include="Scripts\Camera\Camera.cs.uid" />
+    <None Include="Scripts\Enemy\Enemy.cs.uid" />
+    <None Include="Scripts\FadeArea\FadeArea.cs.uid" />
+    <None Include="Scripts\Hurt\Hurt.cs.uid" />
+    <None Include="Scripts\Key\Key.cs.uid" />
+    <None Include="Scripts\Levels\Level0\Level0.cs.uid" />
+    <None Include="Scripts\Player\Player.cs.uid" />
+    <None Include="Scripts\StateMachine\StateMachine.cs.uid" />
+    <None Include="Scripts\State\State.cs.uid" />
+    <None Include="Scripts\TileMap\Terrain.cs.uid" />
+    <None Include="Scripts\UI\UI.cs.uid" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\Levels\" />
   </ItemGroup>
 </Project>
