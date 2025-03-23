@@ -334,6 +334,8 @@ _data = {
 }
 
 [node name="box" type="RigidBody2D" node_paths=PackedStringArray("player")]
+mass = 3.179
+can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_les6k")
