@@ -1313,6 +1313,7 @@ mass = 0.47
 
 [node name="key" parent="." instance=ExtResource("14_8huee")]
 position = Vector2(793, 31)
+mass = 0.079
 script = null
 
 [node name="boxes" type="CanvasGroup" parent="."]
@@ -1324,7 +1325,7 @@ scale = Vector2(1, -1)
 position = Vector2(19, -6.36578e-05)
 
 [node name="box2" parent="boxes" instance=ExtResource("15_yoetg")]
-position = Vector2(1.99995, -21)
+position = Vector2(-3.00004, -19)
 
 [node name="box3" parent="boxes" instance=ExtResource("15_yoetg")]
 position = Vector2(28, -20.0001)

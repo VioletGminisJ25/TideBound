@@ -369,7 +369,7 @@ shape = SubResource("RectangleShape2D_gf6ob")
 light_mask = 3
 texture_filter = 1
 sprite_frames = ExtResource("2_5wx5r")
-animation = &"idle"
+animation = &"attack1"
 autoplay = "idle"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]

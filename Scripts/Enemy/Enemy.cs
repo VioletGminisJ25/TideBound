@@ -1,12 +1,25 @@
 using Godot;
 using System;
 
-public partial class Enemy : CharacterBody2D
+public partial class Enemy : CharacterBody2D,DamageableObject
 {
+	private int health;
+
 	[Export]
-	 double health;
+	public int Health
+	{
+		get
+		{
+			return health;
+		}
+		set
+		{
+			health = value;
+		}
+	}
+
 	[Export]
-	 double damage;
+	double damage;
 
 	[Export] public Player player;
 
@@ -16,9 +29,9 @@ public partial class Enemy : CharacterBody2D
 	[Export]
 	public AnimatedSprite2D animatedSprite;
 
-    public Enemy()
-    {
+	public Enemy()
+	{
+		health = health != 0 ? health : 5;
+	}
 
-    }
-   
 }

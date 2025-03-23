@@ -177,9 +177,9 @@ public partial class Player : CharacterBody2D
     }
     public void _on_sword_hit_area_entered(Area2D area)
     {
-        if (area is Hurt)
+        if (area is DamageComponent)
         {
-            Hurt hurt = (Hurt)area;
+            DamageComponent hurt = (DamageComponent)area;
             hurt.dameage();
         }
     }

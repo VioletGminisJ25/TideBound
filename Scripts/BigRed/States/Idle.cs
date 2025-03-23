@@ -19,7 +19,6 @@ public partial class Idle : State
         {
             if(raycast.GetCollider() is Player)
             {
-
                 GD.Print("ENEMY: Detected player!!");
                 fsm.TransitionTo("Run");
             }

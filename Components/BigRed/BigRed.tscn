@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://7fydh6perlf1" path="res://Scripts/BigRed/States/Run.cs" id="5_fp0be"]
 [ext_resource type="Script" uid="uid://crxupke25qnog" path="res://Scripts/BigRed/States/Jump.cs" id="6_cus76"]
 [ext_resource type="Script" uid="uid://bn0dbrijjbuoa" path="res://Scripts/BigRed/States/Attack.cs" id="7_hwyv5"]
-[ext_resource type="Script" uid="uid://t77r33k0uvmw" path="res://Scripts/Hurt/Hurt.cs" id="13_lvhit"]
+[ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Components/DamageComponent/damage_component.tscn" id="13_md1id"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6bhy"]
 size = Vector2(23.0979, 22)
@@ -223,7 +223,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"hit"]
+"values": [&"idle"]
 }
 
 [sub_resource type="Animation" id="Animation_wgar3"]
@@ -255,7 +255,7 @@ z_index = -1
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_nsvnc")
-health = 20.0
+Health = 5
 damage = 5.0
 collisionShape = NodePath("CollisionShape2D")
 animatedSprite = NodePath("AnimatedSprite2D")
@@ -269,7 +269,7 @@ shape = SubResource("RectangleShape2D_n6bhy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jq83g")
-animation = &"hit"
+animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
@@ -314,10 +314,10 @@ scale = Vector2(3.88, 1)
 target_position = Vector2(3.17097e-05, 34)
 collision_mask = 3
 
-[node name="Damegeable" type="Area2D" parent="."]
-script = ExtResource("13_lvhit")
+[node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("13_md1id")]
+AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damegeable"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
 position = Vector2(-1.5, 6)
 shape = SubResource("RectangleShape2D_2i8pw")
 

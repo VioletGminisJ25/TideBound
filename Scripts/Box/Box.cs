@@ -1,84 +1,50 @@
 using Godot;
 using System;
 
-public partial class Box : RigidBody2D
+
+public partial class Box : RigidBody2D, DamageableObject
 {
-    private int heath;
-    AnimatedSprite2D sprite;
-    AnimationPlayer player;
-    Area2D area;
-    bool destroyed = false;
-    public int Health
-    {
-        get
-        {
-            return heath;
-        }
-        set
-        {
+	[Export] AnimationPlayer player;
+	private int health;
+	[Export] public int Health
+	{
+		get
+		{
+			return health;
+		}
+		set
+		{
 
-            heath = value;
-        }
-    }
+			health = value;
+		}
+	}
+	private bool destroyed = false;
 
 
-    public Box()
-    {
-        heath = 1;
-    }
+	public Box()
+	{
+		health = health != 0 ? health : 1; 
+		destroyed = false;
+	}
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        GD.Print($"INIT: {heath}");
-        for (int i = 0; i < this.GetChildCount(); i++)
-        {
-            if (this.GetChild(i) is AnimatedSprite2D)
-            {
-                sprite = ((AnimatedSprite2D)this.GetChild(i));
-                for (int j = 0; j < sprite.GetChildCount(); j++)
-                {
-                    if (sprite.GetChild(j) is AnimationPlayer)
-                    {
-                        player = ((AnimationPlayer)sprite.GetChild(j));
-                    }
-                }
-            }
-        }
-        for (int i = 0; i < this.GetChildCount(); i++)
-        {
-            if (this.GetChild(i) is Area2D)
-            {
-                area = ((Area2D)this.GetChild(i));
-            }
-        }
-    }
+	public override void _Process(double delta)
+	{
+		
+	}
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
-        if (heath < 0)
-        {
-            destroyed = true;
-        }
-        if (destroyed)
-        {
-            if (heath <= 0)
-            {
-                destroyed = false;
-                player.Play("destroyed");
+	public void Destroy()
+	{
+		player.Play("destroyed");
+	}
 
-            }
-        }
-    }
+	public void _on_animation_player_animation_finished(string anim_name){
+		if (anim_name == "destroyed")
+		{
+			this.QueueFree();
+			destroyed = true;
+		}
+	}
 
-    public void Destroy()
-    {
-        area.CallDeferred("eliminarCaja");
-    }
-    public void eliminarCaja()
-    {
-        this.QueueFree();
-    }
+
 
 }

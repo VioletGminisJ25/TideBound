@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cq6px13tfll4k" path="res://assets/Box/Destroyed/4.png" id="6_7qidn"]
 [ext_resource type="Texture2D" uid="uid://g8qu5mrnicxq" path="res://assets/Box/Hit/4.png" id="6_aqj6q"]
 [ext_resource type="Texture2D" uid="uid://c40rmijqfde2r" path="res://assets/Box/Destroyed/5.png" id="7_qsflr"]
-[ext_resource type="PackedScene" uid="uid://c27jsbsb4kqne" path="res://Components/Hurt/hurt.tscn" id="7_snwso"]
+[ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Components/DamageComponent/damage_component.tscn" id="12_les6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hh6j8"]
 size = Vector2(24.6047, 17.8087)
@@ -168,30 +168,6 @@ tracks/8/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("hurt:monitoring")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("hurt:monitorable")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_sucwo"]
 resource_name = "default"
@@ -289,44 +265,6 @@ tracks/2/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("hurt:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("hurt:monitorable")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1.03333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Destroy"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_b2k6q"]
 resource_name = "hit"
@@ -395,10 +333,12 @@ _data = {
 &"hit": SubResource("Animation_b2k6q")
 }
 
-[node name="box" type="RigidBody2D"]
+[node name="box" type="RigidBody2D" node_paths=PackedStringArray("player")]
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_les6k")
+player = NodePath("AnimatedSprite2D/AnimationPlayer")
+Health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.434972, 0.0112185)
@@ -415,11 +355,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_3dv5b")
 }
 
-[node name="hurt" parent="." instance=ExtResource("7_snwso")]
-scale = Vector2(1.35558, 0.876614)
+[node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("12_les6k")]
+AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt"]
-position = Vector2(-0.385366, 0.0112185)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
+position = Vector2(0.477606, 0.00983429)
+scale = Vector2(1.35558, 0.876614)
 shape = SubResource("RectangleShape2D_hh6j8")
 
 [connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="mysignal" from="DamageComponent" to="." method="Destroy"]
