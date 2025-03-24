@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5d7kkrb8hfao"
-path="res://.godot/imported/3.png-e97ef0947abe265f08f888a1b0a3ad42.ctex"
+path="res://.godot/imported/3.png-3a46e5198f5c72b8d563d550cce1049d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Water/Reflexes 2/3.png"
-dest_files=["res://.godot/imported/3.png-e97ef0947abe265f08f888a1b0a3ad42.ctex"]
+source_file="res://Assets/Water/Reflexes 2/3.png"
+dest_files=["res://.godot/imported/3.png-3a46e5198f5c72b8d563d550cce1049d.ctex"]
 
 [params]
 

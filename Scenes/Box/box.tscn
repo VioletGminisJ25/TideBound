@@ -1,20 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5vj5ew83tb5m"]
+[gd_scene load_steps=15 format=3 uid="uid://c5vj5ew83tb5m"]
 
 [ext_resource type="Script" uid="uid://d1j7a5w77w35a" path="res://Scripts/Box/Box.cs" id="1_les6k"]
-[ext_resource type="Texture2D" uid="uid://cewycdnsfi0lh" path="res://assets/Box/Idle/1.png" id="2_6sdk4"]
-[ext_resource type="Texture2D" uid="uid://51grcoftrwvc" path="res://assets/Box/Destroyed/1.png" id="3_1fmk1"]
-[ext_resource type="Texture2D" uid="uid://bxoj71mh8nyx3" path="res://assets/Box/Hit/1.png" id="3_ut4c3"]
-[ext_resource type="Texture2D" uid="uid://c4ck0goiehkp3" path="res://assets/Box/Destroyed/2.png" id="4_2t5hu"]
-[ext_resource type="Texture2D" uid="uid://bl8ur6gap3jxl" path="res://assets/Box/Hit/2.png" id="4_psufl"]
-[ext_resource type="Texture2D" uid="uid://dbuc0qsytydoa" path="res://assets/Box/Hit/3.png" id="5_crjtm"]
-[ext_resource type="Texture2D" uid="uid://c6f304x1eh6g6" path="res://assets/Box/Destroyed/3.png" id="5_de485"]
-[ext_resource type="Texture2D" uid="uid://cq6px13tfll4k" path="res://assets/Box/Destroyed/4.png" id="6_7qidn"]
-[ext_resource type="Texture2D" uid="uid://g8qu5mrnicxq" path="res://assets/Box/Hit/4.png" id="6_aqj6q"]
-[ext_resource type="Texture2D" uid="uid://c40rmijqfde2r" path="res://assets/Box/Destroyed/5.png" id="7_qsflr"]
-[ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Components/DamageComponent/damage_component.tscn" id="12_les6k"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh6j8"]
-size = Vector2(24.6047, 17.8087)
+[ext_resource type="Texture2D" uid="uid://cewycdnsfi0lh" path="res://Assets/Box/Idle/1.png" id="2_6sdk4"]
+[ext_resource type="Texture2D" uid="uid://bxoj71mh8nyx3" path="res://Assets/Box/Hit/1.png" id="3_ut4c3"]
+[ext_resource type="Texture2D" uid="uid://bl8ur6gap3jxl" path="res://Assets/Box/Hit/2.png" id="4_psufl"]
+[ext_resource type="Texture2D" uid="uid://dbuc0qsytydoa" path="res://Assets/Box/Hit/3.png" id="5_crjtm"]
+[ext_resource type="Texture2D" uid="uid://g8qu5mrnicxq" path="res://Assets/Box/Hit/4.png" id="6_aqj6q"]
+[ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Scenes/DamageComponent/damage_component.tscn" id="12_les6k"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_esb61"]
 animations = [{
@@ -25,26 +17,6 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_1fmk1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_2t5hu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_de485")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_7qidn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_qsflr")
-}],
-"loop": false,
-"name": &"destroyed",
-"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -63,6 +35,9 @@ animations = [{
 "name": &"hit",
 "speed": 8.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh6j8"]
+size = Vector2(24.6047, 17.8087)
 
 [sub_resource type="Animation" id="Animation_40lwc"]
 length = 0.001
@@ -231,6 +206,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_aoer4"]
 resource_name = "destroyed"
+step = 0.033
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -264,6 +240,30 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
 }
 
 [sub_resource type="Animation" id="Animation_b2k6q"]
@@ -340,12 +340,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_les6k")
 player = NodePath("AnimatedSprite2D/AnimationPlayer")
-Health = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.434972, 0.0112185)
-rotation = -3.14159
-shape = SubResource("RectangleShape2D_hh6j8")
+Health = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_esb61")
@@ -357,10 +352,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_3dv5b")
 }
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.434972, 0.0112185)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_hh6j8")
+
 [node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("12_les6k")]
 AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
+visible = false
 position = Vector2(0.477606, 0.00983429)
 scale = Vector2(1.35558, 0.876614)
 shape = SubResource("RectangleShape2D_hh6j8")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bov7t2fmde4y2"
-path="res://.godot/imported/1.png-03589c272bb6ec71c2ee7caadbbbe710.ctex"
+path="res://.godot/imported/1.png-2799884ef57afaffd4c56ee374062691.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ship/Anchor/1.png"
-dest_files=["res://.godot/imported/1.png-03589c272bb6ec71c2ee7caadbbbe710.ctex"]
+source_file="res://Assets/Ship/Anchor/1.png"
+dest_files=["res://.godot/imported/1.png-2799884ef57afaffd4c56ee374062691.ctex"]
 
 [params]
 

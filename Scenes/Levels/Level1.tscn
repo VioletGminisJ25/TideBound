@@ -3,19 +3,19 @@
 [ext_resource type="TileSet" uid="uid://8j210w2qgbcc" path="res://Material/TileSet/TileSet.tres" id="1_06b82"]
 [ext_resource type="Script" uid="uid://cvp3xtucqo8mh" path="res://Scripts/UI/UI.cs" id="1_w3ot6"]
 [ext_resource type="TileSet" uid="uid://bk0c21k6halv1" path="res://Material/TileSet/Underground.tres" id="2_u0ljt"]
-[ext_resource type="Texture2D" uid="uid://cnn2w1mswphrp" path="res://assets/Jungle Asset Pack/jungle tileset/jungle tileset.png" id="3_50u6y"]
-[ext_resource type="Texture2D" uid="uid://b0hnke4llnicy" path="res://assets/Jungle Asset Pack/parallax background/plx-1.png" id="3_lul2f"]
-[ext_resource type="Texture2D" uid="uid://dqnp4tycluvdr" path="res://assets/Jungle Asset Pack/parallax background/plx-2.png" id="4_crq7o"]
-[ext_resource type="PackedScene" uid="uid://e3dekuxm6d55" path="res://Components/FadeArea/FadeArea.tscn" id="4_e6b6g"]
-[ext_resource type="Texture2D" uid="uid://d0wo4riviievg" path="res://assets/Jungle Asset Pack/parallax background/plx-3.png" id="5_3d6kg"]
-[ext_resource type="Texture2D" uid="uid://b6xt7xcm4epsv" path="res://assets/Jungle Asset Pack/parallax background/plx-4.png" id="6_7metg"]
+[ext_resource type="Texture2D" uid="uid://cnn2w1mswphrp" path="res://Assets/Jungle Asset Pack/jungle tileset/jungle tileset.png" id="3_50u6y"]
+[ext_resource type="Texture2D" uid="uid://b0hnke4llnicy" path="res://Assets/Jungle Asset Pack/parallax background/plx-1.png" id="3_lul2f"]
+[ext_resource type="Texture2D" uid="uid://dqnp4tycluvdr" path="res://Assets/Jungle Asset Pack/parallax background/plx-2.png" id="4_crq7o"]
+[ext_resource type="PackedScene" uid="uid://e3dekuxm6d55" path="res://Scenes/FadeArea/FadeArea.tscn" id="4_e6b6g"]
+[ext_resource type="Texture2D" uid="uid://d0wo4riviievg" path="res://Assets/Jungle Asset Pack/parallax background/plx-3.png" id="5_3d6kg"]
+[ext_resource type="Texture2D" uid="uid://b6xt7xcm4epsv" path="res://Assets/Jungle Asset Pack/parallax background/plx-4.png" id="6_7metg"]
 [ext_resource type="Script" uid="uid://dk7mvpqo7em8f" path="res://Scripts/Camera/Camera.cs" id="7_418l3"]
-[ext_resource type="Texture2D" uid="uid://dr8daoousp2ud" path="res://assets/Jungle Asset Pack/parallax background/plx-5.png" id="7_t18yi"]
-[ext_resource type="PackedScene" uid="uid://c5wxkdm4h2g5p" path="res://Components/Player/Player.tscn" id="8_h7mdq"]
-[ext_resource type="PackedScene" uid="uid://b1t0mk60ypsn6" path="res://Components/Chest/chest.tscn" id="13_8xw40"]
-[ext_resource type="PackedScene" uid="uid://bbogme8t44hul" path="res://Components/Key/key.tscn" id="14_8huee"]
-[ext_resource type="PackedScene" uid="uid://c5vj5ew83tb5m" path="res://Components/Box/box.tscn" id="15_yoetg"]
-[ext_resource type="PackedScene" uid="uid://c7m1fecdodnd8" path="res://Components/BigRed/BigRed.tscn" id="16_6t7tr"]
+[ext_resource type="Texture2D" uid="uid://dr8daoousp2ud" path="res://Assets/Jungle Asset Pack/parallax background/plx-5.png" id="7_t18yi"]
+[ext_resource type="PackedScene" uid="uid://c5wxkdm4h2g5p" path="res://Scenes/Player/Player.tscn" id="8_h7mdq"]
+[ext_resource type="PackedScene" uid="uid://b1t0mk60ypsn6" path="res://Scenes/Chest/chest.tscn" id="13_8xw40"]
+[ext_resource type="PackedScene" uid="uid://bbogme8t44hul" path="res://Scenes/Key/key.tscn" id="14_8huee"]
+[ext_resource type="PackedScene" uid="uid://c5vj5ew83tb5m" path="res://Scenes/Box/box.tscn" id="15_yoetg"]
+[ext_resource type="PackedScene" uid="uid://c7m1fecdodnd8" path="res://Scenes/BigRed/BigRed.tscn" id="16_6t7tr"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0sqyk"]
 polygon = PackedVector2Array(-8, 3, 8, 3.125, 8, -6.875, -8, -6.75)
@@ -1322,16 +1322,16 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="box" parent="boxes" instance=ExtResource("15_yoetg")]
-position = Vector2(19, -6.36578e-05)
+position = Vector2(27, -5.34217e-05)
 
 [node name="box2" parent="boxes" instance=ExtResource("15_yoetg")]
-position = Vector2(-3.00004, -19)
+position = Vector2(2.99995, -18)
 
 [node name="box3" parent="boxes" instance=ExtResource("15_yoetg")]
-position = Vector2(28, -20.0001)
+position = Vector2(28, -18.0001)
 
 [node name="box4" parent="boxes" instance=ExtResource("15_yoetg")]
-position = Vector2(-9, 1.4782e-05)
+position = Vector2(2, -1.3105e-05)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

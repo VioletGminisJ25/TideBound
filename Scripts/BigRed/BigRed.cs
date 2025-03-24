@@ -3,7 +3,6 @@ using System;
 
 public partial class BigRed : Enemy
 {
-   
     public BigRed():base()
     {
     }

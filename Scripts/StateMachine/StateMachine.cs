@@ -30,16 +30,17 @@ public partial class StateMachine : Node
 	public override void _Process(double delta)
 	{
 		currentState.Update((float)delta);
-
 	}
-    public override void _PhysicsProcess(double delta) {
+
+	public override void _PhysicsProcess(double delta) {
 		currentState.PhysicsUpdate((float)delta);
 	}
+
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		currentState.HandleInput(@event);
 	}
-
+	
 	public void TransitionTo(string key)
 	{
 		if(!states.ContainsKey(key) || currentState == states[key])

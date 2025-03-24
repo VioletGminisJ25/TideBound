@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cknq4cq3bhmxx"]
 
-[ext_resource type="Texture2D" uid="uid://brd11f2wfya0" path="res://assets/Health & Stamina 1.2/Health&Stamina/Red/Colors.png" id="1_wbu85"]
-[ext_resource type="Texture2D" uid="uid://bto0f7xed0cxo" path="res://assets/Health & Stamina 1.2/Health&Stamina/Red/Border.png" id="2_x2eha"]
-[ext_resource type="Texture2D" uid="uid://b4t2v2mloi80u" path="res://assets/Coin/Coin.png" id="3_j743s"]
+[ext_resource type="Texture2D" uid="uid://brd11f2wfya0" path="res://Assets/Health & Stamina 1.2/Health&Stamina/Red/Colors.png" id="1_wbu85"]
+[ext_resource type="Texture2D" uid="uid://bto0f7xed0cxo" path="res://Assets/Health & Stamina 1.2/Health&Stamina/Red/Border.png" id="2_x2eha"]
+[ext_resource type="Texture2D" uid="uid://b4t2v2mloi80u" path="res://Assets/Coin/Coin.png" id="3_j743s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5xt01"]
 atlas = ExtResource("2_x2eha")

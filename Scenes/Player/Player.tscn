@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c6gf8srd0rbuj" path="res://Scripts/Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Material/Player/PlayerFrames.tres" id="2_5wx5r"]
-[ext_resource type="Texture2D" uid="uid://cl8lueckn0erm" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 03.png" id="5_rljeg"]
-[ext_resource type="Texture2D" uid="uid://devq86n0at7jj" path="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 05.png" id="7_o1ueq"]
+[ext_resource type="Texture2D" uid="uid://cl8lueckn0erm" path="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 03.png" id="5_rljeg"]
+[ext_resource type="Texture2D" uid="uid://devq86n0at7jj" path="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 05.png" id="7_o1ueq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf6ob"]
 size = Vector2(9.68124, 21.8493)
@@ -337,7 +337,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rd81"]
-size = Vector2(17.2315, 7.90673)
+size = Vector2(17.3958, 7.90673)
 
 [sub_resource type="Gradient" id="Gradient_blt6w"]
 offsets = PackedFloat32Array(0, 0.735751)
@@ -350,7 +350,6 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.794872, 0.0897436)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "moveEffects", "playerlight", "animationPlayer") groups=["Player"]]
-position = Vector2(277, 193)
 collision_layer = 2
 script = ExtResource("1_xogcc")
 Speed = 170.0
@@ -369,8 +368,9 @@ shape = SubResource("RectangleShape2D_gf6ob")
 light_mask = 3
 texture_filter = 1
 sprite_frames = ExtResource("2_5wx5r")
-animation = &"attack1"
+animation = &"attack2"
 autoplay = "idle"
+frame = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
 modulate = Color(1, 1, 1, 0.815686)
@@ -395,7 +395,7 @@ speed_scale = 1.5
 [node name="swordHit" type="Area2D" parent="AnimatedSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/swordHit"]
-position = Vector2(20.22, 5.27985)
+position = Vector2(20.3021, 5.27985)
 shape = SubResource("RectangleShape2D_2rd81")
 disabled = true
 

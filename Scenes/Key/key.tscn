@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://bbogme8t44hul"]
 
 [ext_resource type="Script" uid="uid://b0kr4r1l0jlpx" path="res://Scripts/Key/Key.cs" id="1_3uwkc"]
-[ext_resource type="Texture2D" uid="uid://b0xdpxprtsjrh" path="res://assets/Chest/Chest Key/Idle/1.png" id="1_wnl1u"]
-[ext_resource type="Texture2D" uid="uid://eytcunhf848n" path="res://assets/Chest/Chest Key/Idle/2.png" id="2_t3j16"]
-[ext_resource type="Texture2D" uid="uid://b0slp803xeenk" path="res://assets/Chest/Chest Key/Idle/3.png" id="3_m850q"]
-[ext_resource type="Texture2D" uid="uid://d3sjtyka3f80q" path="res://assets/Chest/Chest Key/Idle/4.png" id="4_dh8m1"]
-[ext_resource type="Texture2D" uid="uid://cw5pvthu4l8j0" path="res://assets/Chest/Chest Key/Idle/5.png" id="5_ttvdy"]
-[ext_resource type="Texture2D" uid="uid://bb0f2fmhwbgj0" path="res://assets/Chest/Chest Key/Idle/6.png" id="6_b56xk"]
-[ext_resource type="Texture2D" uid="uid://ceb07lc2m0ilx" path="res://assets/Chest/Chest Key/Idle/7.png" id="7_j3ybh"]
-[ext_resource type="Texture2D" uid="uid://dn30ml3oqbovb" path="res://assets/Chest/Chest Key/Idle/8.png" id="8_76j6n"]
+[ext_resource type="Texture2D" uid="uid://b0xdpxprtsjrh" path="res://Assets/Chest/Chest Key/Idle/1.png" id="1_wnl1u"]
+[ext_resource type="Texture2D" uid="uid://eytcunhf848n" path="res://Assets/Chest/Chest Key/Idle/2.png" id="2_t3j16"]
+[ext_resource type="Texture2D" uid="uid://b0slp803xeenk" path="res://Assets/Chest/Chest Key/Idle/3.png" id="3_m850q"]
+[ext_resource type="Texture2D" uid="uid://d3sjtyka3f80q" path="res://Assets/Chest/Chest Key/Idle/4.png" id="4_dh8m1"]
+[ext_resource type="Texture2D" uid="uid://cw5pvthu4l8j0" path="res://Assets/Chest/Chest Key/Idle/5.png" id="5_ttvdy"]
+[ext_resource type="Texture2D" uid="uid://bb0f2fmhwbgj0" path="res://Assets/Chest/Chest Key/Idle/6.png" id="6_b56xk"]
+[ext_resource type="Texture2D" uid="uid://ceb07lc2m0ilx" path="res://Assets/Chest/Chest Key/Idle/7.png" id="7_j3ybh"]
+[ext_resource type="Texture2D" uid="uid://dn30ml3oqbovb" path="res://Assets/Chest/Chest Key/Idle/8.png" id="8_76j6n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qnhdv"]
 rough = true
