@@ -83,13 +83,12 @@ _data = {
 &"idle": SubResource("Animation_qthri")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7lie"]
-radius = 4.5
-height = 15.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57k1g"]
+size = Vector2(7, 15)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 input_pickable = true
-mass = 0.87
+mass = 0.91
 physics_material_override = SubResource("PhysicsMaterial_qnhdv")
 can_sleep = false
 freeze_mode = 1
@@ -106,10 +105,10 @@ frame_progress = 0.817888
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_y7hvr")
+&"": SubResource("AnimationLibrary_y7hvr")
 }
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
-shape = SubResource("CapsuleShape2D_j7lie")
+shape = SubResource("RectangleShape2D_57k1g")

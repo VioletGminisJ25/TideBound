@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Attack : State
+public partial class Attack_BigRed : State
 {
     public override void Enter() { }
     public override void Exit() { }

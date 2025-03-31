@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Idle : State
+public partial class Idle_BigRed : State
 {
     [Export] RayCast2D raycast;
     [Export] Enemy enemy;

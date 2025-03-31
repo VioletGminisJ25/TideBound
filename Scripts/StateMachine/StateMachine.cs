@@ -5,7 +5,25 @@ using System.Collections.Generic;
 public partial class StateMachine : Node
 {
 
-	[Export] public NodePath initialState;
+	private NodePath initialState;
+	[Export] public NodePath InitialState{
+		get{
+			return initialState;
+		}
+		set{
+			initialState = value;
+		}
+	}
+
+	private Node controlledNode;
+	[Export] public Node ControlledNode{
+		get{
+			return controlledNode;
+		}
+		set{
+			controlledNode = value;
+		}
+	}
 	private Dictionary<string, State> states;
 	private State currentState;
 	public override void _Ready()
