@@ -1116,7 +1116,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(728.707, -164.529, 731.714, 219.373, 1318.09, 217.379, 1318.09, -163.533)])
 
 [node name="Level1" type="Node2D"]
-position = Vector2(0, 200)
 
 [node name="Menu" type="CanvasLayer" parent="."]
 follow_viewport_scale = 0.802
@@ -1166,14 +1165,14 @@ position = Vector2(1315, 159)
 scale = Vector2(4.88, 5.52)
 
 [node name="Player" parent="." instance=ExtResource("8_h7mdq")]
-position = Vector2(278, 142)
+position = Vector2(277, 163)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(275, 126.425)
 zoom = Vector2(4, 4)
 process_callback = 0
 limit_left = 0
-limit_top = -35
+limit_top = -255
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
@@ -1182,8 +1181,9 @@ editor_draw_drag_margin = true
 script = ExtResource("7_418l3")
 
 [node name="Background" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -200)
 scale = Vector2(1.7, 1.7)
-transform = Transform2D(1.7, 0, 0, 1.7, 0, 0)
+transform = Transform2D(1.7, 0, 0, 1.7, 0, -200)
 
 [node name="Layer 0" type="ParallaxLayer" parent="Background"]
 light_mask = 2
@@ -1237,7 +1237,8 @@ motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(460, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Background/Layer 4"]
-modulate = Color(0.151347, 0.3264, 0.319618, 1)
+modulate = Color(0.160401, 0.34254, 0.335475, 1)
+texture_filter = 1
 offset_left = -8.23529
 offset_top = -124.706
 offset_right = 31.7647
@@ -1313,7 +1314,7 @@ mass = 0.47
 
 [node name="key" parent="." instance=ExtResource("14_8huee")]
 position = Vector2(793, 31)
-mass = 0.079
+mass = 0.928
 script = null
 
 [node name="boxes" type="CanvasGroup" parent="."]

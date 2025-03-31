@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c13pwaloe8f57"]
+
+[ext_resource type="Script" uid="uid://cuuupveo6tbfu" path="res://Scripts/StateMachine/StateMachine.cs" id="1_yopv8"]
+
+[node name="FSM" type="Node"]
+script = ExtResource("1_yopv8")

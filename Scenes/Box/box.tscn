@@ -335,6 +335,7 @@ _data = {
 
 [node name="box" type="RigidBody2D" node_paths=PackedStringArray("player")]
 mass = 3.179
+sleeping = true
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1
@@ -353,7 +354,6 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-0.434972, 0.0112185)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_hh6j8")
@@ -362,7 +362,6 @@ shape = SubResource("RectangleShape2D_hh6j8")
 AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
-visible = false
 position = Vector2(0.477606, 0.00983429)
 scale = Vector2(1.35558, 0.876614)
 shape = SubResource("RectangleShape2D_hh6j8")
