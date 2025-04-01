@@ -18,9 +18,17 @@ public partial class Player : CharacterBody2D
 	private Vector2 velocity;
 	private bool isAttacking = false;
 
+	private bool canDoubleJump = false;
+
 
 	public AnimationNodeStateMachinePlayback fsm;
 
+	[Export] public DampedSpringJoint2D springJoint;
+	[Export] public RayCast2D raycast;
+	[Export] public Rope line;
+	[Export] public StaticBody2D cursor;
+
+	private float tension = 500f;
 
 
 	public override void _Ready()
@@ -32,14 +40,39 @@ public partial class Player : CharacterBody2D
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
-
-		
 	}
 
 
 
 	public override void _PhysicsProcess(double delta)
 	{
+		springJoint.GlobalPosition = GlobalPosition;
+		raycast.LookAt(GetGlobalMousePosition());
+		raycast.Rotation = raycast.Rotation + 80;
+		if(Input.IsActionJustPressed("hook")){
+			if(raycast.IsColliding()){
+				cursor.Position =  raycast.GetCollisionPoint();
+				float distance =  this.Position.DistanceTo(cursor.Position);
+				springJoint.Length = distance;
+				springJoint.RotationDegrees = raycast.RotationDegrees;
+				springJoint.RestLength = distance*tension;
+				line.start = cursor.GlobalPosition;
+				springJoint.NodeB =cursor.GetPath();
+			}
+		}
+		if(Input.IsActionPressed("hook")){
+			if(springJoint.NodeA != springJoint.NodeB){
+				line.Visible = true;
+				line.end = this.GlobalPosition;
+			}
+			
+		}else{
+			line.Visible=false;
+			springJoint.NodeB = springJoint.NodeA;
+		}
+
+
+
 		float dt = (float)delta;
 		Movement(dt);
 		MoveAndSlide();
@@ -48,6 +81,11 @@ public partial class Player : CharacterBody2D
 			isAttacking = true;
 			fsm.Travel("attack1");
 		}
+		if (IsOnCeiling() && velocity.Y < 0)
+		{
+			velocity.Y = 0;
+		}
+
 	}
 
 	private void Movement(float delta)
@@ -77,9 +115,10 @@ public partial class Player : CharacterBody2D
 		else
 		{
 			velocity.Y = 0;
+			canDoubleJump = true;
 			if (direction.X != 0 && !isAttacking)
 			{
-				
+
 				fsm.Travel("run");
 			}
 			else
@@ -99,14 +138,26 @@ public partial class Player : CharacterBody2D
 			jumpBufferCounter -= delta;
 
 		// **Salto**
-		if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
+		if (jumpBufferCounter > 0)
 		{
-			// Interpolamos la velocidad del salto para que sea más progresivo
-			velocity.Y = Mathf.Lerp(velocity.Y, jumpVelocity, 65f * delta);
-			coyoteTimeCounter = 0;
-			jumpBufferCounter = 0;
-			fsm.Travel("jump");
-			System.Console.WriteLine("Jumping");
+			if (coyoteTimeCounter > 0 || canDoubleJump)
+			{
+				velocity.Y = Mathf.Lerp(velocity.Y, jumpVelocity, 65f * delta);
+				jumpBufferCounter = 0;
+				coyoteTimeCounter = 0;
+
+				if (!IsOnFloor() && canDoubleJump)
+				{
+					canDoubleJump = false; // Se usó el doble salto
+					fsm.Travel("jump"); // Puedes poner una animación especial si quieres
+					System.Console.WriteLine("Double Jump!");
+				}
+				else
+				{
+					fsm.Travel("jump");
+					System.Console.WriteLine("Jumping");
+				}
+			}
 		}
 
 		if (direction.X != 0)

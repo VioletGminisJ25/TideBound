@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c38fpxg7ms0yr"]
+
+[node name="HookJoint" type="DampedSpringJoint2D"]
+length = 6.0
+rest_length = 5.0
+stiffness = 0.3
+damping = 0.1

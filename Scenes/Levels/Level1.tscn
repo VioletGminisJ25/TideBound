@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://dwu4pv3h1svyj"]
+[gd_scene load_steps=30 format=4 uid="uid://dwu4pv3h1svyj"]
 
 [ext_resource type="TileSet" uid="uid://8j210w2qgbcc" path="res://Material/TileSet/TileSet.tres" id="1_06b82"]
 [ext_resource type="Script" uid="uid://cvp3xtucqo8mh" path="res://Scripts/UI/UI.cs" id="1_w3ot6"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bbogme8t44hul" path="res://Scenes/Key/key.tscn" id="14_8huee"]
 [ext_resource type="PackedScene" uid="uid://c5vj5ew83tb5m" path="res://Scenes/Box/box.tscn" id="15_yoetg"]
 [ext_resource type="PackedScene" uid="uid://c7m1fecdodnd8" path="res://Scenes/BigRed/BigRed.tscn" id="16_6t7tr"]
+[ext_resource type="Script" uid="uid://7kwsqnvm4qmo" path="res://Scripts/LineRope/Rope.cs" id="17_3hula"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0sqyk"]
 polygon = PackedVector2Array(-8, 3, 8, 3.125, 8, -6.875, -8, -6.75)
@@ -1115,6 +1116,8 @@ vertices = PackedVector2Array(1308.09, -153.539, 1308.09, 207.406, 741.633, 209.
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(728.707, -164.529, 731.714, 219.373, 1318.09, 217.379, 1318.09, -163.533)])
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiu4c"]
+
 [node name="Level1" type="Node2D"]
 
 [node name="Menu" type="CanvasLayer" parent="."]
@@ -1164,8 +1167,11 @@ texture = SubResource("GradientTexture2D_dy643")
 position = Vector2(1315, 159)
 scale = Vector2(4.88, 5.52)
 
-[node name="Player" parent="." instance=ExtResource("8_h7mdq")]
+[node name="Player" parent="." node_paths=PackedStringArray("springJoint", "line", "cursor") instance=ExtResource("8_h7mdq")]
 position = Vector2(277, 163)
+springJoint = NodePath("../DampedSpringJoint2D")
+line = NodePath("../Line2D")
+cursor = NodePath("../cursor")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(275, 126.425)
@@ -1272,6 +1278,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+texture_filter = 1
 position = Vector2(17, 210)
 color = Color(0.501406, 0.501407, 0.501405, 1)
 
@@ -1299,7 +1306,6 @@ shadow_filter_smooth = 1.4
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(664, -224)
 rotation = -0.779545
-color = Color(0.783523, 0.783523, 0.783523, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qdscg")
@@ -1351,3 +1357,20 @@ position = Vector2(1702, 389)
 
 [node name="box" parent="." instance=ExtResource("15_yoetg")]
 position = Vector2(1675, 389)
+
+[node name="Line2D" type="Line2D" parent="."]
+script = ExtResource("17_3hula")
+
+[node name="cursor" type="StaticBody2D" parent="."]
+position = Vector2(210, 189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cursor"]
+shape = SubResource("RectangleShape2D_wiu4c")
+disabled = true
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(277, 163)
+rotation = 1.5708
+node_a = NodePath("../Player")
+node_b = NodePath("../cursor")
+length = 24.0

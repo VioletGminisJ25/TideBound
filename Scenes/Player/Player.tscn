@@ -247,6 +247,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_c0xi2"]
 resource_name = "idle"
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -269,7 +270,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.233333, 0.5, 0.766667, 1)
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667)
 }
 
 [sub_resource type="Animation" id="Animation_hjom6"]
@@ -409,12 +410,14 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4wape"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t26db"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fk5o5"]
 switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4wape"]
+switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_e5iqy"]
 states/Start/position = Vector2(149, 53)
@@ -432,14 +435,15 @@ states/jump/node = SubResource("AnimationNodeAnimation_0kmp4")
 states/jump/position = Vector2(261, -11)
 states/run/node = SubResource("AnimationNodeAnimation_i5acl")
 states/run/position = Vector2(581, 179)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_epg6k"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0u84n"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_esmjy"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_6tu5v"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_spxdj"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0objx"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_w71ue"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_1e6p3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yb677"), "attack2", "idle", SubResource("AnimationNodeStateMachineTransition_i2g7t"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "attack2", SubResource("AnimationNodeStateMachineTransition_4wape"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_t26db"), "run", "attack1", SubResource("AnimationNodeStateMachineTransition_fk5o5")]
-graph_offset = Vector2(-134, 45)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_epg6k"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0u84n"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_esmjy"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_6tu5v"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_spxdj"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0objx"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_w71ue"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_1e6p3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yb677"), "attack2", "idle", SubResource("AnimationNodeStateMachineTransition_i2g7t"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_t26db"), "run", "attack1", SubResource("AnimationNodeStateMachineTransition_fk5o5"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_4wape")]
+graph_offset = Vector2(-235, 53)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationTree", "animatedSprite") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationTree", "animatedSprite", "raycast") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_xogcc")
 animationTree = NodePath("AnimationTree")
 animatedSprite = NodePath("AnimatedSprite2D")
+raycast = NodePath("RayCast2D")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -499,11 +503,13 @@ position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_fk5o5")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 root_node = NodePath("../AnimatedSprite2D")
 tree_root = SubResource("AnimationNodeStateMachine_e5iqy")
 anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_animation_finished"]
-[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0.1, 0)
+rotation = -3.14159
+target_position = Vector2(0.100021, 244)
+
 [connection signal="area_entered" from="AnimatedSprite2D/swordHit" to="." method="_on_sword_hit_area_entered"]
