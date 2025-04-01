@@ -20,6 +20,17 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
   - Mejora del sistema de salto usando `Lerp` para una sensación más fluida y controlada.
   - Ajustes en la gravedad y el multiplicador de caída para una mejor sensación de peso del personaje.
   - Se implementó una máquina de estados para gestionar mejor las animaciones del personaje.
+  
+### 🗓️ 1 de abril de 2025
+
+- **Intento de gancho**:
+  
+  Actualmente se está experimentando con la mecánica de gancho. Se intentó implementarlo usando:
+  - **RayCast2D** para detectar colisiones con superficies enganchables.
+  - **DampedSpringJoint2D** para generar la atracción del jugador hacia el punto de anclaje.
+  - **Problema encontrado:** `CharacterBody2D` no se ve afectado por las físicas externas, lo que limita el movimiento natural del gancho.
+  - **Próximo paso:** Evaluar si convertir al personaje en `RigidBody2D` o encontrar una solución alternativa con `CharacterBody2D`.
+
 
 ## 🚀 Instalación y Ejecución
 
