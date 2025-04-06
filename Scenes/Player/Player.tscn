@@ -438,12 +438,14 @@ states/run/position = Vector2(581, 179)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_epg6k"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0u84n"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_esmjy"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_6tu5v"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_spxdj"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0objx"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_w71ue"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_1e6p3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yb677"), "attack2", "idle", SubResource("AnimationNodeStateMachineTransition_i2g7t"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_t26db"), "run", "attack1", SubResource("AnimationNodeStateMachineTransition_fk5o5"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_4wape")]
 graph_offset = Vector2(-235, 53)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationTree", "animatedSprite", "raycast") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationTree", "animatedSprite", "raycast", "line", "cursor") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_xogcc")
 animationTree = NodePath("AnimationTree")
 animatedSprite = NodePath("AnimatedSprite2D")
 raycast = NodePath("RayCast2D")
+line = NodePath("")
+cursor = NodePath("")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

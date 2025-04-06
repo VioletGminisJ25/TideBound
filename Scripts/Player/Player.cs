@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class Player : CharacterBody2D
@@ -23,12 +24,15 @@ public partial class Player : CharacterBody2D
 
 	public AnimationNodeStateMachinePlayback fsm;
 
-	[Export] public DampedSpringJoint2D springJoint;
 	[Export] public RayCast2D raycast;
 	[Export] public Rope line;
 	[Export] public StaticBody2D cursor;
 
-	private float tension = 500f;
+	private float hookStopDistance = 10f;
+	private float hookSpeed = 300f;
+
+	private bool isHooked = false;
+
 
 
 	public override void _Ready()
@@ -46,35 +50,65 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		springJoint.GlobalPosition = GlobalPosition;
+		float dt = (float)delta;
+
+
+
+		Movement(dt);
+		// springJoint.GlobalPosition = GlobalPosition;
 		raycast.LookAt(GetGlobalMousePosition());
 		raycast.Rotation = raycast.Rotation + 80;
-		if(Input.IsActionJustPressed("hook")){
-			if(raycast.IsColliding()){
-				cursor.Position =  raycast.GetCollisionPoint();
-				float distance =  this.Position.DistanceTo(cursor.Position);
-				springJoint.Length = distance;
-				springJoint.RotationDegrees = raycast.RotationDegrees;
-				springJoint.RestLength = distance*tension;
+		if (Input.IsActionJustPressed("hook"))
+		{
+			if (raycast.IsColliding())
+			{
+				line.ClearPoints();
+				cursor.Position = raycast.GetCollisionPoint();
+				float distance = this.Position.DistanceTo(cursor.Position);
+				// springJoint.Length = distance;
+				// springJoint.RotationDegrees = raycast.RotationDegrees;
+				// springJoint.RestLength = distance*tension;
 				line.start = cursor.GlobalPosition;
-				springJoint.NodeB =cursor.GetPath();
+				// springJoint.NodeB =cursor.GetPath();
+				isHooked = true;
+			}
+			else
+			{
+				isHooked = false;
 			}
 		}
-		if(Input.IsActionPressed("hook")){
-			if(springJoint.NodeA != springJoint.NodeB){
+		if (isHooked)
+		{
+
+			if (Input.IsActionPressed("hook"))
+			{
 				line.Visible = true;
 				line.end = this.GlobalPosition;
+
+				Vector2 hookDirection = (cursor.GlobalPosition - GlobalPosition).Normalized();
+				float distance = GlobalPosition.DistanceTo(cursor.GlobalPosition);
+
+				if (distance > hookStopDistance)
+				{
+					velocity = hookDirection * hookSpeed;
+				}
+				else
+				{
+					velocity = Vector2.Zero;
+				}
+				// if(springJoint.NodeA != springJoint.NodeB){
+				// }
+
+				Velocity = velocity;
 			}
-			
-		}else{
-			line.Visible=false;
-			springJoint.NodeB = springJoint.NodeA;
+			else
+			{
+				line.Visible = false;
+				line.ClearPoints();
+				// springJoint.NodeB = springJoint.NodeA;
+			}
+
 		}
-
-
-
-		float dt = (float)delta;
-		Movement(dt);
 		MoveAndSlide();
 		if (Input.IsActionPressed("attack") && !isAttacking)
 		{
@@ -142,6 +176,7 @@ public partial class Player : CharacterBody2D
 		{
 			if (coyoteTimeCounter > 0 || canDoubleJump)
 			{
+				isHooked = false;
 				velocity.Y = Mathf.Lerp(velocity.Y, jumpVelocity, 65f * delta);
 				jumpBufferCounter = 0;
 				coyoteTimeCounter = 0;

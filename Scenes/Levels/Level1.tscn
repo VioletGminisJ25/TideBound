@@ -1090,6 +1090,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.910256, 0.188034)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiu4c"]
+size = Vector2(8.5, 3)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_klelc"]
 specular_color = Color(0.0627451, 0.164706, 0.160784, 1)
 
@@ -1115,8 +1118,6 @@ adjustment_color_correction = SubResource("GradientTexture2D_rqjpc")
 vertices = PackedVector2Array(1308.09, -153.539, 1308.09, 207.406, 741.633, 209.344, 738.781, -154.508)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(728.707, -164.529, 731.714, 219.373, 1318.09, 217.379, 1318.09, -163.533)])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiu4c"]
 
 [node name="Level1" type="Node2D"]
 
@@ -1167,9 +1168,18 @@ texture = SubResource("GradientTexture2D_dy643")
 position = Vector2(1315, 159)
 scale = Vector2(4.88, 5.52)
 
-[node name="Player" parent="." node_paths=PackedStringArray("springJoint", "line", "cursor") instance=ExtResource("8_h7mdq")]
+[node name="cursor" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cursor"]
+shape = SubResource("RectangleShape2D_wiu4c")
+debug_color = Color(0.984314, 0, 0.345098, 1)
+
+[node name="Line2D" type="Line2D" parent="."]
+script = ExtResource("17_3hula")
+
+[node name="Player" parent="." node_paths=PackedStringArray("line", "cursor") instance=ExtResource("8_h7mdq")]
 position = Vector2(277, 163)
-springJoint = NodePath("../DampedSpringJoint2D")
 line = NodePath("../Line2D")
 cursor = NodePath("../cursor")
 
@@ -1357,20 +1367,3 @@ position = Vector2(1702, 389)
 
 [node name="box" parent="." instance=ExtResource("15_yoetg")]
 position = Vector2(1675, 389)
-
-[node name="Line2D" type="Line2D" parent="."]
-script = ExtResource("17_3hula")
-
-[node name="cursor" type="StaticBody2D" parent="."]
-position = Vector2(210, 189)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cursor"]
-shape = SubResource("RectangleShape2D_wiu4c")
-disabled = true
-
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-position = Vector2(277, 163)
-rotation = 1.5708
-node_a = NodePath("../Player")
-node_b = NodePath("../cursor")
-length = 24.0

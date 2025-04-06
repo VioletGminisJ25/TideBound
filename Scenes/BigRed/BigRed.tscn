@@ -252,8 +252,7 @@ size = Vector2(25, 21)
 
 [node name="BigRed" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape", "animatedSprite")]
 z_index = -1
-collision_layer = 2
-collision_mask = 3
+collision_layer = 4
 script = ExtResource("1_nsvnc")
 Health = 5
 damage = 5.0
