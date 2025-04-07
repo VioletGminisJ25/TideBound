@@ -1,0 +1,137 @@
+using Godot;
+using System;
+
+public partial class CompMov_Player : Node2D
+{
+	private CharacterBody2D parent;
+	[Export] public AnimationTree animationTree;
+	[Export] public AnimatedSprite2D animatedSprite;
+
+	private Vector2 direction;
+	private float speed = 170f;
+	private float jumpVelocity = -400f;
+	private float fallMultiplier = 1.5f;
+	private float lowJumpMultiplier = 3f;
+	private float coyoteTime = 0.1f;
+	private float jumpBufferTime = 0.1f;
+
+	private float coyoteTimeCounter = 0f;
+	private float jumpBufferCounter = 0f;
+	private Vector2 velocity;
+
+	private bool canDoubleJump = false;
+
+
+	public AnimationNodeStateMachinePlayback fsm;
+	public override void _Ready()
+	{
+		parent = (CharacterBody2D)this.GetParent();
+		animationTree.Active = true;
+		fsm = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+	}
+	public override void _PhysicsProcess(double delta)
+	{
+		Movement((float)delta);
+		Attack();
+	}
+
+	private void Attack()
+	{
+		if (parent is AttackInterface parentAttack)
+		{
+
+			if (Input.IsActionPressed("attack") && !parentAttack.IsAttacking)
+			{
+				parentAttack.IsAttacking = true;
+				fsm.Travel("attack1");
+			}
+			if (parent.IsOnCeiling() && velocity.Y < 0)
+			{
+				velocity.Y = 0;
+			}
+		}
+	}
+
+	private void Movement(float delta)
+	{
+		direction = new Vector2(Input.GetActionStrength("right") - Input.GetActionStrength("left"), 0);
+		velocity.X = Mathf.Lerp(velocity.X, direction.X * speed, 10f * delta);
+		if (!parent.IsOnFloor())
+		{
+			if (velocity.Y > 0) // Cayendo
+			{
+				// 🔹 Lerp para suavizar la caída
+				velocity.Y = Mathf.Lerp(velocity.Y, velocity.Y + parent.GetGravity().Y * fallMultiplier, 0.75f * delta);
+				if (fsm.GetCurrentNode() != "fall")
+				{
+					fsm.Travel("fall");
+				}
+			}
+			else if (!Input.IsActionPressed("jump")) // Salto cortado
+			{
+				velocity.Y = Mathf.Lerp(velocity.Y, velocity.Y + parent.GetGravity().Y * lowJumpMultiplier, 1.7f * delta);
+			}
+			else // Salto normal
+			{
+				velocity.Y += parent.GetGravity().Y * delta;
+			}
+		}
+		else
+		{
+			velocity.Y = 0;
+			canDoubleJump = true;
+			if (parent is AttackInterface parentAttack)
+			{
+				if (direction.X != 0 && !parentAttack.IsAttacking)
+				{
+
+					fsm.Travel("run");
+				}
+				else
+				{
+					fsm.Travel("idle");
+					parentAttack.IsAttacking = false;
+				}
+			}
+		}
+		if (parent.IsOnFloor())
+			coyoteTimeCounter = coyoteTime;
+		else
+			coyoteTimeCounter -= delta;
+
+		if (Input.IsActionJustPressed("jump"))
+			jumpBufferCounter = jumpBufferTime;
+		else
+			jumpBufferCounter -= delta;
+
+		// **Salto**
+		if (jumpBufferCounter > 0)
+		{
+			if (coyoteTimeCounter > 0 || canDoubleJump)
+			{
+				// isHooked = false; TODO:Ver esta mierda
+				velocity.Y = Mathf.Lerp(velocity.Y, jumpVelocity, 65f * delta);
+				jumpBufferCounter = 0;
+				coyoteTimeCounter = 0;
+
+				if (!parent.IsOnFloor() && canDoubleJump)
+				{
+					canDoubleJump = false; // Se usó el doble salto
+					fsm.Travel("jump"); // Puedes poner una animación especial si quieres
+					System.Console.WriteLine("Double Jump!");
+				}
+				else
+				{
+					fsm.Travel("jump");
+					System.Console.WriteLine("Jumping");
+				}
+			}
+		}
+
+		if (direction.X != 0)
+			animatedSprite.Scale = new Vector2(Mathf.Sign(direction.X), 1);
+
+		parent.Velocity = velocity;
+
+	}
+}
