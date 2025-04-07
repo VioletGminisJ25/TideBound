@@ -1,13 +1,15 @@
-[gd_scene load_steps=45 format=3 uid="uid://c5wxkdm4h2g5p"]
+[gd_scene load_steps=47 format=3 uid="uid://c5wxkdm4h2g5p"]
 
 [ext_resource type="Script" uid="uid://c6gf8srd0rbuj" path="res://Scripts/Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Material/Player/PlayerFrames.tres" id="2_5wx5r"]
+[ext_resource type="Script" uid="uid://kwnk4pioyl6o" path="res://Scripts/Player/CompMov_Player.cs" id="2_t26db"]
+[ext_resource type="Script" uid="uid://d3t4u6rgovoo1" path="res://Scripts/Player/HookComponent.cs" id="3_t26db"]
 [ext_resource type="Texture2D" uid="uid://cl8lueckn0erm" path="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 03.png" id="5_rljeg"]
 [ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Scenes/DamageComponent/damage_component.tscn" id="6_t26db"]
 [ext_resource type="Texture2D" uid="uid://devq86n0at7jj" path="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 05.png" id="7_o1ueq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf6ob"]
-size = Vector2(16, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk5o5"]
+size = Vector2(20, 27)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_0oaoo"]
 frames = 2
@@ -343,18 +345,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rd81"]
 size = Vector2(17.3958, 7.90673)
 
-[sub_resource type="Gradient" id="Gradient_blt6w"]
-offsets = PackedFloat32Array(0, 0.735751)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xvotf"]
-gradient = SubResource("Gradient_blt6w")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.794872, 0.0897436)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk5o5"]
-size = Vector2(20, 27)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf6ob"]
+size = Vector2(16, 24)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jmcll"]
 animation = &"attack2"
@@ -438,19 +430,37 @@ states/run/position = Vector2(581, 179)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_epg6k"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0u84n"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_esmjy"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_6tu5v"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_spxdj"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0objx"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_w71ue"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_1e6p3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yb677"), "attack2", "idle", SubResource("AnimationNodeStateMachineTransition_i2g7t"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_t26db"), "run", "attack1", SubResource("AnimationNodeStateMachineTransition_fk5o5"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_4wape")]
 graph_offset = Vector2(-235, 53)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationTree", "animatedSprite", "raycast", "line", "cursor") groups=["Player"]]
+[sub_resource type="Gradient" id="Gradient_blt6w"]
+offsets = PackedFloat32Array(0, 0.735751)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xvotf"]
+gradient = SubResource("Gradient_blt6w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.794872, 0.0897436)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_xogcc")
-animationTree = NodePath("AnimationTree")
-animatedSprite = NodePath("AnimatedSprite2D")
-raycast = NodePath("RayCast2D")
-line = NodePath("")
-cursor = NodePath("")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.38419e-07, -2)
-shape = SubResource("RectangleShape2D_gf6ob")
+[node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("animationTree", "animatedSprite")]
+script = ExtResource("2_t26db")
+animationTree = NodePath("../AnimationTree")
+animatedSprite = NodePath("../AnimatedSprite2D")
+
+[node name="HookComponent" type="Node2D" parent="." node_paths=PackedStringArray("raycast")]
+script = ExtResource("3_t26db")
+raycast = NodePath("../RayCast2D")
+
+[node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("6_t26db")]
+visible = false
+AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_fk5o5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 3
@@ -479,11 +489,22 @@ libraries = {
 speed_scale = 1.5
 
 [node name="swordHit" type="Area2D" parent="AnimatedSprite2D"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/swordHit"]
 position = Vector2(20.3021, 5.27985)
 shape = SubResource("RectangleShape2D_2rd81")
 disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2.38419e-07, -2)
+shape = SubResource("RectangleShape2D_gf6ob")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_e5iqy")
+anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0.158997, 0.248032)
@@ -497,19 +518,8 @@ shadow_filter_smooth = 5.4
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_xvotf")
 
-[node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("6_t26db")]
-AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_fk5o5")
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../AnimatedSprite2D")
-tree_root = SubResource("AnimationNodeStateMachine_e5iqy")
-anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(0.1, 0)
 rotation = -3.14159
 target_position = Vector2(0.100021, 244)
