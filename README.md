@@ -2,6 +2,10 @@
 
 Tidebound es un metroidvania en desarrollo con mecánicas de exploración, combate dinámico y plataformas. En este juego, el protagonista se embarca en una aventura en busca del tesoro perdido del legendario pirata Ronan "El Desatado" a través de un archipiélago lleno de secretos, rivales y trampas.
 
+## IDE de desarrollo
+  - Godot Engine 4.x
+  - Visual Studio Code
+
 ## 🎮 Características
 
 - 🌊 Mundo interconectado con múltiples zonas por explorar.
@@ -43,6 +47,13 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 
 - **Refactorizar código del Player**:
   - Se refactoriza el código del Player para que sea mas fácil de mantener y mejorar. Se han añadido dos componentes: HookComponent y MovementComponent. HookComponent implementa la mecánica de gancho y MovementComponent implementa el movimiento del personaje. Se ha añadido un nuevo script de interfaz llamado IHook, que define las propiedades de la mecánica de gancho. Se ha añadido una interfaz de AttackInterface, que define las propiedades de la mecánica de ataque.
+
+### 🗓️ 9 de abril de 2025
+
+- **Areglando fisica del personaje cuando tiene el gancho desplegado**:
+  - **Problema encontrado:** : El componente del gancho perdia el control del movimiento del personaje entre frames porque no desabilitabamos el movimiento en el compomente MovementComponent.
+  - **Solución:** : Se ha añadido una propiedad `SkipGravityFrame` en el componente de gancho que se activa en el frame de la caída del personaje, justo depues de desactivar el gancho para evitar que el movimiento del personaje se habilite. Y así poder también resetear la velocidad vertical.
+  - **Cambios a hacer** : Mejorar la suabidad de la subida del personaje cuando tiene el gancho desplegado. Y intentar un balanceo.
 
 ## 🚀 Instalación y Ejecución
 
