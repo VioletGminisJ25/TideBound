@@ -11,6 +11,10 @@ public partial class Player : CharacterBody2D, DamageableObject, AttackInterface
 	[Export] public Rope Line { get => line; set => line = value; }
 	private StaticBody2D cursor;
 	[Export] public StaticBody2D Cursor { get => cursor; set => cursor = value; }
+	private bool isHooked = false;
+    public bool IsHooked { get => isHooked; set => isHooked = value; }
+	private bool skipGravityFrame = false;
+    public bool SkipGravityFrame { get => skipGravityFrame; set => skipGravityFrame = value; }
 
 
     public override void _Ready() {}

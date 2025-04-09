@@ -20,6 +20,7 @@ public partial class CompMov_Player : Node2D
 	private Vector2 velocity;
 
 	private bool canDoubleJump = false;
+	private IHook parenHook;
 
 
 	public AnimationNodeStateMachinePlayback fsm;
@@ -28,6 +29,9 @@ public partial class CompMov_Player : Node2D
 		parent = (CharacterBody2D)this.GetParent();
 		animationTree.Active = true;
 		fsm = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+		if(parent is IHook hook){
+			parenHook = hook;
+		}
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -51,9 +55,29 @@ public partial class CompMov_Player : Node2D
 			}
 		}
 	}
+	public void SkipGravityNextFrame()
+	{
+		parenHook.SkipGravityFrame = true;
+	}
 
 	private void Movement(float delta)
 	{
+		if (parenHook.SkipGravityFrame)
+		{
+			parenHook.SkipGravityFrame = false;
+			velocity.Y = 0;
+			return; // Nos saltamos el frame para evitar caída rápida
+		}
+		if (parent is IHook parentHook)
+		{
+			if (parentHook.IsHooked)
+			{
+				// Cancelar movimiento normal
+				return;
+			}
+		}
+
+		System.Console.WriteLine(velocity);
 		direction = new Vector2(Input.GetActionStrength("right") - Input.GetActionStrength("left"), 0);
 		velocity.X = Mathf.Lerp(velocity.X, direction.X * speed, 10f * delta);
 		if (!parent.IsOnFloor())
@@ -134,4 +158,5 @@ public partial class CompMov_Player : Node2D
 		parent.Velocity = velocity;
 
 	}
+	
 }

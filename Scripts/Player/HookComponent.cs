@@ -7,26 +7,27 @@ public partial class HookComponent : Node2D
 	[Export] public RayCast2D raycast;
 	private float hookStopDistance = 10f;
 	private float hookSpeed = 300f;
-	private bool isHooked = false;
 	private CharacterBody2D parent;
 	private Vector2 velocity;
 
 	private Rope line;
 	private StaticBody2D cursor;
 
+	private IHook parentHook;
+
 	public override void _Ready()
 	{
 		parent = (CharacterBody2D)this.GetParent();
-		if(parent is IHook parentHook)
+		if(parent is IHook hook)
 		{
-			line = parentHook.Line;
-			cursor = parentHook.Cursor;
+			this.parentHook = hook;
 		}
+		line = parentHook.Line;
+		cursor = parentHook.Cursor;
 	}
-	public override void _PhysicsProcess(double delta){
-		// springJoint.GlobalPosition = GlobalPosition;
-		raycast.LookAt(GetGlobalMousePosition());
-		raycast.Rotation = raycast.Rotation + 80;
+
+    public override void _Input(InputEvent @event)
+    {
 		if (Input.IsActionJustPressed("hook"))
 		{
 			if (raycast.IsColliding())
@@ -39,14 +40,20 @@ public partial class HookComponent : Node2D
 				// springJoint.RestLength = distance*tension;
 				line.start = cursor.GlobalPosition;
 				// springJoint.NodeB =cursor.GetPath();
-				isHooked = true;
+				parentHook.IsHooked = true;
 			}
-			else
-			{
-				isHooked = false;
-			}
+			
 		}
-		if (isHooked)
+	}
+
+	public override void _PhysicsProcess(double delta){
+		HandleHook();
+	}
+
+	public void HandleHook(){
+		raycast.LookAt(GetGlobalMousePosition());
+		raycast.Rotation = raycast.Rotation + 80;
+		if (parentHook.IsHooked)
 		{
 
 			if (Input.IsActionPressed("hook"))
@@ -72,8 +79,12 @@ public partial class HookComponent : Node2D
 			}
 			else
 			{
+				parent.Velocity = new Vector2(parent.Velocity.X, 0);
 				line.Visible = false;
 				line.ClearPoints();
+				parentHook.IsHooked = false;
+				parentHook.SkipGravityFrame=true;
+				
 				// springJoint.NodeB = springJoint.NodeA;
 			}
 
