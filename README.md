@@ -62,6 +62,7 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 <p align="center">
   <img src="imgs/gancho.png" width="400"/>
 </p>
+
 ## 🚀 Instalación y Ejecución
 
 1. Clonar el repositorio:
