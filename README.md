@@ -55,6 +55,13 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
   - **Solución:** : Se ha añadido una propiedad `SkipGravityFrame` en el componente de gancho que se activa en el frame de la caída del personaje, justo depues de desactivar el gancho para evitar que el movimiento del personaje se habilite. Y así poder también resetear la velocidad vertical.
   - **Cambios a hacer** : Mejorar la suabidad de la subida del personaje cuando tiene el gancho desplegado. Y intentar un balanceo.
 
+### 🗓️ 12 de abril de 2025
+
+- **Modificado Gancho para use una textura y se repita depediendo del tamaño del line 2d y del punto de anclaje**:
+<!-- ![image](imgs/gancho.png) -->
+<img src="imgs/gancho.png" width="500" style="border-radius: 15px; margin-left: auto; margin-right: auto; display: block;">
+
+
 ## 🚀 Instalación y Ejecución
 
 1. Clonar el repositorio:

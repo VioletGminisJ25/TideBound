@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dwu4pv3h1svyj"]
+[gd_scene load_steps=31 format=4 uid="uid://dwu4pv3h1svyj"]
 
 [ext_resource type="TileSet" uid="uid://8j210w2qgbcc" path="res://Material/TileSet/TileSet.tres" id="1_06b82"]
 [ext_resource type="Script" uid="uid://cvp3xtucqo8mh" path="res://Scripts/UI/UI.cs" id="1_w3ot6"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://e3dekuxm6d55" path="res://Scenes/FadeArea/FadeArea.tscn" id="4_e6b6g"]
 [ext_resource type="Texture2D" uid="uid://d0wo4riviievg" path="res://Assets/Jungle Asset Pack/parallax background/plx-3.png" id="5_3d6kg"]
 [ext_resource type="Texture2D" uid="uid://b6xt7xcm4epsv" path="res://Assets/Jungle Asset Pack/parallax background/plx-4.png" id="6_7metg"]
+[ext_resource type="Texture2D" uid="uid://bonwgi7an2lmq" path="res://Assets/Chain/cade.png" id="6_spq4p"]
 [ext_resource type="Script" uid="uid://dk7mvpqo7em8f" path="res://Scripts/Camera/Camera.cs" id="7_418l3"]
 [ext_resource type="Texture2D" uid="uid://dr8daoousp2ud" path="res://Assets/Jungle Asset Pack/parallax background/plx-5.png" id="7_t18yi"]
 [ext_resource type="PackedScene" uid="uid://c5wxkdm4h2g5p" path="res://Scenes/Player/Player.tscn" id="8_h7mdq"]
@@ -1173,9 +1174,13 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cursor"]
 shape = SubResource("RectangleShape2D_wiu4c")
-debug_color = Color(0.984314, 0, 0.345098, 1)
 
 [node name="Line2D" type="Line2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+width = 7.0
+texture = ExtResource("6_spq4p")
+texture_mode = 1
 script = ExtResource("17_3hula")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Line", "Cursor") instance=ExtResource("8_h7mdq")]
