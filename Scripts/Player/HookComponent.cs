@@ -47,10 +47,10 @@ public partial class HookComponent : Node2D
 	}
 
 	public override void _PhysicsProcess(double delta){
-		HandleHook();
+		HandleHook((float)delta);
 	}
 
-	public void HandleHook(){
+	public void HandleHook(float delta){
 		raycast.LookAt(GetGlobalMousePosition());
 		raycast.Rotation = raycast.Rotation + 80;
 		if (parentHook.IsHooked)
@@ -66,7 +66,8 @@ public partial class HookComponent : Node2D
 
 				if (distance > hookStopDistance)
 				{
-					velocity = hookDirection * hookSpeed;
+					velocity.X = Mathf.Lerp(velocity.X, hookDirection.X * hookSpeed, 7f * delta);
+					velocity.Y = Mathf.Lerp(velocity.Y, hookDirection.Y * hookSpeed, 7f * delta);
 				}
 				else
 				{
@@ -84,7 +85,6 @@ public partial class HookComponent : Node2D
 				line.ClearPoints();
 				parentHook.IsHooked = false;
 				parentHook.SkipGravityFrame=true;
-				
 				// springJoint.NodeB = springJoint.NodeA;
 			}
 
