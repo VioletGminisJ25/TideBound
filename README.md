@@ -59,9 +59,9 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 
 - **Modificado Gancho para use una textura y se repita depediendo del tamaño del line 2d y del punto de anclaje**:
 <!-- ![image](imgs/gancho.png) -->
-<img src="imgs/gancho.png" width="500" style="border-radius: 15px; margin-left: auto; margin-right: auto; display: block;">
-
-
+<p align="center">
+  <img src="imgs/gancho.png" width="300"/>
+</p>
 ## 🚀 Instalación y Ejecución
 
 1. Clonar el repositorio:
