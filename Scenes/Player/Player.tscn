@@ -450,9 +450,10 @@ script = ExtResource("2_t26db")
 animationTree = NodePath("../AnimationTree")
 animatedSprite = NodePath("../AnimatedSprite2D")
 
-[node name="HookComponent" type="Node2D" parent="." node_paths=PackedStringArray("raycast")]
+[node name="HookComponent" type="Node2D" parent="." node_paths=PackedStringArray("raycast", "animatedSprite")]
 script = ExtResource("3_t26db")
 raycast = NodePath("../RayCast2D")
+animatedSprite = NodePath("../AnimatedSprite2D")
 
 [node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("6_t26db")]
 visible = false

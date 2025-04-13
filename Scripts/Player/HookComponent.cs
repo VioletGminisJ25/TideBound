@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 public partial class HookComponent : Node2D
 {
 	[Export] public RayCast2D raycast;
-	private float hookStopDistance = 10f;
+	private float hookStopDistance = 50f;
 	private float hookSpeed = 300f;
 	private CharacterBody2D parent;
 	private Vector2 velocity;
@@ -14,11 +14,15 @@ public partial class HookComponent : Node2D
 	private StaticBody2D cursor;
 
 	private IHook parentHook;
+	private float springStrength = 5f;  // Constante de rigidez (Hooke)
+	private float damping = 0.5f;
+	[Export] public AnimatedSprite2D animatedSprite;
+
 
 	public override void _Ready()
 	{
 		parent = (CharacterBody2D)this.GetParent();
-		if(parent is IHook hook)
+		if (parent is IHook hook)
 		{
 			this.parentHook = hook;
 		}
@@ -26,68 +30,56 @@ public partial class HookComponent : Node2D
 		cursor = parentHook.Cursor;
 	}
 
-    public override void _Input(InputEvent @event)
-    {
+	public override void _Input(InputEvent @event)
+	{
 		if (Input.IsActionJustPressed("hook"))
 		{
+			velocity = new Vector2(parent.Velocity.X, 0);
 			if (raycast.IsColliding())
 			{
 				line.ClearPoints();
 				cursor.Position = raycast.GetCollisionPoint();
 				float distance = this.Position.DistanceTo(cursor.Position);
-				// springJoint.Length = distance;
-				// springJoint.RotationDegrees = raycast.RotationDegrees;
-				// springJoint.RestLength = distance*tension;
 				line.start = cursor.GlobalPosition;
-				// springJoint.NodeB =cursor.GetPath();
 				parentHook.IsHooked = true;
 			}
-			
+
 		}
 	}
 
-	public override void _PhysicsProcess(double delta){
+	public override void _PhysicsProcess(double delta)
+	{
 		HandleHook((float)delta);
 	}
 
-	public void HandleHook(float delta){
+	public void HandleHook(float delta)
+	{
 		raycast.LookAt(GetGlobalMousePosition());
 		raycast.Rotation = raycast.Rotation + 80;
-		if (parentHook.IsHooked)
+		if (!parentHook.IsHooked || !Input.IsActionPressed("hook"))
 		{
-
-			if (Input.IsActionPressed("hook"))
-			{
-				line.Visible = true;
-				line.end = this.GlobalPosition;
-
-				Vector2 hookDirection = (cursor.GlobalPosition - GlobalPosition).Normalized();
-				float distance = GlobalPosition.DistanceTo(cursor.GlobalPosition);
-
-				if (distance > hookStopDistance)
-				{
-					velocity.X = Mathf.Lerp(velocity.X, hookDirection.X * hookSpeed, 7f * delta);
-					velocity.Y = Mathf.Lerp(velocity.Y, hookDirection.Y * hookSpeed, 7f * delta);
-				}
-				else
-				{
-					velocity = Vector2.Zero;
-				}
-				parent.Velocity = velocity;
-				// if(springJoint.NodeA != springJoint.NodeB){
-				// }
-
-			}
-			else
-			{
-				parent.Velocity = new Vector2(parent.Velocity.X, 0);
-				line.Visible = false;
-				line.ClearPoints();
-				parentHook.IsHooked = false;
-				parentHook.SkipGravityFrame=true;
-				// springJoint.NodeB = springJoint.NodeA;
-			}
-
+			line.Visible = false;
+			line.ClearPoints();
+			parentHook.IsHooked = false;
+			return;
 		}
+
+		parentHook.SkipGravityFrame = true;
+		line.Visible = true;
+		line.end = this.GlobalPosition;
+
+		Vector2 direction = (cursor.GlobalPosition) - parent.GlobalPosition;
+		Vector2 force = new Vector2(direction.X * springStrength - parent.Velocity.X * damping, (direction.Y + hookStopDistance) * springStrength - parent.Velocity.Y * damping);
+		velocity += force * delta;
+
+
+		velocity = velocity.LimitLength(200f);
+
+		System.Console.WriteLine($"Hook Velocity: {velocity}");
+		parent.Velocity = velocity;
+		if (velocity.Normalized().X != 0)
+			animatedSprite.Scale = new Vector2(Mathf.Sign(velocity.Normalized().X), 1);
+
 	}
 }
+
