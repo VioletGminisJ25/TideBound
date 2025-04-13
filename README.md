@@ -63,13 +63,83 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
   <img src="imgs/gancho.png" width="400"/>
 </p>
 
+
+## ✅ TO-DO LIST 
+
+### 🔧 Mecánicas del Personaje
+- [x] Implementar coyote time  
+- [x] Implementar jump buffer  
+- [x] Ajustar gravedad y caída con fallMultiplier  
+- [x] Refactorizar movimiento en MovementComponent  
+- [ ] Permitir animación de caminar + atacar simultáneamente (→ usar AnimationTree con capas o blend)  
+- [ ] Agregar sistema de esquive o dash (si aplica al combate dinámico)  
+- [ ] Añadir animación de daño + sistema de invulnerabilidad temporal  
+- [ ] Añadir feedback visual/sonoro al recoger objetos, atacar y recibir daño  
+
+### 🪝 Mecánica de Gancho
+- [x] Implementar raycast + gancho básico  
+- [x] Controlar gravedad al desengancharse (SkipGravityFrame)  
+- [x] Mostrar gancho con Line2D y textura repetible  
+- [ ] Suavizar movimiento al engancharse (usando Hooke + damping)  
+- [ ] Implementar balanceo (sistema de péndulo/balanceo con dirección y fuerza)  
+- [ ] Permitir cancelar gancho en cualquier momento (botón específico)  
+- [ ] Añadir límites de uso del gancho o cooldown (según balanceo)  
+- [ ] Indicar visualmente si una superficie es enganchable  
+
+### 🗡️ Combate
+- [ ] Crear un sistema de AttackComponent más flexible (distancia, tipo, área, cooldown)  
+- [ ] Añadir animaciones cancelables para ataques rápidos  
+- [ ] Implementar enemigos básicos con IA simple (seguimiento, ataque)  
+- [ ] Agregar daño por contacto, hitbox y hurtbox  
+- [ ] Diseñar y animar ataques especiales o combos  
+- [ ] Balancear ataques con retroceso (knockback)  
+- [ ] Añadir sistema de mejoras de combate (habilidades o armas)  
+
+### 🧭 Exploración y Progresión
+- [x] Sistema de checkpoints y viaje rápido con monedas  
+- [ ] Implementar puertas bloqueadas por habilidades (para progresión tipo metroidvania)  
+- [ ] Añadir HUD que muestre mapa o mini-mapa  
+- [ ] Guardar progreso del jugador (posición, habilidades, monedas, etc.)  
+- [ ] Agregar NPCs con misiones secundarias  
+- [ ] Crear un sistema de diálogo sencillo  
+- [ ] Ocultar habitaciones opcionales con paredes rompibles o ilusorias  
+
+### 🖼️ UI y Menús
+- [ ] Pantalla de pausa con inventario y mapa  
+- [x] Pantalla de records (tiempos, objetos recolectados, bosses derrotados)  
+- [x] Pantalla de ayuda/tutorial explicando mecánicas  
+- [ ] Añadir animación y transición entre pantallas (Fade, slide, etc.)  
+- [ ] Indicadores visuales de estado (gancho activo, ataque cargado, etc.)  
+
+### 🎨 Arte y Efectos
+- [x] Textura para el gancho en Line2D  
+- [ ] Añadir partículas al caminar, atacar y usar gancho  
+- [ ] Efecto de cámara (shake) al golpear o recibir daño  
+- [ ] Sistema de sombras y luces dinámicas para atmósfera  
+- [ ] Variantes visuales para zonas (selva, ruinas, cavernas, etc.)  
+
+### 🔍 Técnicos y Refactor
+- [x] Dividir Player en componentes (MovementComponent, HookComponent, etc.)  
+- [x] Crear sistema de estados robusto (Idle, Walking, Attacking, Hooking, Dashing, etc.)  
+- [x] Modularizar el código para facilitar mantenimiento (enemigos, UI, etc.)  
+- [x] Crear señales (Signal) claras entre componentes (ej: gancho terminado, ataque lanzado)  
+- [ ] Mejorar sistema de animaciones con AnimationTree y blend  
+
+### 🎮 Nivel y Diseño
+- [ ] Crear una zona inicial bien pulida con tutorial natural (tipo Hollow Knight)  
+- [ ] Colocar objetos que incentiven el uso del gancho  
+- [ ] Incluir zonas con enemigos que requieren dominar la movilidad  
+- [ ] Añadir desafíos secundarios (cronos, parkour, secretos)  
+
+
+
 ## 🚀 Instalación y Ejecución
 
 1. Clonar el repositorio:
    ```bash
    git clone https://github.com/VioletGminisJ25/PirateGame.git
    ```
-2. Abrir el proyecto en *Godot* (versión 4.x).
+2. Importar el proyecto en *Godot* (versión 4.x).
 3. Ejecutar el juego desde el editor.
 
 ## 🏗️ Contribuciones

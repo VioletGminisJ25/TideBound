@@ -8,7 +8,7 @@ public partial class CompMov_Player : Node2D
 	[Export] public AnimatedSprite2D animatedSprite;
 
 	private Vector2 direction;
-	private float speed = 170f;
+	private float speed = 150f;
 	private float jumpVelocity = -400f;
 	private float fallMultiplier = 1.5f;
 	private float lowJumpMultiplier = 3f;
@@ -65,7 +65,7 @@ public partial class CompMov_Player : Node2D
 		if (parenHook.SkipGravityFrame)
 		{
 			parenHook.SkipGravityFrame = false;
-			velocity.Y = 0;
+			velocity.Y = parent.Velocity.Y;
 			return; // Nos saltamos el frame para evitar caída rápida
 		}
 		if (parent is IHook parentHook)
@@ -77,11 +77,10 @@ public partial class CompMov_Player : Node2D
 			}
 		}
 
-		System.Console.WriteLine(velocity);
 		direction = new Vector2(Input.GetActionStrength("right") - Input.GetActionStrength("left"), 0);
-		velocity.X = Mathf.Lerp(velocity.X, direction.X * speed, 10f * delta);
 		if (!parent.IsOnFloor())
 		{
+			velocity.X = Mathf.Lerp(parent.Velocity.X, direction.X * speed, 0.5f * delta);
 			if (velocity.Y > 0) // Cayendo
 			{
 				// 🔹 Lerp para suavizar la caída
@@ -102,6 +101,7 @@ public partial class CompMov_Player : Node2D
 		}
 		else
 		{
+			velocity.X = Mathf.Lerp(parent.Velocity.X, direction.X * speed, 14f * delta);
 			velocity.Y = 0;
 			canDoubleJump = true;
 			if (parent is AttackInterface parentAttack)
@@ -134,7 +134,7 @@ public partial class CompMov_Player : Node2D
 			if (coyoteTimeCounter > 0 || canDoubleJump)
 			{
 				// isHooked = false; TODO:Ver esta mierda
-				velocity.Y = Mathf.Lerp(velocity.Y, jumpVelocity, 65f * delta);
+				velocity.Y = Mathf.Lerp(parent.Velocity.Y, jumpVelocity, 65f * delta);
 				jumpBufferCounter = 0;
 				coyoteTimeCounter = 0;
 
@@ -156,6 +156,7 @@ public partial class CompMov_Player : Node2D
 			animatedSprite.Scale = new Vector2(Mathf.Sign(direction.X), 1);
 
 		parent.Velocity = velocity;
+		System.Console.WriteLine($"Move Velocity: {velocity}");
 
 	}
 	
