@@ -58,10 +58,16 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 ### 🗓️ 12 de abril de 2025
 
 - **Modificado Gancho para use una textura y se repita depediendo del tamaño del line 2d y del punto de anclaje**:
-<!-- ![image](imgs/gancho.png) -->
 <p align="center">
   <img src="imgs/gancho.png" width="400"/>
 </p>
+
+### 🗓️ 13 de abril de 2025
+
+- **Implementando ley de Hooke para que el gancho tenga un comportamiento de muelle y balaceo de personaje**:
+  - **Implementación:** : Se ha implementado la ley de Hooke para que el gancho tenga un comportamiento de muelle y por consiguiente el balaceo de personaje. Se ha añadido una propiedad `springStrength` en el componente de gancho para controlar la constante de rigidez de la ley de Hooke. Se ha añadido una propiedad `damping` para controlar la resistencia de la ley de Hooke. Se ha añadido una propiedad `hookStopDistance` para controlar la distancia de stop del gancho.
+  - **Cambios a hacer:** : Posible implementación de balanceo con los botones de movimiento del personaje.
+  - **Problema encontrado:** : Funcionalidad en el mando incorrecta ya que el puntero hay que moverlo con uno de los joysticks para que funcione (Aún no implementado).
 
 
 ## ✅ TO-DO LIST 
@@ -80,8 +86,8 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 - [x] Implementar raycast + gancho básico  
 - [x] Controlar gravedad al desengancharse (SkipGravityFrame)  
 - [x] Mostrar gancho con Line2D y textura repetible  
-- [ ] Suavizar movimiento al engancharse (usando Hooke + damping)  
-- [ ] Implementar balanceo (sistema de péndulo/balanceo con dirección y fuerza)  
+- [x] Suavizar movimiento al engancharse (usando Hooke + damping)  
+- [x] Implementar balanceo (sistema de péndulo/balanceo con dirección y fuerza)  
 - [ ] Permitir cancelar gancho en cualquier momento (botón específico)  
 - [ ] Añadir límites de uso del gancho o cooldown (según balanceo)  
 - [ ] Indicar visualmente si una superficie es enganchable  
