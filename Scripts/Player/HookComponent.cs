@@ -73,7 +73,7 @@ public partial class HookComponent : Node2D
 		velocity += force * delta;
 
 
-		velocity = velocity.LimitLength(200f);
+		velocity = velocity.LimitLength(300f);
 
 		System.Console.WriteLine($"Hook Velocity: {velocity}");
 		parent.Velocity = velocity;

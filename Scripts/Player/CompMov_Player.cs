@@ -9,7 +9,7 @@ public partial class CompMov_Player : Node2D
 
 	private Vector2 direction;
 	private float speed = 150f;
-	private float jumpVelocity = -400f;
+	private float jumpVelocity = -350f;
 	private float fallMultiplier = 1.5f;
 	private float lowJumpMultiplier = 3f;
 	private float coyoteTime = 0.1f;
@@ -80,7 +80,14 @@ public partial class CompMov_Player : Node2D
 		direction = new Vector2(Input.GetActionStrength("right") - Input.GetActionStrength("left"), 0);
 		if (!parent.IsOnFloor())
 		{
-			velocity.X = Mathf.Lerp(parent.Velocity.X, direction.X * speed, 0.5f * delta);
+			if (direction.X != 0)
+			{
+				velocity.X = Mathf.Lerp(parent.Velocity.X, direction.X * speed, 8f * delta); // control aéreo
+			}
+			else
+			{
+				velocity.X = Mathf.Lerp(parent.Velocity.X, 0, 1f * delta); // frenado aéreo suave
+			}
 			if (velocity.Y > 0) // Cayendo
 			{
 				// 🔹 Lerp para suavizar la caída

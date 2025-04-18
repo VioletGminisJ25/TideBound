@@ -70,7 +70,7 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
   - **Problema encontrado:** : Funcionalidad en el mando incorrecta ya que el puntero hay que moverlo con uno de los joysticks para que funcione (Aún no implementado).
 
 
-## ✅ TO-DO LIST 
+## ✅ TO-DO LIST  
 
 ### 🔧 Mecánicas del Personaje
 - [x] Implementar coyote time  

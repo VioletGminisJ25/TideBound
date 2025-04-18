@@ -334,6 +334,8 @@ _data = {
 }
 
 [node name="box" type="RigidBody2D" node_paths=PackedStringArray("player")]
+collision_layer = 8
+collision_mask = 7
 mass = 3.179
 sleeping = true
 can_sleep = false
@@ -354,6 +356,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 9
 position = Vector2(-0.434972, 0.0112185)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_hh6j8")
