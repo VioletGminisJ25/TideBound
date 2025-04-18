@@ -441,7 +441,8 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.794872, 0.0897436)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 2
+collision_layer = 3
+collision_mask = 13
 script = ExtResource("1_xogcc")
 metadata/_edit_group_ = true
 

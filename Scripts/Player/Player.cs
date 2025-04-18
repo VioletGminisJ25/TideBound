@@ -1,6 +1,7 @@
 using System;
 using Godot;
 
+
 public partial class Player : CharacterBody2D, DamageableObject, AttackInterface,IHook
 {
 	private int health = 100;
@@ -18,10 +19,17 @@ public partial class Player : CharacterBody2D, DamageableObject, AttackInterface
 
 
     public override void _Ready() {}
+
+
 	public override void _PhysicsProcess(double delta){
 		MoveAndSlide();
 	}
 
+	/**
+	 * Called when the player's sword trigger collides with an object.
+	 * @param area The area that the sword trigger collided with.
+	 * This is usually a DamageComponent that will take damage.
+	 */
 	public void _on_sword_hit_area_entered(Area2D area)
 	{
 		if (area is DamageComponent)

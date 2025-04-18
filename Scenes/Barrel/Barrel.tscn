@@ -1,0 +1,244 @@
+[gd_scene load_steps=17 format=3 uid="uid://c22ygclklwfsm"]
+
+[ext_resource type="Texture2D" uid="uid://5mpna0pp1kq8" path="res://Assets/Treasure Hunters/Barrel/Destroyed/1.png" id="1_3sxsh"]
+[ext_resource type="Texture2D" uid="uid://bmaf13stvcrbs" path="res://Assets/Treasure Hunters/Barrel/Idle/1.png" id="1_iifeo"]
+[ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Scenes/DamageComponent/damage_component.tscn" id="2_p276l"]
+[ext_resource type="Texture2D" uid="uid://m7p5hp5rk72t" path="res://Assets/Treasure Hunters/Barrel/Hit/1.png" id="2_qgd12"]
+[ext_resource type="Texture2D" uid="uid://bo03343egs28j" path="res://Assets/Treasure Hunters/Barrel/Hit/2.png" id="3_m4qad"]
+[ext_resource type="Texture2D" uid="uid://daakvb6xnodyr" path="res://Assets/Treasure Hunters/Barrel/Hit/3.png" id="4_1pmgb"]
+[ext_resource type="Texture2D" uid="uid://o7i0rb7oceuc" path="res://Assets/Treasure Hunters/Barrel/Hit/4.png" id="5_a0yvp"]
+[ext_resource type="Texture2D" uid="uid://bcqyowq8dhcnj" path="res://Assets/Treasure Hunters/Barrel/Destroyed/2.png" id="8_l0ios"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cl8ib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3sxsh")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qgd12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m4qad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1pmgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a0yvp")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iifeo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fewer"]
+radius = 11.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lvwa"]
+size = Vector2(25, 27)
+
+[sub_resource type="Animation" id="Animation_qgd12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1pmgb"]
+resource_name = "destroyed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"destroyed"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_m4qad"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_3sxsh"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pmgb"]
+_data = {
+&"RESET": SubResource("Animation_qgd12"),
+&"destroyed": SubResource("Animation_1pmgb"),
+&"hit": SubResource("Animation_m4qad"),
+&"idle": SubResource("Animation_3sxsh")
+}
+
+[node name="Barrel" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 15
+contact_monitor = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cl8ib")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_fewer")
+
+[node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("2_p276l")]
+AnimationPlayer = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_6lvwa")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture_filter = 1
+amount = 10
+texture = ExtResource("8_l0ios")
+lifetime = 0.64
+one_shot = true
+speed_scale = 1.44
+explosiveness = 0.35
+randomness = 0.19
+lifetime_randomness = 0.11
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+angular_velocity_min = 0.55
+angular_velocity_max = 2.5
+linear_accel_max = 56.45
+angle_min = -127.0
+angle_max = 162.6
+scale_amount_min = 0.05
+scale_amount_max = 0.12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1pmgb")
+}
+autoplay = "idle"

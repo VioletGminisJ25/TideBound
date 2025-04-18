@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd7gkkdyy3b36"]
+
+[ext_resource type="Texture2D" uid="uid://7hjqrk43scgn" path="res://Assets/Treasure Hunters/Spikes/Spikes.png" id="1_13xbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2it0e"]
+size = Vector2(31, 13)
+
+[node name="Spike" type="StaticBody2D"]
+texture_repeat = 3
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 9.5)
+shape = SubResource("RectangleShape2D_2it0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_13xbf")
