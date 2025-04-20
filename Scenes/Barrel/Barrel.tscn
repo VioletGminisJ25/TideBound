@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c22ygclklwfsm"]
+[gd_scene load_steps=16 format=3 uid="uid://c22ygclklwfsm"]
 
 [ext_resource type="Texture2D" uid="uid://5mpna0pp1kq8" path="res://Assets/Treasure Hunters/Barrel/Destroyed/1.png" id="1_3sxsh"]
 [ext_resource type="Texture2D" uid="uid://bmaf13stvcrbs" path="res://Assets/Treasure Hunters/Barrel/Idle/1.png" id="1_iifeo"]
@@ -44,10 +44,6 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fewer"]
-radius = 11.0
-height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lvwa"]
 size = Vector2(25, 27)
@@ -193,21 +189,15 @@ _data = {
 &"idle": SubResource("Animation_3sxsh")
 }
 
-[node name="Barrel" type="RigidBody2D"]
-collision_layer = 8
-collision_mask = 15
-contact_monitor = true
+[node name="Barrel" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cl8ib")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_fewer")
-
 [node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("2_p276l")]
+visible = false
 AnimationPlayer = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]

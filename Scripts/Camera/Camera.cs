@@ -15,7 +15,6 @@ public partial class Camera : Camera2D
 		Vector2 position =  GlobalPosition;
 		position = player.GlobalPosition;
 		position.Y = player.GlobalPosition.Y;
-		Offset = new Vector2(0, -50f);
 		GlobalPosition = position;
 	}
 }
