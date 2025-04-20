@@ -1,19 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd7gkkdyy3b36"]
 
 [ext_resource type="Texture2D" uid="uid://7hjqrk43scgn" path="res://Assets/Treasure Hunters/Spikes/Spikes.png" id="1_13xbf"]
+[ext_resource type="Script" uid="uid://3x1iw2unthpb" path="res://Scripts/Spikes/Spikes.cs" id="2_4rqb0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2it0e"]
-size = Vector2(31, 13)
-
-[node name="Spike" type="StaticBody2D"]
-texture_repeat = 3
-collision_layer = 8
-collision_mask = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 9.5)
-shape = SubResource("RectangleShape2D_2it0e")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Spike" type="Sprite2D" node_paths=PackedStringArray("CollisionShape")]
 texture_repeat = 2
+position = Vector2(0.5, 0)
+scale = Vector2(1.03125, 1)
 texture = ExtResource("1_13xbf")
+region_enabled = true
+region_rect = Rect2(0, 16, 32, 16)
+script = ExtResource("2_4rqb0")
+CollisionShape = NodePath("Hitbox/CollisionShape2D")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

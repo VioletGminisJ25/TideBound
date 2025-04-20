@@ -76,6 +76,19 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 - **Añadiendo algunos assets de decoración**
 - **Desarrollando la primera zona del juego**
 
+### 📅 20 de abril de 2025
+
+- **Refactorizando la escena de pinchos y corrigiendo algunos errores**:
+
+  - **Nuevo componente `Spikes`**: Se ha creado un nuevo componente para los pinchos del escenario.
+  - **Actualización de `Spikes.tscn`**: Se cambió el tipo de nodo `Spike` a `Sprite2D` y se añadió un área de colisión (`Hitbox`) para detectar colisiones.
+  - **Nuevo script `Spikes.cs`**: Se añadió para configurar dinámicamente la forma de colisión en base a la región del sprite.
+  - **Ajuste en `Camera.cs`**: Se eliminó el desplazamiento de la cámara para que la vista quede más centrada.
+  - **Mejoras en el movimiento del jugador (`CompMov_Player.cs`)**: 
+    - Se redujo la velocidad y la velocidad de salto.
+    - Se ajustaron los multiplicadores para una física de salto más precisa.
+
+
 ## ✅ TO-DO LIST  
 
 ### 🔧 Mecánicas del Personaje

@@ -8,10 +8,10 @@ public partial class CompMov_Player : Node2D
 	[Export] public AnimatedSprite2D animatedSprite;
 
 	private Vector2 direction;
-	private float speed = 150f;
-	private float jumpVelocity = -350f;
+	private float speed = 130f;
+	private float jumpVelocity = -320f;
 	private float fallMultiplier = 1.5f;
-	private float lowJumpMultiplier = 3f;
+	private float lowJumpMultiplier = 1.7f;
 	private float coyoteTime = 0.1f;
 	private float jumpBufferTime = 0.1f;
 
