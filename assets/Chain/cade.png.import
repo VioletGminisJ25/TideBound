@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bonwgi7an2lmq"
-path="res://.godot/imported/cade.png-30ed5d0da4c5ce790091843bf4c1d043.ctex"
+path="res://.godot/imported/cade.png-ec4af280c9d37492f017e38f963ca95e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Chain/cade.png"
-dest_files=["res://.godot/imported/cade.png-30ed5d0da4c5ce790091843bf4c1d043.ctex"]
+source_file="res://assets/Chain/cade.png"
+dest_files=["res://.godot/imported/cade.png-ec4af280c9d37492f017e38f963ca95e.ctex"]
 
 [params]
 

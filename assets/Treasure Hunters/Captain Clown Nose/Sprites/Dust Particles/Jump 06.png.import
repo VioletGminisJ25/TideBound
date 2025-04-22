@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1l6ioer11e0h"
-path="res://.godot/imported/Jump 06.png-9412349c56f9bce78b867f569533e3c7.ctex"
+path="res://.godot/imported/Jump 06.png-21e0ccd2ff9355ad35fd3690eed59de4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 06.png"
-dest_files=["res://.godot/imported/Jump 06.png-9412349c56f9bce78b867f569533e3c7.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 06.png"
+dest_files=["res://.godot/imported/Jump 06.png-21e0ccd2ff9355ad35fd3690eed59de4.ctex"]
 
 [params]
 

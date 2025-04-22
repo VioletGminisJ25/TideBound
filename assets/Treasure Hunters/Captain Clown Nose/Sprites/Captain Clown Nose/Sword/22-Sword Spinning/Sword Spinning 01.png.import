@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvvf2v7g08lgm"
-path="res://.godot/imported/Sword Spinning 01.png-db4d15feb58d1c074b0e9c129bb64cfd.ctex"
+path="res://.godot/imported/Sword Spinning 01.png-84a1777fd85e8f6664ba9da1ae4203e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Sword/22-Sword Spinning/Sword Spinning 01.png"
-dest_files=["res://.godot/imported/Sword Spinning 01.png-db4d15feb58d1c074b0e9c129bb64cfd.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Sword/22-Sword Spinning/Sword Spinning 01.png"
+dest_files=["res://.godot/imported/Sword Spinning 01.png-84a1777fd85e8f6664ba9da1ae4203e5.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bo03343egs28j"
-path="res://.godot/imported/2.png-9b6c9a2cf8feec159017d537b21f1308.ctex"
+path="res://.godot/imported/2.png-c193100568dcb83c7143bd880a16da7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Barrel/Hit/2.png"
-dest_files=["res://.godot/imported/2.png-9b6c9a2cf8feec159017d537b21f1308.ctex"]
+source_file="res://assets/Treasure Hunters/Barrel/Hit/2.png"
+dest_files=["res://.godot/imported/2.png-c193100568dcb83c7143bd880a16da7f.ctex"]
 
 [params]
 
