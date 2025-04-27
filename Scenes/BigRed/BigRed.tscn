@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c7m1fecdodnd8"]
+[gd_scene load_steps=44 format=3 uid="uid://c7m1fecdodnd8"]
 
 [ext_resource type="Script" uid="uid://dpochhmyi6wko" path="res://Scripts/BigRed/BigRed.cs" id="1_nsvnc"]
 [ext_resource type="Texture2D" uid="uid://eiaqfynjw3f4" path="res://Assets/Big_Red/Idle_(32 x 32).png" id="2_g2paw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dolbtxe404k12" path="res://Scripts/BigRed/States/Jump_BigRed.cs" id="11_x54jx"]
 [ext_resource type="Script" uid="uid://dluubnnwy4hj4" path="res://Scripts/BigRed/States/Attack_BigRed.cs" id="12_bf4sq"]
 [ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Scenes/DamageComponent/damage_component.tscn" id="13_md1id"]
+[ext_resource type="Script" uid="uid://du6lygry8rxjj" path="res://Scenes/HealthComponent/HealthComponent.cs" id="14_x8t3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6bhy"]
 size = Vector2(23.0979, 22)
@@ -278,7 +279,7 @@ libraries = {
 }
 
 [node name="FSM" parent="." node_paths=PackedStringArray("ControlledNode") instance=ExtResource("8_n2wvx")]
-InitialState = NodePath("Idle")
+InitialState = NodePath("Run")
 ControlledNode = NodePath("..")
 
 [node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("raycast", "enemy")]
@@ -286,13 +287,17 @@ script = ExtResource("9_n2wvx")
 raycast = NodePath("../../RayCast2D")
 enemy = NodePath("../..")
 
-[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("navigationAgent2D", "raycast")]
+[node name="Timer" type="Timer" parent="FSM/Idle"]
+wait_time = 5.0
+autostart = true
+
+[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_x8t3y")
-navigationAgent2D = NodePath("../../NavigationAgent2D")
-raycast = NodePath("../../RayCast2D")
+enemy = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="FSM/Run"]
-wait_time = 0.5
+wait_time = 5.0
+one_shot = true
 autostart = true
 
 [node name="Jump" type="Node" parent="FSM"]
@@ -301,22 +306,23 @@ script = ExtResource("11_x54jx")
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("12_bf4sq")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_path_custom_color = Color(1, 0, 0, 1)
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(1.81899e-12, 5)
 rotation = 1.5708
 scale = Vector2(3.88, 1)
 target_position = Vector2(3.17097e-05, 34)
-collision_mask = 3
+collision_mask = 11
 
 [node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("13_md1id")]
 AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
-visible = false
 position = Vector2(-1.5, 6)
 shape = SubResource("RectangleShape2D_2i8pw")
 
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("14_x8t3y")
+metadata/_custom_type_script = "uid://du6lygry8rxjj"
+
+[connection signal="timeout" from="FSM/Idle/Timer" to="FSM/Idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="FSM/Run/Timer" to="FSM/Run" method="_on_timer_timeout"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://w05vsdup5rg8"
-path="res://.godot/imported/23.png-3de77785ffdd58702ff649a31f754d45.ctex"
+path="res://.godot/imported/23.png-810b1b4b93a42c8c9b632712f712f8a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Window/Window/23.png"
-dest_files=["res://.godot/imported/23.png-3de77785ffdd58702ff649a31f754d45.ctex"]
+source_file="res://Assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Window/Window/23.png"
+dest_files=["res://.godot/imported/23.png-810b1b4b93a42c8c9b632712f712f8a6.ctex"]
 
 [params]
 

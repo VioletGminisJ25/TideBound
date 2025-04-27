@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ya4hn5kjtc6r"
-path="res://.godot/imported/Water Reflect Big 04.png-345a11c46524410344c916546b2b38c6.ctex"
+path="res://.godot/imported/Water Reflect Big 04.png-040e3e3aab8d31ad3443a36f1ca0783b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background/Water Reflect Big 04.png"
-dest_files=["res://.godot/imported/Water Reflect Big 04.png-345a11c46524410344c916546b2b38c6.ctex"]
+source_file="res://Assets/Background/Water Reflect Big 04.png"
+dest_files=["res://.godot/imported/Water Reflect Big 04.png-040e3e3aab8d31ad3443a36f1ca0783b.ctex"]
 
 [params]
 

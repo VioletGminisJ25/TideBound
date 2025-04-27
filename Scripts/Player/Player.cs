@@ -2,10 +2,8 @@ using System;
 using Godot;
 
 
-public partial class Player : CharacterBody2D, DamageableObject, AttackInterface,IHook
+public partial class Player : CharacterBody2D, AttackInterface,IHook
 {
-	private int health = 100;
-    public int Health { get => health; set => health = value; }
 	private bool isAttacking = false;
     public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
 	private Rope line;
