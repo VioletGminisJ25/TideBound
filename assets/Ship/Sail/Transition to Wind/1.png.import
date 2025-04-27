@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhuqsh6l71rbk"
-path="res://.godot/imported/1.png-23d7103aea78a90e838229cca50e2120.ctex"
+path="res://.godot/imported/1.png-2bc20ebdbdc766e6f2d15977c40cc67a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ship/Sail/Transition to Wind/1.png"
-dest_files=["res://.godot/imported/1.png-23d7103aea78a90e838229cca50e2120.ctex"]
+source_file="res://Assets/Ship/Sail/Transition to Wind/1.png"
+dest_files=["res://.godot/imported/1.png-2bc20ebdbdc766e6f2d15977c40cc67a.ctex"]
 
 [params]
 
