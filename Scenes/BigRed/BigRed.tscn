@@ -313,8 +313,9 @@ script = ExtResource("11_x54jx")
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("12_bf4sq")
 
-[node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("13_md1id")]
-AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
+[node name="DamageComponent" parent="." instance=ExtResource("13_md1id")]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
 position = Vector2(-1.5, 6)
@@ -326,3 +327,4 @@ metadata/_custom_type_script = "uid://du6lygry8rxjj"
 
 [connection signal="timeout" from="FSM/Idle/Timer" to="FSM/Idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="FSM/Run/Timer" to="FSM/Run" method="_on_timer_timeout"]
+[connection signal="body_entered" from="DamageComponent" to="DamageComponent" method="_on_body_entered"]

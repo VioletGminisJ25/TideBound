@@ -361,8 +361,7 @@ position = Vector2(-0.434972, 0.0112185)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_hh6j8")
 
-[node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("12_les6k")]
-AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")
+[node name="DamageComponent" parent="." instance=ExtResource("12_les6k")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
 position = Vector2(0.477606, 0.00983429)
@@ -370,4 +369,3 @@ scale = Vector2(1.35558, 0.876614)
 shape = SubResource("RectangleShape2D_hh6j8")
 
 [connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="mysignal" from="DamageComponent" to="." method="Destroy"]

@@ -5,67 +5,23 @@ using System;
 [GlobalClass]
 public partial class DamageComponent : Area2D
 {
-	[Export] public AnimationPlayer AnimationPlayer;
+	[Export] public int DamageAmount = 1;
+	[Export] public float PushForce = 100.0f;
+	[Export] public float PushDuration = 0.1f;
 
-	[Signal]
-	public delegate bool mysignalEventHandler();
-	private HealthComponent healthComponent;
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	private void _on_body_entered(Node2D body)
 	{
-		this.SetDeferred("monitorable", true);
-		Node parent = GetParent();
-		if (parent == null)
+		if (body.HasNode("HealthComponent"))
 		{
-			GD.PushError("Parent node not found during runtime.");
-			return;
-		}
+			HealthComponent targetHealth = body.GetNode<HealthComponent>("HealthComponent");
+			targetHealth.TakeDamage(DamageAmount);
 
-		healthComponent = parent.GetNodeOrNull<HealthComponent>("HealthComponent");
-		if (healthComponent == null)
-		{
-			GD.PushWarning("HealthComponent not found in parent node during runtime.");
-		}
-	}
-
-    public override void _EnterTree()
-    {
-		if (Engine.IsEditorHint())
-		{
-			Node parent = GetParent();
-			if (parent == null)
+			// Intentamos aplicar el retroceso si el cuerpo tiene una función ApplyPushback
+			if (body.HasMethod("ApplyPushback"))
 			{
-				GD.PushWarning("Parent node not found in editor.");
-				return;
+				Vector2 direction = (body.GlobalPosition - GlobalPosition).Normalized();
+				body.Call("ApplyPushback", GlobalPosition, PushForce, PushDuration);
 			}
-
-			if (parent.GetNodeOrNull<HealthComponent>("HealthComponent") == null)
-			{
-				GD.PushWarning("HealthComponent not found in parent node in editor.");
-			}
-			return;
-		}
-	}
-
-
-
-
-
-	public void dameage()
-	{
-		AnimationPlayer.Stop();
-		AnimationPlayer.Play("hit");
-
-		if (healthComponent.Health <= 0)
-		{
-			this.SetDeferred("monitorable", false);
-			EmitSignal(SignalName.mysignal);
-		}
-		else
-		{
-			healthComponent.Health--;
 		}
 	}
 }
-

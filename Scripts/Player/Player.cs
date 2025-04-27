@@ -15,12 +15,28 @@ public partial class Player : CharacterBody2D, AttackInterface,IHook
 	private bool skipGravityFrame = false;
     public bool SkipGravityFrame { get => skipGravityFrame; set => skipGravityFrame = value; }
 
+	[Export] public float PushForce = 200.0f; // Fuerza del tirón hacia atrás
+	[Export] public float PushDuration = 0.2f; // Duración del tirón en segundos
 
-    public override void _Ready() {}
+	private bool _isBeingPushed = false;
+	private Vector2 _pushDirection = Vector2.Zero;
+	private float _pushTimer = 0.0f;
+	private Vector2 _velocity = Vector2.Zero; // Mantén un registro de la velocidad normal del jugador
+	[Export] public AnimationTree animationTree;
+	public AnimationNodeStateMachinePlayback fsm;
+	private HealthComponent _healthComponent;
+	private float _currentPushForce = 0.0f;
+	private float _currentPushDuration = 0.0f;
 
 
-	public override void _PhysicsProcess(double delta){
-		MoveAndSlide();
+
+	public override void _Ready() {
+		fsm = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+		_healthComponent = GetNodeOrNull<HealthComponent>("HealthComponent");
+		if (_healthComponent == null)
+		{
+			GD.PushError("HealthComponent not found in Player node.");
+		}
 	}
 
 	/**
@@ -33,9 +49,34 @@ public partial class Player : CharacterBody2D, AttackInterface,IHook
 		if (area is DamageComponent)
 		{
 			DamageComponent hurt = (DamageComponent)area;
-			hurt.dameage();
+			// hurt.dameage();
 		}
 	}
+	public override void _PhysicsProcess(double delta)
+	{
+		if (_isBeingPushed)
+		{
+			_velocity = _pushDirection * PushForce; // Usa la fuerza base del jugador aquí
+			_pushTimer += (float)delta;
+			if (_pushTimer >= PushDuration) // Usa la duración base del jugador aquí
+			{
+				_isBeingPushed = false;
+				_velocity = Vector2.Zero;
+			}
+			Velocity = _velocity;
+		}
+		MoveAndSlide();
+	}
+
+	public void ApplyPushback(Vector2 sourcePosition, float force, float duration)
+	{
+		_pushDirection = (GlobalPosition - sourcePosition).Normalized();
+		PushForce = force; // Sobreescribe la fuerza base con la del impacto
+		PushDuration = duration; // Sobreescribe la duración base con la del impacto
+		_isBeingPushed = true;
+		_pushTimer = 0.0f;
+	}
+
 }
 
 
