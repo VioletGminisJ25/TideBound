@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6mmvam8mlpvj"
-path="res://.godot/imported/Exclamation Out 02.png-26f69bdbdba2fafc97be940d81e53318.ctex"
+path="res://.godot/imported/Exclamation Out 02.png-d0c3a0e05d78d7ede92a6c69bd47da9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dialogue/Exclamation/Exclamation Out 02.png"
-dest_files=["res://.godot/imported/Exclamation Out 02.png-26f69bdbdba2fafc97be940d81e53318.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dialogue/Exclamation/Exclamation Out 02.png"
+dest_files=["res://.godot/imported/Exclamation Out 02.png-d0c3a0e05d78d7ede92a6c69bd47da9e.ctex"]
 
 [params]
 

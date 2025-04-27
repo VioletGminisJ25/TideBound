@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwplpktv830ds"
-path="res://.godot/imported/Blocking_(32 x 32).png-a84d6c6960b8522c50e820b62bd9f23d.ctex"
+path="res://.godot/imported/Blocking_(32 x 32).png-99ce37389abd1e62b56c3440ea1ef164.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Big_Red/Blocking_(32 x 32).png"
-dest_files=["res://.godot/imported/Blocking_(32 x 32).png-a84d6c6960b8522c50e820b62bd9f23d.ctex"]
+source_file="res://assets/Big_Red/Blocking_(32 x 32).png"
+dest_files=["res://.godot/imported/Blocking_(32 x 32).png-99ce37389abd1e62b56c3440ea1ef164.ctex"]
 
 [params]
 

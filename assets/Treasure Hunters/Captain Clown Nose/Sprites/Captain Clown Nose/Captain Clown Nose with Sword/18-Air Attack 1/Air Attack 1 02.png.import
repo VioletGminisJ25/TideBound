@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://l3r7oojv6qqp"
-path="res://.godot/imported/Air Attack 1 02.png-1eb8ef0c48af4ee30fd7407bf99ce308.ctex"
+path="res://.godot/imported/Air Attack 1 02.png-f260b94dedd32516f6ac09eead31a9f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/18-Air Attack 1/Air Attack 1 02.png"
-dest_files=["res://.godot/imported/Air Attack 1 02.png-1eb8ef0c48af4ee30fd7407bf99ce308.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/18-Air Attack 1/Air Attack 1 02.png"
+dest_files=["res://.godot/imported/Air Attack 1 02.png-f260b94dedd32516f6ac09eead31a9f9.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ob1ff6j3bs4c"
-path="res://.godot/imported/Sword Idle 03.png-e94861671024433276b8b387f2b350dc.ctex"
+path="res://.godot/imported/Sword Idle 03.png-bf2261623319973cac7f51eb8ae742ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 03.png"
-dest_files=["res://.godot/imported/Sword Idle 03.png-e94861671024433276b8b387f2b350dc.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Sword/21-Sword Idle/Sword Idle 03.png"
+dest_files=["res://.godot/imported/Sword Idle 03.png-bf2261623319973cac7f51eb8ae742ba.ctex"]
 
 [params]
 

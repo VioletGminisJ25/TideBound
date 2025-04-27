@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl3ioppa4emtv"
-path="res://.godot/imported/1.png-dac607faa19b8f61255c8536aa2f9739.ctex"
+path="res://.godot/imported/1.png-d13823981750b0ee8da36f41de908521.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Chest/Padlock/1.png"
-dest_files=["res://.godot/imported/1.png-dac607faa19b8f61255c8536aa2f9739.ctex"]
+source_file="res://assets/Chest/Padlock/1.png"
+dest_files=["res://.godot/imported/1.png-d13823981750b0ee8da36f41de908521.ctex"]
 
 [params]
 
