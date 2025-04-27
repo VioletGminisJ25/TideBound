@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c5wxkdm4h2g5p"]
+[gd_scene load_steps=48 format=3 uid="uid://c5wxkdm4h2g5p"]
 
 [ext_resource type="Script" uid="uid://c6gf8srd0rbuj" path="res://Scripts/Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Material/Player/PlayerFrames.tres" id="2_5wx5r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cl8lueckn0erm" path="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 03.png" id="5_rljeg"]
 [ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Scenes/DamageComponent/damage_component.tscn" id="6_t26db"]
 [ext_resource type="Texture2D" uid="uid://devq86n0at7jj" path="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 05.png" id="7_o1ueq"]
+[ext_resource type="Script" uid="uid://du6lygry8rxjj" path="res://Scenes/HealthComponent/HealthComponent.cs" id="8_fk5o5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk5o5"]
 size = Vector2(20, 27)
@@ -525,5 +526,9 @@ visible = false
 position = Vector2(0.1, 0)
 rotation = -3.14159
 target_position = Vector2(0.100021, 244)
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("8_fk5o5")
+metadata/_custom_type_script = "uid://du6lygry8rxjj"
 
 [connection signal="area_entered" from="AnimatedSprite2D/swordHit" to="." method="_on_sword_hit_area_entered"]

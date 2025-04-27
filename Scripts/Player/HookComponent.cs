@@ -43,7 +43,7 @@ public partial class HookComponent : Node2D
 				line.start = cursor.GlobalPosition;
 				parentHook.IsHooked = true;
 			}
-
+			
 		}
 	}
 

@@ -1,136 +1,156 @@
 using Godot;
 using System;
-using static Godot.TextServer;
 
 public partial class Run_BigRed : State
 {
-	[Export] NavigationAgent2D navigationAgent2D;
-	// [Export] Enemy enemy;
-	[Export] RayCast2D raycast;
-	[Export] float speed;
-	private Godot.Vector2 velocity;
-	private int JumpVelocity;
-	private bool colliding = false;
-	public override void Enter()
-	{
-		GD.Print("ENEMY: Run State");
-		velocity = new Godot.Vector2(0, 0);
-		JumpVelocity = 310;
+    [Export] public Enemy enemy; // Ensure this is assigned in the inspector
+    // [Export] public RayCast2D raycast; // Keep if used elsewhere, otherwise remove
+    [Export] public float speed = 100f; // Pixels per second
 
-	}
-	public override void Exit() { }
+    private bool movingForward = true;
+    private PathFollow2D pathFollow;
+    private Path2D path;
 
-	public override void Update(float delta)
-	{
+    // Small tolerance to prevent issues with floating point comparisons at path ends
+    private const float PATH_END_TOLERANCE = 0.005f; // Adjust if needed
 
-
-	}
-
-	public void MakePath()
-	{
-		if (fsm.ControlledNode is Enemy enemy)
-		{
-			navigationAgent2D.TargetPosition = enemy.player.GlobalPosition;
-		}
-	}
-
-	public void _on_timer_timeout()
-	{
-		MakePath();
-	}
-	public override void PhysicsUpdate(float delta)
-	{
-		Motion(delta);
+    public override void Enter()
+    {
+        GD.Print("ENEMY: Run State - Enter");
+        
+        Timer timer = GetNodeOrNull<Timer>("Timer");
+        if (timer != null)
+        {
+            timer.Start();
+        }
+        else
+        {
+            GD.PushError($"Enemy '{enemy.Name}' requires a Timer node named 'Timer' for the Run state.");
+            fsm.TransitionTo("Idle"); // Or an error state
+            return;
+        }
 
 
-	}
+        pathFollow = enemy.GetParent<PathFollow2D>();
+        if (pathFollow == null)
+        {
+            GD.PushError($"Enemy '{enemy.Name}' requires a PathFollow2D as its direct parent.");
+            fsm.TransitionTo("Idle"); // Or an error state
+            return;
+        }
 
-	private void Motion(float delta)
-	{
-		if (fsm.ControlledNode is Enemy enemy)
-		{
+        path = pathFollow.GetParent<Path2D>();
+        if (path == null || path.Curve == null)
+        {
+            GD.PushError($"PathFollow2D for enemy '{enemy.Name}' requires a Path2D with a valid Curve resource as its parent.");
+            fsm.TransitionTo("Idle"); // Or an error state
+            return;
+        }
+
+        if (path.Curve.GetBakedLength() <= 0f)
+        {
+            GD.PushWarning($"Path for enemy '{enemy.Name}' has zero length.");
+            // Decide how to handle this - maybe stay idle?
+            fsm.TransitionTo("Idle");
+            return;
+        }
+  
+        movingForward = true; // Default to forward
+
+        // Set initial visual direction
+        SetVisualDirection(movingForward);
+
+        if (enemy.animatedSprite != null)
+        {
+            enemy.animatedSprite.Play("run");
+        }
+        else
+        {
+            GD.PushWarning($"Enemy '{enemy.Name}' has no AnimatedSprite2D assigned in its Enemy script.");
+        }
+    }
+
+    public override void Exit()
+    {
+        GD.Print("ENEMY: Run State - Exit");
+        if (enemy is CharacterBody2D character)
+        {
+            character.Velocity = Vector2.Zero;
+           
+        }
+    }
+
+    public override void Update(float delta)
+    {
+    }
+
+    public void _on_timer_timeout()
+    {
+        fsm.TransitionTo("Idle");
+    }
+
+    public override void PhysicsUpdate(float delta)
+    {
+        if (pathFollow == null || path == null || path.Curve == null || !(enemy is CharacterBody2D character))
+            return;
+
+        MoveOnPath(character, delta);
+    }
+
+    private void MoveOnPath(CharacterBody2D character, float delta)
+    {
+        float pathLength = path.Curve.GetBakedLength();
+        if (pathLength <= 0f) return; // Avoid division by zero
+
+        float progressIncrement = speed / pathLength * delta;
+        float directionMultiplier = movingForward ? 1f : -1f;
+
+        pathFollow.ProgressRatio += directionMultiplier * progressIncrement;
+        pathFollow.ProgressRatio = Mathf.Clamp(pathFollow.ProgressRatio, 0f, 1f);
+
+        // 2. Get the *target* world position from the PathFollow2D
+        Vector2 targetPosition = pathFollow.GlobalPosition;
+
+        // 3. Calculate the direction from the character's *current* position to the target
+        Vector2 currentPosition = character.GlobalPosition;
+        Vector2 directionToTarget = targetPosition - currentPosition;
+
+        // 4. Set the character's velocity towards the target
+        if (directionToTarget.Length() > 1.0f) // Only move if not already very close to the target point
+        {
+            // Move towards the target at the defined speed
+            character.Velocity = directionToTarget.Normalized() * speed;
+        }
+        else
+        {
+            character.Velocity = Vector2.Zero;
+        }
 
 
-			Godot.Vector2 dir = enemy.ToLocal(navigationAgent2D.GetNextPathPosition()).Normalized();
+        character.MoveAndSlide(); // This handles collisions and actual movement
 
-			if (dir != Godot.Vector2.Zero)
-			{
-				velocity.X = dir.X * speed;
+        if (movingForward && pathFollow.ProgressRatio >= (1f - PATH_END_TOLERANCE))
+        {
+            movingForward = false;
+            pathFollow.ProgressRatio = 1f; // Snap to exact end
+            SetVisualDirection(movingForward);
+        }
+        else if (!movingForward && pathFollow.ProgressRatio <= PATH_END_TOLERANCE)
+        {
+            movingForward = true;
+            pathFollow.ProgressRatio = 0f; // Snap to exact start
+            SetVisualDirection(movingForward);
+        }
+    }
 
-				if (velocity.X < 0)
-				{
-					enemy.animatedSprite.FlipH = true;
-					double rotation = 90 * (Math.PI / 180);
-					raycast.Rotation = (float)rotation;
-				}
-				if (velocity.X > 0)
-				{
-					enemy.animatedSprite.FlipH = false;
-					double rotation = 270 * (Math.PI / 180);
-					raycast.Rotation = (float)rotation;
+    // Helper function to set sprite/scale direction
+    private void SetVisualDirection(bool isMovingForward)
+    {
+        if (enemy.animatedSprite != null)
+        {
+            enemy.animatedSprite.FlipH = isMovingForward;
+        }
 
-				}
-			}
-			else
-			{
-				velocity.X = Mathf.MoveToward(enemy.Velocity.X, 0, speed);
-			}
-
-			if (!enemy.IsOnFloor())
-			{
-				velocity += enemy.GetGravity() * (float)delta;
-			}
-			else
-			{
-				velocity.Y = 0;
-				if (raycast.IsColliding())
-				{
-					if (!(raycast.GetCollider() is Player))
-					{
-						velocity.Y = -JumpVelocity;
-					}
-				}
-			}
-			enemy.Velocity = velocity;
-			enemy.MoveAndSlide();
-			Animations();
-
-		}
-	}
-
-	private void Animations()
-	{
-		if (fsm.ControlledNode is Enemy enemy)
-		{
-
-
-			if (enemy.IsOnFloor())
-			{
-
-				if (velocity.X != 0)
-				{
-					enemy.animatedSprite.Play("run");
-				}
-				else
-				{
-					enemy.animatedSprite.Play("idle");
-				}
-			}
-			else
-			{
-
-				if (velocity.Y > 0)
-				{
-					enemy.animatedSprite.Play("jump");
-				}
-				else
-				{
-					enemy.animatedSprite.Play("jump");
-				}
-			}
-		}
-	}
-
-	public override void HandleInput(InputEvent @event) { }
-
+        
+    }
 }
