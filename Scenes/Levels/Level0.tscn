@@ -75,25 +75,17 @@ position = Vector2(-50, 76)
 curve = SubResource("Curve2D_05pxk")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-12.2839, 3)
-progress = 3.411
+position = Vector2(-15, 3)
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
-texture_repeat = 3
-scale = Vector2(11.72, 1)
-remote_path = NodePath("../../../boat")
-update_rotation = false
-update_scale = false
+[node name="boat" parent="Path2D/PathFollow2D" instance=ExtResource("1_yk6vx")]
+z_index = -1
+position = Vector2(0, 0)
+
+[node name="Player" parent="Path2D/PathFollow2D/boat" instance=ExtResource("3_1yufc")]
+position = Vector2(-16, 14)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Path2D"]
 color = Color(0.67069, 0.67069, 0.67069, 1)
-
-[node name="boat" parent="." instance=ExtResource("1_yk6vx")]
-z_index = -1
-position = Vector2(-62.2839, 79)
-
-[node name="Player" parent="boat" instance=ExtResource("3_1yufc")]
-position = Vector2(-16, 14)
 
 [node name="water" type="Node2D" parent="."]
 position = Vector2(299, 212)
