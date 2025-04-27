@@ -273,6 +273,13 @@ animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
+position = Vector2(1.81899e-12, 5)
+rotation = 1.5708
+scale = Vector2(3.88, 1)
+target_position = Vector2(3.17097e-05, 34)
+collision_mask = 11
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
 &"": SubResource("AnimationLibrary_67m76")
@@ -284,7 +291,7 @@ ControlledNode = NodePath("..")
 
 [node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("raycast", "enemy")]
 script = ExtResource("9_n2wvx")
-raycast = NodePath("../../RayCast2D")
+raycast = NodePath("../../AnimatedSprite2D/RayCast2D")
 enemy = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="FSM/Idle"]
@@ -305,13 +312,6 @@ script = ExtResource("11_x54jx")
 
 [node name="Attack" type="Node" parent="FSM"]
 script = ExtResource("12_bf4sq")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(1.81899e-12, 5)
-rotation = 1.5708
-scale = Vector2(3.88, 1)
-target_position = Vector2(3.17097e-05, 34)
-collision_mask = 11
 
 [node name="DamageComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("13_md1id")]
 AnimationPlayer = NodePath("../AnimatedSprite2D/AnimationPlayer")

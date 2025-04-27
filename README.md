@@ -87,6 +87,13 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
   - **Mejoras en el movimiento del jugador (`CompMov_Player.cs`)**: 
     - Se redujo la velocidad y la velocidad de salto.
     - Se ajustaron los multiplicadores para una física de salto más precisa.
+  
+### 📅 27 de abril de 2025
+
+- **Creacion de nuevos componentes**:
+  - **Implementación de un nuevo sistema de daño**: Se ha creado un nuevo componente `HealthComponent` para gestionar la salud del jugador y los enemigos. Este componente permite recibir daño y aplicar efectos visuales al recibirlo.
+  - **Implementación de un nuevo sistema de daño**: Se ha creado un nuevo componente `DamageComponent` para gestionar el daño del jugador y los enemigos. Este componente permite aplicar daño a los enemigos y al jugador.
+- **Desarrollo de la primera escena del juego (zona de tutorial)**
 
 
 ## ✅ TO-DO LIST  
