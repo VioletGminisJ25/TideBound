@@ -1,7 +1,6 @@
 using Godot;
 using System;
 
-[Tool]
 [GlobalClass]
 public partial class HealthComponent : Node
 {
@@ -14,6 +13,7 @@ public partial class HealthComponent : Node
     {
         Health -= amount;
         EmitSignal(SignalName.HealthChanged, Health);
+        GD.Print("HealthComponent: Taking damage : " + Health);
 
         if (Health <= 0)
         {

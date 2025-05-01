@@ -95,6 +95,12 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
   - **Implementación de un nuevo sistema de daño**: Se ha creado un nuevo componente `DamageComponent` para gestionar el daño del jugador y los enemigos. Este componente permite aplicar daño a los enemigos y al jugador.
 - **Desarrollo de la primera escena del juego (zona de tutorial)**
 
+### 📅 1 de mayo de 2025
+
+
+-**Conexion de HealthComponent y DamageComponent e Implementacion de pushback**: Se ha conectado el componente `HealthComponent` con el componente `DamageComponent` para que el jugador y los enemigos puedan recibir daño y aplicar efectos visuales al recibirlo. Este sistema permite que el jugador y los enemigos sean empujados hacia atrás al recibir daño, lo que añade una nueva capa de estrategia al combate. Por medio de un nuevo componente `DamageComponent` que se encarga de gestionar el retroceso al recibir daño. Este componente permite ajustar la fuerza y la dirección del retroceso, así como la duración del mismo.
+  - **Problema encontrado:** : Cuando el personaje recibe daño solo le quita 1 de vida, cada enemigo tiene un daño especifico
+- **Impemetado imvulnerabilidad temporal**:Se ha añadido a la animacion de hit una inmunidad temporal al recibir daño. Esto permite que el jugador tenga un breve periodo de invulnerabilidad después de recibir daño, lo que le da la oportunidad de reaccionar y evitar más daño
 
 ## ✅ TO-DO LIST  
 
@@ -105,7 +111,7 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 - [x] Refactorizar movimiento en MovementComponent  
 - [ ] Permitir animación de caminar + atacar simultáneamente (→ usar AnimationTree con capas o blend)  
 - [ ] Agregar sistema de esquive o dash (si aplica al combate dinámico)  
-- [ ] Añadir animación de daño + sistema de invulnerabilidad temporal  
+- [x] Añadir animación de daño + sistema de invulnerabilidad temporal  
 - [ ] Añadir feedback visual/sonoro al recoger objetos, atacar y recibir daño  
 
 ### 🪝 Mecánica de Gancho

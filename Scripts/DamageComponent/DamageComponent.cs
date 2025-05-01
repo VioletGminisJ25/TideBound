@@ -8,6 +8,8 @@ public partial class DamageComponent : Area2D
 	[Export] public int DamageAmount = 1;
 	[Export] public float PushForce = 100.0f;
 	[Export] public float PushDuration = 0.2f;
+	[Signal] public delegate void TakeDamageEventHandler(float DamageAmount);
+
 
 	private void _on_body_entered(Node2D body)
 	{
@@ -18,6 +20,7 @@ public partial class DamageComponent : Area2D
 			if (GetParent().HasNode("HealthComponent") && GetParent().GetNode("HealthComponent") is HealthComponent targetHealth)
 			{
 				targetHealth.TakeDamage(DamageAmount);
+				EmitSignal(SignalName.TakeDamage, DamageAmount);
 				
 				if(GetParent().HasMethod("ApplyPushback"))
 				{
