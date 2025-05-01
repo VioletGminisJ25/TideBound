@@ -17,7 +17,7 @@ public partial class Run_BigRed : State
     public override void Enter()
     {
         GD.Print("ENEMY: Run State - Enter");
-        
+
         Timer timer = GetNodeOrNull<Timer>("Timer");
         if (timer != null)
         {
@@ -54,7 +54,7 @@ public partial class Run_BigRed : State
             fsm.TransitionTo("Idle");
             return;
         }
-  
+
         movingForward = true; // Default to forward
 
         // Set initial visual direction
@@ -76,7 +76,7 @@ public partial class Run_BigRed : State
         if (enemy is CharacterBody2D character)
         {
             character.Velocity = Vector2.Zero;
-           
+
         }
     }
 
@@ -104,9 +104,11 @@ public partial class Run_BigRed : State
 
         float progressIncrement = speed / pathLength * delta;
         float directionMultiplier = movingForward ? 1f : -1f;
-
-        pathFollow.ProgressRatio += directionMultiplier * progressIncrement;
-        pathFollow.ProgressRatio = Mathf.Clamp(pathFollow.ProgressRatio, 0f, 1f);
+        if (fsm.currentState is Run_BigRed)
+        {
+            pathFollow.ProgressRatio += directionMultiplier * progressIncrement;
+            pathFollow.ProgressRatio = Mathf.Clamp(pathFollow.ProgressRatio, 0f, 1f);
+        }
 
         // 2. Get the *target* world position from the PathFollow2D
         Vector2 targetPosition = pathFollow.GlobalPosition;
@@ -151,6 +153,6 @@ public partial class Run_BigRed : State
             enemy.animatedSprite.FlipH = isMovingForward;
         }
 
-        
+
     }
 }

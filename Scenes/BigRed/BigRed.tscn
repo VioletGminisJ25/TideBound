@@ -298,7 +298,7 @@ enemy = NodePath("../..")
 wait_time = 5.0
 autostart = true
 
-[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("enemy")]
+[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("enemy") groups=["Enemy"]]
 script = ExtResource("10_x8t3y")
 enemy = NodePath("../..")
 
@@ -316,6 +316,7 @@ script = ExtResource("12_bf4sq")
 [node name="DamageComponent" parent="." instance=ExtResource("13_md1id")]
 collision_layer = 4
 collision_mask = 2
+PushForce = 80.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
 position = Vector2(-1.5, 6)

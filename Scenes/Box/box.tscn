@@ -362,6 +362,7 @@ rotation = -3.14159
 shape = SubResource("RectangleShape2D_hh6j8")
 
 [node name="DamageComponent" parent="." instance=ExtResource("12_les6k")]
+PushDuration = 0.1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageComponent"]
 position = Vector2(0.477606, 0.00983429)

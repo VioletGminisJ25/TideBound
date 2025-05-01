@@ -459,11 +459,12 @@ script = ExtResource("3_t26db")
 raycast = NodePath("../RayCast2D")
 animatedSprite = NodePath("../AnimatedSprite2D")
 
-[node name="DamageComponent" parent="." instance=ExtResource("6_t26db")]
+[node name="HurtBox" parent="." instance=ExtResource("6_t26db")]
 collision_layer = 2
 collision_mask = 4
+PushForce = 95.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_fk5o5")
 
@@ -531,5 +532,5 @@ target_position = Vector2(0.100021, 244)
 script = ExtResource("8_fk5o5")
 metadata/_custom_type_script = "uid://du6lygry8rxjj"
 
-[connection signal="body_entered" from="DamageComponent" to="DamageComponent" method="_on_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="HurtBox" method="_on_body_entered"]
 [connection signal="area_entered" from="AnimatedSprite2D/swordHit" to="." method="_on_sword_hit_area_entered"]
