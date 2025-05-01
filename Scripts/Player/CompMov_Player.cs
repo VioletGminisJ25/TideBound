@@ -37,6 +37,7 @@ public partial class CompMov_Player : Node2D
 	{
 		Movement((float)delta);
 		Attack();
+		
 	}
 
 	private void Attack()
@@ -164,7 +165,6 @@ public partial class CompMov_Player : Node2D
 
 		parent.Velocity = velocity;
 		System.Console.WriteLine($"Move Velocity: {velocity}");
-
 	}
 	
 }

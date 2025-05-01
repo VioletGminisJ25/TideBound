@@ -2,18 +2,18 @@ using System;
 using Godot;
 
 
-public partial class Player : CharacterBody2D, AttackInterface,IHook
+public partial class Player : CharacterBody2D, AttackInterface, IHook
 {
 	private bool isAttacking = false;
-    public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
+	public bool IsAttacking { get => isAttacking; set => isAttacking = value; }
 	private Rope line;
 	[Export] public Rope Line { get => line; set => line = value; }
 	private StaticBody2D cursor;
 	[Export] public StaticBody2D Cursor { get => cursor; set => cursor = value; }
 	private bool isHooked = false;
-    public bool IsHooked { get => isHooked; set => isHooked = value; }
+	public bool IsHooked { get => isHooked; set => isHooked = value; }
 	private bool skipGravityFrame = false;
-    public bool SkipGravityFrame { get => skipGravityFrame; set => skipGravityFrame = value; }
+	public bool SkipGravityFrame { get => skipGravityFrame; set => skipGravityFrame = value; }
 
 	[Export] public float PushForce = 200.0f; // Fuerza del tirón hacia atrás
 	[Export] public float PushDuration = 0.2f; // Duración del tirón en segundos
@@ -30,7 +30,8 @@ public partial class Player : CharacterBody2D, AttackInterface,IHook
 
 
 
-	public override void _Ready() {
+	public override void _Ready()
+	{
 		fsm = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		_healthComponent = GetNodeOrNull<HealthComponent>("HealthComponent");
 		if (_healthComponent == null)
@@ -54,18 +55,24 @@ public partial class Player : CharacterBody2D, AttackInterface,IHook
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		
 		if (_isBeingPushed)
 		{
-			_velocity = _pushDirection * PushForce; // Usa la fuerza base del jugador aquí
+			_velocity  =  new Vector2(_pushDirection.X * PushForce * 3, Mathf.Lerp(Velocity.Y, _pushDirection.Y * PushForce, 90f * (float)delta));
+
 			_pushTimer += (float)delta;
 			if (_pushTimer >= PushDuration) // Usa la duración base del jugador aquí
 			{
 				_isBeingPushed = false;
+				_pushTimer = 0.0f;
 				_velocity = Vector2.Zero;
+				GD.Print("Push ended");
 			}
+			
 			Velocity = _velocity;
 		}
 		MoveAndSlide();
+
 	}
 
 	public void ApplyPushback(Vector2 sourcePosition, float force, float duration)
@@ -75,6 +82,7 @@ public partial class Player : CharacterBody2D, AttackInterface,IHook
 		PushDuration = duration; // Sobreescribe la duración base con la del impacto
 		_isBeingPushed = true;
 		_pushTimer = 0.0f;
+		fsm.Travel("hit");
 	}
 
 }

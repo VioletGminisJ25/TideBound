@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[Tool]
 public partial class Spikes : Sprite2D
 {
     [Export]
@@ -10,7 +10,11 @@ public partial class Spikes : Sprite2D
     {
         // Set the collision shape to be the same size as the sprite
         RectangleShape2D rectangleShape = new RectangleShape2D();
-        rectangleShape.Size = this.RegionRect.Size;
+        rectangleShape.Size = new Vector2( this.RegionRect.Size.X, this.RegionRect.Size.Y/3);
+        // Transform2D transformNode = CollisionShape.Transform;
+        // transformNode.Y = new Vector2(0, this.RegionRect.Size.Y / 12);
+        // CollisionShape.Transform = transformNode;
         CollisionShape.Shape = rectangleShape;
+        GD.Print("Spikes: Collision shape set to sprite size.");
     }
 }

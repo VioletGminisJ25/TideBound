@@ -25,7 +25,7 @@ public partial class StateMachine : Node
 		}
 	}
 	private Dictionary<string, State> states;
-	private State currentState;
+	public State currentState {get; set; }
 	public override void _Ready()
 	{
 		states = new Dictionary<string, State>();

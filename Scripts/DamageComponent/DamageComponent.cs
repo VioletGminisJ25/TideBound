@@ -7,21 +7,25 @@ public partial class DamageComponent : Area2D
 {
 	[Export] public int DamageAmount = 1;
 	[Export] public float PushForce = 100.0f;
-	[Export] public float PushDuration = 0.1f;
+	[Export] public float PushDuration = 0.2f;
 
 	private void _on_body_entered(Node2D body)
 	{
-		if (body.HasNode("HealthComponent"))
+		if (body.IsInGroup("Enemy"))
 		{
-			HealthComponent targetHealth = body.GetNode<HealthComponent>("HealthComponent");
-			targetHealth.TakeDamage(DamageAmount);
-
-			// Intentamos aplicar el retroceso si el cuerpo tiene una función ApplyPushback
-			if (body.HasMethod("ApplyPushback"))
+			GD.Print("DamageComponent: Entity Entered");
+			// Verificar si el cuerpo tiene un HealthComponent
+			if (GetParent().HasNode("HealthComponent") && GetParent().GetNode("HealthComponent") is HealthComponent targetHealth)
 			{
-				Vector2 direction = (body.GlobalPosition - GlobalPosition).Normalized();
-				body.Call("ApplyPushback", GlobalPosition, PushForce, PushDuration);
+				targetHealth.TakeDamage(DamageAmount);
+				
+				if(GetParent().HasMethod("ApplyPushback"))
+				{
+					GetParent().CallDeferred("ApplyPushback", body.GlobalPosition, PushForce, PushDuration);
+				}
 			}
 		}
+		
+		
 	}
 }

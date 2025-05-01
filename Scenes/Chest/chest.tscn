@@ -12,7 +12,7 @@ position = Vector2(-241, 77)
 position = Vector2(270, -54)
 texture = ExtResource("1_mtmrk")
 
-[node name="collision" type="CollisionShape2D" parent="." groups=["hurt"]]
+[node name="collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(270, -50)
 shape = SubResource("RectangleShape2D_0w66p")
