@@ -15,6 +15,7 @@ public partial class Spikes : Sprite2D
         // transformNode.Y = new Vector2(0, this.RegionRect.Size.Y / 12);
         // CollisionShape.Transform = transformNode;
         CollisionShape.Shape = rectangleShape;
-        GD.Print("Spikes: Collision shape set to sprite size.");
+        
+        GD.PrintRich("[font = res://JosefinSans-Regular.ttf][color=BLUE]Spikes: Collision shape set to sprite size");
     }
 }

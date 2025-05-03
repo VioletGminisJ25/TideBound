@@ -13,6 +13,11 @@ public partial class DamageComponent : Area2D
 
 	private void _on_body_entered(Node2D body)
 	{
+		if(body.IsInGroup("Spikes")){
+			GD.Print("Spikes: Entity Entered");
+			GetParent<Node2D>().GlobalPosition = body.GetParent().GetNode<Marker2D>("Marker2D").GlobalPosition;
+			return;
+		}
 		if (body.IsInGroup("Enemy"))
 		{
 			GD.Print("DamageComponent: Entity Entered");
