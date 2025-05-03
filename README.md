@@ -102,6 +102,21 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
   - **Problema encontrado:** : Cuando el personaje recibe daño solo le quita 1 de vida, cada enemigo tiene un daño especifico
 - **Impemetado imvulnerabilidad temporal**:Se ha añadido a la animacion de hit una inmunidad temporal al recibir daño. Esto permite que el jugador tenga un breve periodo de invulnerabilidad después de recibir daño, lo que le da la oportunidad de reaccionar y evitar más daño
 
+
+### 📅 3 de mayo de 2025
+
+
+-**Implementado shader y líquido dinamica al contacto**:
+  - Se ha implementado un ácido que se mueve al contacto y el objetivo es que quite vida al jugador progresivamente al estar dentro
+
+-**Implementado puntero custom y movimineto del puntero con mando para asi poder utilizar el gancho con el mando**
+  
+<details>
+  <summary>Implementacion mecanica ácido</summary>
+  
+https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
+</details>
+
 ## ✅ TO-DO LIST  
 
 ### 🔧 Mecánicas del Personaje
@@ -128,9 +143,9 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 - [ ] Crear un sistema de AttackComponent más flexible (distancia, tipo, área, cooldown)  
 - [ ] Añadir animaciones cancelables para ataques rápidos  
 - [ ] Implementar enemigos básicos con IA simple (seguimiento, ataque)  
-- [ ] Agregar daño por contacto, hitbox y hurtbox  
+- [x] Agregar daño por contacto, hitbox y hurtbox  
 - [ ] Diseñar y animar ataques especiales o combos  
-- [ ] Balancear ataques con retroceso (knockback)  
+- [x] Balancear ataques con retroceso (knockback)  
 - [ ] Añadir sistema de mejoras de combate (habilidades o armas)  
 
 ### 🧭 Exploración y Progresión
@@ -161,7 +176,7 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 - [x] Crear sistema de estados robusto (Idle, Walking, Attacking, Hooking, Dashing, etc.)  
 - [x] Modularizar el código para facilitar mantenimiento (enemigos, UI, etc.)  
 - [x] Crear señales (Signal) claras entre componentes (ej: gancho terminado, ataque lanzado)  
-- [ ] Mejorar sistema de animaciones con AnimationTree y blend  
+- [x] Mejorar sistema de animaciones con AnimationTree y blend  
 
 ### 🎮 Nivel y Diseño
 - [ ] Crear una zona inicial bien pulida con tutorial natural (tipo Hollow Knight)  
