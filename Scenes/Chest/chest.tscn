@@ -6,13 +6,11 @@
 size = Vector2(30, 24)
 
 [node name="chest" type="RigidBody2D"]
-position = Vector2(-241, 77)
+collision_layer = 8
 
 [node name="chest" type="Sprite2D" parent="."]
-position = Vector2(270, -54)
 texture = ExtResource("1_mtmrk")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(270, -50)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_0w66p")

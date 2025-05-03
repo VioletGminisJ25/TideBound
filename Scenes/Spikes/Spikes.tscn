@@ -16,7 +16,7 @@ region_rect = Rect2(0, 16, 32, 16)
 script = ExtResource("2_4rqb0")
 CollisionShape = NodePath("StaticBody2D/CollisionShape2D")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Enemy"]]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Enemy", "Spikes"]]
 collision_layer = 4
 collision_mask = 6
 
@@ -24,5 +24,3 @@ collision_mask = 6
 position = Vector2(-0.484848, 4)
 scale = Vector2(1, 1.33333)
 shape = SubResource("RectangleShape2D_4rqb0")
-
-[node name="Marker2D" type="Marker2D" parent="."]
