@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 driver/mix_rate=48000
 
+[autoload]
+
+MouseWithJoystick="*res://Scripts/Autoload/MouseWithJoystick.cs"
+
 [display]
 
 window/size/viewport_width=1920
@@ -40,6 +44,7 @@ version_control/autoload_on_startup=true
 [file_customization]
 
 folder_colors={
+"res://Assets/": "purple",
 "res://Scenes/": "red",
 "res://Scripts/": "yellow"
 }
@@ -48,6 +53,7 @@ folder_colors={
 
 Player=""
 Enemy=""
+Spikes=""
 
 [importer_defaults]
 
@@ -124,6 +130,26 @@ hook={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
 ]
 }
+mover_horizontal_minus={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":-1.0,"script":null)
+]
+}
+mover_horizontal_plus={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":1.0,"script":null)
+]
+}
+mover_vertical_minus={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":-1.0,"script":null)
+]
+}
+mover_vertical_plus={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":3,"axis_value":1.0,"script":null)
+]
+}
 
 [layer_names]
 
@@ -136,3 +162,4 @@ hook={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+viewport/hdr_2d=true

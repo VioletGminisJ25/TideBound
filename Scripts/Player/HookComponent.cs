@@ -17,6 +17,7 @@ public partial class HookComponent : Node2D
 	private float springStrength = 5f;  // Constante de rigidez (Hooke)
 	private float damping = 0.5f;
 	[Export] public AnimatedSprite2D animatedSprite;
+	private MouseWithJoystick mouse;
 
 
 	public override void _Ready()
@@ -28,6 +29,7 @@ public partial class HookComponent : Node2D
 		}
 		line = parentHook.Line;
 		cursor = parentHook.Cursor;
+		mouse = GetNode<MouseWithJoystick>("/root/MouseWithJoystick");
 	}
 
 	public override void _Input(InputEvent @event)
@@ -54,8 +56,8 @@ public partial class HookComponent : Node2D
 
 	public void HandleHook(float delta)
 	{
-		raycast.LookAt(GetGlobalMousePosition());
-		raycast.Rotation = raycast.Rotation + 80;
+		raycast.LookAt(mouse.VirtualCursorPosition);
+		raycast.Rotation += 80; // Suma de rotación si es necesaria para el sprite
 		if (!parentHook.IsHooked || !Input.IsActionPressed("hook"))
 		{
 			line.Visible = false;
