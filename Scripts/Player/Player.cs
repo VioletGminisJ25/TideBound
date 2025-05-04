@@ -50,9 +50,60 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 		if (area is DamageComponent)
 		{
 			DamageComponent hurt = (DamageComponent)area;
-			// hurt.dameage();
+			hurt.GetParent().CallDeferred("ApplyPushback", GlobalPosition, PushForce, PushDuration);
+			if(hurt.GetParent().HasNode("HealthComponent")){
+				HealthComponent targetHealth = hurt.GetParent().GetNode<HealthComponent>("HealthComponent");
+				if (targetHealth != null)
+				{
+					targetHealth.TakeDamage(1);
+					GD.Print("Player: Sword hit enemy, applying damage.");
+				}
+				else
+				{
+					GD.PushError("HealthComponent not found in enemy node.");
+				}
+			}
+			else
+			{
+				GD.PushError("Enemy does not have a HealthComponent.");
+			}
 		}
 	}
+	public void _on_sword_hit_body_entered(Node2D node)
+	{
+		
+		if(node.IsInGroup("Enemy")){
+			if(node.HasMethod("ApplyPushback"))
+			{
+				GD.Print("Player: Sword hit enemy, applying pushback.");
+				node.CallDeferred("ApplyPushback", GlobalPosition, PushForce, PushDuration);
+			}
+			else
+			{
+				GD.PushError("Enemy does not have ApplyPushback method.");
+			}
+			if (node.HasNode("HealthComponent"))
+			{
+				HealthComponent targetHealth = node.GetNode<HealthComponent>("HealthComponent");
+				if (targetHealth != null)
+				{
+					targetHealth.TakeDamage(1);
+					GD.Print("Player: Sword hit enemy, applying damage.");
+				}
+				else
+				{
+					GD.PushError("HealthComponent not found in enemy node.");
+				}
+			}
+			else
+			{
+				GD.PushError("Enemy does not have a HealthComponent.");
+			}
+		}
+		
+	}
+
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		

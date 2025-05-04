@@ -30,12 +30,21 @@ public partial class Idle_BigRed : State
 
     }
     public override void PhysicsUpdate(float delta) {
+        if(raycast.IsColliding() && raycast.GetCollider() is Player player)
+        {
+            GD.Print("ENEMY: Idle State - Raycast Collided with Player");
+            fsm.TransitionTo("Attack");
+        }
         
     }
     public override void HandleInput(InputEvent @event) { }
 
     public void _on_timer_timeout(){
-        GD.Print("ENEMY: Idle State - Timer Timeout");
-        fsm.TransitionTo("Run");
+        if(fsm.currentState == this)
+        {
+            GD.Print("ENEMY: Idle State - Timer Timeout");
+            fsm.TransitionTo("Run");
+        }
+        
     }
 }

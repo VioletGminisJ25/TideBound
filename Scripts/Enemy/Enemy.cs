@@ -41,7 +41,7 @@ public partial class Enemy : CharacterBody2D,DamageableObject
 		health = health != 0 ? health : 5;
 	}
 
-	public void ApplyPushback(Vector2 sourcePosition, float force, float duration)
+	public virtual void ApplyPushback(Vector2 sourcePosition, float force, float duration)
 	{
 		_pushDirection = (GlobalPosition - sourcePosition).Normalized();
 		PushForce = force; // Sobreescribe la fuerza base con la del impacto
@@ -53,7 +53,8 @@ public partial class Enemy : CharacterBody2D,DamageableObject
 	{
 		if (_isBeingPushed)
 		{
-			_velocity = _pushDirection * PushForce; // Usa la fuerza base del jugador aquí
+			_velocity = new Vector2(_pushDirection.X * PushForce * 3, Mathf.Lerp(Velocity.Y, _pushDirection.Y * PushForce, 90f * (float)delta));
+
 			_pushTimer += (float)delta;
 			if (_pushTimer >= PushDuration) // Usa la duración base del jugador aquí
 			{
@@ -62,7 +63,8 @@ public partial class Enemy : CharacterBody2D,DamageableObject
 				_velocity = Vector2.Zero;
 				GD.Print("Push ended");
 			}
-			Velocity += _velocity;
+
+			Velocity = _velocity;
 		}
 		if (!IsOnFloor())
 		{
@@ -72,6 +74,7 @@ public partial class Enemy : CharacterBody2D,DamageableObject
 		{
 			Velocity += new Vector2(0, 0);
 		}
+		MoveAndSlide();
 		// Aquí iría la lógica de movimiento normal del enemigo
 	}
 
