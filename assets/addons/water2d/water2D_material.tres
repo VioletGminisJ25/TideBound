@@ -160,4 +160,4 @@ shader_parameter/impact_pos_5 = Vector2(-1, -1)
 shader_parameter/impact_pos_6 = Vector2(-1, -1)
 shader_parameter/impact_pos_7 = Vector2(-1, -1)
 shader_parameter/scale = Vector2(5.15625, 1.91602)
-shader_parameter/current_time = 211.76
+shader_parameter/current_time = 17.96

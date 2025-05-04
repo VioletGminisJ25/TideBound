@@ -301,6 +301,7 @@ autostart = true
 [node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("enemy") groups=["Enemy"]]
 script = ExtResource("10_x8t3y")
 enemy = NodePath("../..")
+speed = 67.69
 
 [node name="Timer" type="Timer" parent="FSM/Run"]
 wait_time = 5.0

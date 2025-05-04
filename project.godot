@@ -13,6 +13,7 @@ config_version=5
 config/name="Tidebound"
 run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [audio]
@@ -22,6 +23,7 @@ driver/mix_rate=48000
 [autoload]
 
 MouseWithJoystick="*res://Scripts/Autoload/MouseWithJoystick.cs"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -31,6 +33,7 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -40,6 +43,10 @@ project/assembly_name="TideBound"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
@@ -158,6 +165,10 @@ mover_vertical_plus={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Objects"
+
+[physics]
+
+2d/run_on_separate_thread=true
 
 [rendering]
 

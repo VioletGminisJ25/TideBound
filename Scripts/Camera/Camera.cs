@@ -14,7 +14,7 @@ public partial class Camera : Camera2D
 		CharacterBody2D player = GetTree().GetNodesInGroup("Player")[0] as CharacterBody2D;
 		Vector2 position =  GlobalPosition;
 		position = player.GlobalPosition;
-		position.Y = player.GlobalPosition.Y;
+		position.Y = player.GlobalPosition.Y-20;
 		GlobalPosition = position;
 	}
 }

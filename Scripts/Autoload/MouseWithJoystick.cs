@@ -141,20 +141,13 @@ public partial class MouseWithJoystick : Node
             }
         }
 
-        Vector2 screenSize = GetViewport().GetVisibleRect().Size;
-        if (cursorSprite != null && cursorSprite.Texture != null)
+        if (playerNode != null)
         {
-            Vector2 textureSize = cursorSprite.Texture.GetSize();
-            Vector2 halfSize = textureSize / 2.0f;
-            Vector2 minBounds = halfSize;
-            Vector2 maxBounds = screenSize - halfSize;
-            if (maxBounds.X < minBounds.X) maxBounds.X = minBounds.X;
-            if (maxBounds.Y < minBounds.Y) maxBounds.Y = minBounds.Y;
+            Vector2 halfArea = new Vector2(ClampRadius, ClampRadius); // Define el área cuadrada alrededor del jugador
+            Vector2 minBounds = playerNode.GlobalPosition - halfArea;
+            Vector2 maxBounds = playerNode.GlobalPosition + halfArea;
+
             virtualCursorPosition = virtualCursorPosition.Clamp(minBounds, maxBounds);
-        }
-        else
-        {
-            virtualCursorPosition = virtualCursorPosition.Clamp(Vector2.Zero, screenSize);
         }
 
         // Actualiza la posición anterior del jugador
