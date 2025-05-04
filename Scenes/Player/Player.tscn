@@ -54,7 +54,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -454,7 +454,7 @@ states/jump/position = Vector2(261, -11)
 states/run/node = SubResource("AnimationNodeAnimation_i5acl")
 states/run/position = Vector2(581, 179)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_epg6k"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0u84n"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_esmjy"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_6tu5v"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0objx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_1e6p3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yb677"), "attack2", "idle", SubResource("AnimationNodeStateMachineTransition_i2g7t"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_t26db"), "run", "attack1", SubResource("AnimationNodeStateMachineTransition_fk5o5"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_4wape"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_spxdj"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_w71ue")]
-graph_offset = Vector2(-21, -9)
+graph_offset = Vector2(-117, -25)
 
 [sub_resource type="Gradient" id="Gradient_blt6w"]
 offsets = PackedFloat32Array(0, 0.735751)
@@ -470,6 +470,7 @@ fill_to = Vector2(0.794872, 0.0897436)
 collision_layer = 3
 collision_mask = 13
 script = ExtResource("1_xogcc")
+PushForce = 50.445
 animationTree = NodePath("AnimationTree")
 metadata/_edit_group_ = true
 
@@ -486,7 +487,7 @@ animatedSprite = NodePath("../AnimatedSprite2D")
 [node name="HurtBox" parent="." instance=ExtResource("6_t26db")]
 collision_layer = 2
 collision_mask = 4
-PushForce = 95.0
+PushForce = 21.98
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -1.5)
@@ -518,10 +519,12 @@ libraries = {
 }
 
 [node name="swordHit" type="Area2D" parent="AnimatedSprite2D"]
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/swordHit"]
 position = Vector2(20.3021, 5.27985)
 shape = SubResource("RectangleShape2D_2rd81")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -557,3 +560,4 @@ metadata/_custom_type_script = "uid://du6lygry8rxjj"
 
 [connection signal="body_entered" from="HurtBox" to="HurtBox" method="_on_body_entered"]
 [connection signal="area_entered" from="AnimatedSprite2D/swordHit" to="." method="_on_sword_hit_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/swordHit" to="." method="_on_sword_hit_body_entered"]

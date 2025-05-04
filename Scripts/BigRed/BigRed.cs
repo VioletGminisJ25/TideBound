@@ -8,6 +8,13 @@ public partial class BigRed : Enemy
     public BigRed():base()
     {
     }
+
+    public override void ApplyPushback(Vector2 sourcePosition, float force, float duration)
+    {
+        base.ApplyPushback(sourcePosition, force, duration);
+        GetNode<StateMachine>("FSM").TransitionTo("Hit");
+    }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{

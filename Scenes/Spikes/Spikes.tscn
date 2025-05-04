@@ -24,3 +24,4 @@ collision_mask = 6
 position = Vector2(-0.484848, 4)
 scale = Vector2(1, 1.33333)
 shape = SubResource("RectangleShape2D_4rqb0")
+debug_color = Color(0.968511, 0, 0.0216685, 0.42)

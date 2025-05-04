@@ -7,6 +7,8 @@ public partial class Run_BigRed : State
     // [Export] public RayCast2D raycast; // Keep if used elsewhere, otherwise remove
     [Export] public float speed = 100f; // Pixels per second
 
+    [Export] public RayCast2D raycast; // Keep if used elsewhere, otherwise remove
+
     private bool movingForward = true;
     private PathFollow2D pathFollow;
     private Path2D path;
@@ -86,11 +88,18 @@ public partial class Run_BigRed : State
 
     public void _on_timer_timeout()
     {
-        fsm.TransitionTo("Idle");
+        if(fsm.currentState == this)
+        {
+            GD.Print("ENEMY: Run State - Timer Timeout");
+            fsm.TransitionTo("Idle");
+        }
     }
 
     public override void PhysicsUpdate(float delta)
     {
+        if(raycast.IsColliding() && raycast.GetCollider() is Player player){
+            fsm.TransitionTo("Attack");
+        }
         if (pathFollow == null || path == null || path.Curve == null || !(enemy is CharacterBody2D character))
             return;
 
@@ -150,7 +159,7 @@ public partial class Run_BigRed : State
     {
         if (enemy.animatedSprite != null)
         {
-            enemy.animatedSprite.FlipH = isMovingForward;
+            enemy.animatedSprite.Scale = new Vector2(isMovingForward ? 1 : -1, 1);
         }
 
 
