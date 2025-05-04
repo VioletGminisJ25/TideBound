@@ -98,7 +98,7 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 ### 📅 1 de mayo de 2025
 
 
--**Conexion de HealthComponent y DamageComponent e Implementacion de pushback**: Se ha conectado el componente `HealthComponent` con el componente `DamageComponent` para que el jugador y los enemigos puedan recibir daño y aplicar efectos visuales al recibirlo. Este sistema permite que el jugador y los enemigos sean empujados hacia atrás al recibir daño, lo que añade una nueva capa de estrategia al combate. Por medio de un nuevo componente `DamageComponent` que se encarga de gestionar el retroceso al recibir daño. Este componente permite ajustar la fuerza y la dirección del retroceso, así como la duración del mismo.
+- **Conexion de HealthComponent y DamageComponent e Implementacion de pushback**: Se ha conectado el componente `HealthComponent` con el componente `DamageComponent` para que el jugador y los enemigos puedan recibir daño y aplicar efectos visuales al recibirlo. Este sistema permite que el jugador y los enemigos sean empujados hacia atrás al recibir daño, lo que añade una nueva capa de estrategia al combate. Por medio de un nuevo componente `DamageComponent` que se encarga de gestionar el retroceso al recibir daño. Este componente permite ajustar la fuerza y la dirección del retroceso, así como la duración del mismo.
   - **Problema encontrado:** : Cuando el personaje recibe daño solo le quita 1 de vida, cada enemigo tiene un daño especifico
 - **Impemetado imvulnerabilidad temporal**:Se ha añadido a la animacion de hit una inmunidad temporal al recibir daño. Esto permite que el jugador tenga un breve periodo de invulnerabilidad después de recibir daño, lo que le da la oportunidad de reaccionar y evitar más daño
 
@@ -106,15 +106,26 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 ### 📅 3 de mayo de 2025
 
 
--**Implementado shader y líquido dinamica al contacto**:
+- **Implementado shader y líquido dinamica al contacto**:
   - Se ha implementado un ácido que se mueve al contacto y el objetivo es que quite vida al jugador progresivamente al estar dentro
 
--**Implementado puntero custom y movimineto del puntero con mando para asi poder utilizar el gancho con el mando**
+- **Implementado puntero custom y movimineto del puntero con mando para asi poder utilizar el gancho con el mando**
   
 <details>
   <summary>Implementacion mecanica ácido</summary>
   
 https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
+</details>
+
+## 📅 4 de mayo de 2025
+- **Implementado sistema de atque**:Se ha implementado un sistema de ataque básico que permite al jugador atacar a los enemigos y aplicar daño. Este sistema incluye un área de ataque. A los enemigos se les ha añadido un estado Hit que les permite recibir daño y aplicar efectos visuales al recibirlo. Este sistema permite que el jugador y los enemigos sean empujados hacia atrás al recibir daño, lo que añade una nueva capa de estrategia al combate
+  - **Problema encontrado:** : Cuando el personaje recibe daño este no tiene un tiempo de invulnerabilidad, lo que hace que el jugador pueda recibir daño de forma continua.
+
+- **Se ha cambiado el fondo de la escena**: Se ha cambiado el fondo de una de las zonas de la escena del tutorial para que sea más atractivo visualmente
+- **Solucionado problema de jittering**: Se ha solucionado el problema de jittering causado por el movimiento suave de la cámara. Se han desactivado dos propiedades de la configurción **Ajustar Transformaciones de 2D a Pixeles** y **Ajustar Vertices 2D a Pixeles**.
+<details>
+  <summary>Fondo nuevo</summary>
+  <img src="imgs/fondo.png" width="400"/>
 </details>
 
 ## ✅ TO-DO LIST  
