@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db1o6vm7p1o7u"
-path="res://.godot/imported/Interrogation In 03.png-05cd49789d95a24a922b64c0d53ca21f.ctex"
+path="res://.godot/imported/Interrogation In 03.png-97a117cfcaa1b5deffb46a95c7f070c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dialogue/Interrogation/Interrogation In 03.png"
-dest_files=["res://.godot/imported/Interrogation In 03.png-05cd49789d95a24a922b64c0d53ca21f.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dialogue/Interrogation/Interrogation In 03.png"
+dest_files=["res://.godot/imported/Interrogation In 03.png-97a117cfcaa1b5deffb46a95c7f070c1.ctex"]
 
 [params]
 

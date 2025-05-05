@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck5n58to12cfu"
-path="res://.godot/imported/Dead Hit 01.png-6497dcda1040e0f13c46887dab5e04aa.ctex"
+path="res://.godot/imported/Dead Hit 01.png-a7c33a9e09048eb2e0a62490cd2f402f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/07-Dead Hit/Dead Hit 01.png"
-dest_files=["res://.godot/imported/Dead Hit 01.png-6497dcda1040e0f13c46887dab5e04aa.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/07-Dead Hit/Dead Hit 01.png"
+dest_files=["res://.godot/imported/Dead Hit 01.png-a7c33a9e09048eb2e0a62490cd2f402f.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgw10pmvlol8d"
-path="res://.godot/imported/Attack 1 02.png-52627f882eaa8f48307b84d1e2fb98f9.ctex"
+path="res://.godot/imported/Attack 1 02.png-cfd59470f17b3227affe9043827e797f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Sword Effects/24-Attack 1/Attack 1 02.png"
-dest_files=["res://.godot/imported/Attack 1 02.png-52627f882eaa8f48307b84d1e2fb98f9.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Sword Effects/24-Attack 1/Attack 1 02.png"
+dest_files=["res://.godot/imported/Attack 1 02.png-cfd59470f17b3227affe9043827e797f.ctex"]
 
 [params]
 

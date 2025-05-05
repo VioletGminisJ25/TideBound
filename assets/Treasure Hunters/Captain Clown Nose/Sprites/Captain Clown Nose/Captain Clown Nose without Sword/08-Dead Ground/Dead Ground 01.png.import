@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jf7d0x5iu58w"
-path="res://.godot/imported/Dead Ground 01.png-a6a2c4147a0a1ba6865c76bf87742dfd.ctex"
+path="res://.godot/imported/Dead Ground 01.png-81756f41ae64c69da546ff791262e74e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/08-Dead Ground/Dead Ground 01.png"
-dest_files=["res://.godot/imported/Dead Ground 01.png-a6a2c4147a0a1ba6865c76bf87742dfd.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/08-Dead Ground/Dead Ground 01.png"
+dest_files=["res://.godot/imported/Dead Ground 01.png-81756f41ae64c69da546ff791262e74e.ctex"]
 
 [params]
 

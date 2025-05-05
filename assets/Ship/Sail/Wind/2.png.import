@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buhin83p57vrn"
-path="res://.godot/imported/2.png-8f81a40c4b0d11777d0e4fe1b0ab9606.ctex"
+path="res://.godot/imported/2.png-8a8e3f6cf7f84ff4e8cf3a08d4547592.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ship/Sail/Wind/2.png"
-dest_files=["res://.godot/imported/2.png-8f81a40c4b0d11777d0e4fe1b0ab9606.ctex"]
+source_file="res://assets/Ship/Sail/Wind/2.png"
+dest_files=["res://.godot/imported/2.png-8a8e3f6cf7f84ff4e8cf3a08d4547592.ctex"]
 
 [params]
 

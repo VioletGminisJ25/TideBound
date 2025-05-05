@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2vx6o567n1js"
-path="res://.godot/imported/Hit Sword-sheet.png-99758fc04657e36264d2260345192e2a.ctex"
+path="res://.godot/imported/Hit Sword-sheet.png-83a8afc4e3f3ffed6c459b6602f54ce1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/14-Hit Sword/Hit Sword-sheet.png"
-dest_files=["res://.godot/imported/Hit Sword-sheet.png-99758fc04657e36264d2260345192e2a.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/14-Hit Sword/Hit Sword-sheet.png"
+dest_files=["res://.godot/imported/Hit Sword-sheet.png-83a8afc4e3f3ffed6c459b6602f54ce1.ctex"]
 
 [params]
 

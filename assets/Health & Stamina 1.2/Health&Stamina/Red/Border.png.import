@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bto0f7xed0cxo"
-path="res://.godot/imported/Border.png-c1bd50bc76c6f0b5a7fb164b4505f723.ctex"
+path="res://.godot/imported/Border.png-b5795aa72f8239d49a8a47feaa4675b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Health & Stamina 1.2/Health&Stamina/Red/Border.png"
-dest_files=["res://.godot/imported/Border.png-c1bd50bc76c6f0b5a7fb164b4505f723.ctex"]
+source_file="res://assets/Health & Stamina 1.2/Health&Stamina/Red/Border.png"
+dest_files=["res://.godot/imported/Border.png-b5795aa72f8239d49a8a47feaa4675b6.ctex"]
 
 [params]
 

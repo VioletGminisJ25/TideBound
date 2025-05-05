@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do1mps0dg2tpg"
-path="res://.godot/imported/5.png-7177e6d626780a2bbc759d7737b12599.ctex"
+path="res://.godot/imported/5.png-8ee22a7ca91d6bd639cb88eb32c3daf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ship/Sail/No Wind/5.png"
-dest_files=["res://.godot/imported/5.png-7177e6d626780a2bbc759d7737b12599.ctex"]
+source_file="res://assets/Ship/Sail/No Wind/5.png"
+dest_files=["res://.godot/imported/5.png-8ee22a7ca91d6bd639cb88eb32c3daf3.ctex"]
 
 [params]
 

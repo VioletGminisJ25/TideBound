@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5krx7mwwhq87"
-path="res://.godot/imported/Hit 02.png-53603bfe68ff2b18343dff229f2f67f8.ctex"
+path="res://.godot/imported/Hit 02.png-ef5171c979c301208d5c99146355ff54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/06-Hit/Hit 02.png"
-dest_files=["res://.godot/imported/Hit 02.png-53603bfe68ff2b18343dff229f2f67f8.ctex"]
+source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose without Sword/06-Hit/Hit 02.png"
+dest_files=["res://.godot/imported/Hit 02.png-ef5171c979c301208d5c99146355ff54.ctex"]
 
 [params]
 
