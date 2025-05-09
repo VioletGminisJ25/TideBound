@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1d63g8w1e2sl"
-path="res://.godot/imported/Fall 01.png-8251e08cfe6af1674751a8693c9daf2c.ctex"
+path="res://.godot/imported/Fall 01.png-0d5af04e1995ba775debf9b25c78a6d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Fall 01.png"
-dest_files=["res://.godot/imported/Fall 01.png-8251e08cfe6af1674751a8693c9daf2c.ctex"]
+source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Fall 01.png"
+dest_files=["res://.godot/imported/Fall 01.png-0d5af04e1995ba775debf9b25c78a6d9.ctex"]
 
 [params]
 

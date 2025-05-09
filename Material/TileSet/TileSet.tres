@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=14 format=3 uid="uid://8j210w2qgbcc"]
 
-[ext_resource type="Texture2D" uid="uid://cnn2w1mswphrp" path="res://assets/Jungle Asset Pack/jungle tileset/jungle tileset.png" id="1_0aevj"]
-[ext_resource type="Texture2D" uid="uid://bhikflvgr5dxy" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Tilesets/Platforms (32x32).png" id="1_132lv"]
-[ext_resource type="Texture2D" uid="uid://cwf355a43vwqi" path="res://assets/Jungle Asset Pack/jungle tileset/tiles.png" id="2_wcf0t"]
+[ext_resource type="Texture2D" uid="uid://cnn2w1mswphrp" path="res://Assets/Jungle Asset Pack/jungle tileset/jungle tileset.png" id="1_0aevj"]
+[ext_resource type="Texture2D" uid="uid://bhikflvgr5dxy" path="res://Assets/Treasure Hunters/Pirate Ship/Sprites/Tilesets/Platforms (32x32).png" id="1_132lv"]
+[ext_resource type="Texture2D" uid="uid://cwf355a43vwqi" path="res://Assets/Jungle Asset Pack/jungle tileset/tiles.png" id="2_wcf0t"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4v5o3"]
 polygon = PackedVector2Array(-8, 0.125, 8, 0, 8, -6.875, -8, -6.75)

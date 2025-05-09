@@ -1,26 +1,27 @@
-[gd_scene load_steps=38 format=4 uid="uid://dwu4pv3h1svyj"]
+[gd_scene load_steps=40 format=4 uid="uid://dwu4pv3h1svyj"]
 
 [ext_resource type="TileSet" uid="uid://8j210w2qgbcc" path="res://Material/TileSet/TileSet.tres" id="1_06b82"]
-[ext_resource type="Texture2D" uid="uid://dthy2wer334g6" path="res://assets/back/Sprite-0002.png" id="1_uqlrs"]
+[ext_resource type="Texture2D" uid="uid://dthy2wer334g6" path="res://Assets/back/Sprite-0002.png" id="1_uqlrs"]
 [ext_resource type="Script" uid="uid://cvp3xtucqo8mh" path="res://Scripts/UI/UI.cs" id="1_w3ot6"]
-[ext_resource type="Texture2D" uid="uid://b0hnke4llnicy" path="res://assets/Jungle Asset Pack/parallax background/plx-1.png" id="3_lul2f"]
-[ext_resource type="Texture2D" uid="uid://dqnp4tycluvdr" path="res://assets/Jungle Asset Pack/parallax background/plx-2.png" id="4_crq7o"]
-[ext_resource type="Texture2D" uid="uid://d0wo4riviievg" path="res://assets/Jungle Asset Pack/parallax background/plx-3.png" id="5_3d6kg"]
-[ext_resource type="Texture2D" uid="uid://b6xt7xcm4epsv" path="res://assets/Jungle Asset Pack/parallax background/plx-4.png" id="6_7metg"]
-[ext_resource type="Texture2D" uid="uid://bonwgi7an2lmq" path="res://assets/Chain/cade.png" id="6_spq4p"]
+[ext_resource type="Texture2D" uid="uid://b0hnke4llnicy" path="res://Assets/Jungle Asset Pack/parallax background/plx-1.png" id="3_lul2f"]
+[ext_resource type="Texture2D" uid="uid://dqnp4tycluvdr" path="res://Assets/Jungle Asset Pack/parallax background/plx-2.png" id="4_crq7o"]
+[ext_resource type="Texture2D" uid="uid://d0wo4riviievg" path="res://Assets/Jungle Asset Pack/parallax background/plx-3.png" id="5_3d6kg"]
+[ext_resource type="Texture2D" uid="uid://b6xt7xcm4epsv" path="res://Assets/Jungle Asset Pack/parallax background/plx-4.png" id="6_7metg"]
+[ext_resource type="Texture2D" uid="uid://bonwgi7an2lmq" path="res://Assets/Chain/cade.png" id="6_spq4p"]
 [ext_resource type="Script" uid="uid://dk7mvpqo7em8f" path="res://Scripts/Camera/Camera.cs" id="7_418l3"]
-[ext_resource type="Texture2D" uid="uid://dr8daoousp2ud" path="res://assets/Jungle Asset Pack/parallax background/plx-5.png" id="7_t18yi"]
+[ext_resource type="Texture2D" uid="uid://dr8daoousp2ud" path="res://Assets/Jungle Asset Pack/parallax background/plx-5.png" id="7_t18yi"]
 [ext_resource type="PackedScene" uid="uid://c5wxkdm4h2g5p" path="res://Scenes/Player/Player.tscn" id="8_h7mdq"]
-[ext_resource type="Texture2D" uid="uid://conb66orbjb7k" path="res://assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Village Props.png" id="8_htexa"]
+[ext_resource type="Texture2D" uid="uid://conb66orbjb7k" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/Texture/TX Village Props.png" id="8_htexa"]
 [ext_resource type="PackedScene" uid="uid://c22ygclklwfsm" path="res://Scenes/Barrel/Barrel.tscn" id="12_n5ptj"]
 [ext_resource type="PackedScene" uid="uid://dd7gkkdyy3b36" path="res://Scenes/Spikes/Spikes.tscn" id="13_77iba"]
 [ext_resource type="PackedScene" uid="uid://c7m1fecdodnd8" path="res://Scenes/BigRed/BigRed.tscn" id="14_67y36"]
-[ext_resource type="Texture2D" uid="uid://djuvidb5amkv8" path="res://assets/Particles/particles.png" id="15_hk4vc"]
-[ext_resource type="Material" uid="uid://1u68b05i1lkx" path="res://assets/addons/water2d/water2D_material.tres" id="16_spq4p"]
+[ext_resource type="Texture2D" uid="uid://djuvidb5amkv8" path="res://Assets/Particles/particles.png" id="15_hk4vc"]
+[ext_resource type="Material" uid="uid://1u68b05i1lkx" path="res://Assets/addons/water2d/water2D_material.tres" id="16_spq4p"]
 [ext_resource type="Script" uid="uid://7kwsqnvm4qmo" path="res://Scripts/LineRope/Rope.cs" id="17_3hula"]
-[ext_resource type="Texture2D" uid="uid://bb667vcap6oer" path="res://assets/addons/water2d/icon.png" id="17_8fhce"]
-[ext_resource type="Script" uid="uid://b5a7drn2phtrp" path="res://assets/addons/water2d/Water2D.gd" id="18_uqlrs"]
+[ext_resource type="Texture2D" uid="uid://bb667vcap6oer" path="res://Assets/addons/water2d/icon.png" id="17_8fhce"]
+[ext_resource type="Script" uid="uid://b5a7drn2phtrp" path="res://Assets/addons/water2d/Water2D.gd" id="18_uqlrs"]
 [ext_resource type="PackedScene" uid="uid://b1t0mk60ypsn6" path="res://Scenes/Chest/chest.tscn" id="19_8fhce"]
+[ext_resource type="Texture2D" uid="uid://16ws7ciriwmh" path="res://Assets/ELR-WindyLeafs/ELR_SpringlLeaf.png" id="22_2oprd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uqlrs"]
 
@@ -101,6 +102,13 @@ anim_offset_max = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fhce"]
 size = Vector2(63.0303, 34.9683)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6c81"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(104, 70, 1)
+gravity = Vector3(0, 98, 0)
+anim_offset_max = 1.0
 
 [node name="Level1" type="Node2D"]
 
@@ -253,11 +261,28 @@ tile_set = ExtResource("1_06b82")
 [node name="Decorations" type="Node2D" parent="."]
 
 [node name="Pozo" type="Sprite2D" parent="Decorations"]
-position = Vector2(187, 225)
+z_index = -1
+position = Vector2(248.095, 227.25)
 scale = Vector2(0.730769, 0.730769)
 texture = ExtResource("8_htexa")
 region_enabled = true
 region_rect = Rect2(32, 165, 87, 91)
+
+[node name="Flores" type="Sprite2D" parent="Decorations"]
+z_index = -2
+position = Vector2(306.095, 242.25)
+scale = Vector2(0.547619, 0.547619)
+texture = ExtResource("8_htexa")
+region_enabled = true
+region_rect = Rect2(869, 257, 88, 63)
+
+[node name="Flores2" type="Sprite2D" parent="Decorations"]
+z_index = -2
+position = Vector2(194.095, 243.25)
+scale = Vector2(0.547619, 0.547619)
+texture = ExtResource("8_htexa")
+region_enabled = true
+region_rect = Rect2(869, 257, 88, 63)
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 light_mask = 3
@@ -362,7 +387,7 @@ script = ExtResource("17_3hula")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Line", "Cursor") instance=ExtResource("8_h7mdq")]
 z_index = -1
-position = Vector2(237, 232)
+position = Vector2(351, 203)
 Line = NodePath("../Line2D")
 Cursor = NodePath("../cursor")
 
@@ -428,3 +453,12 @@ shape = SubResource("RectangleShape2D_8fhce")
 
 [node name="chest" parent="." instance=ExtResource("19_8fhce")]
 position = Vector2(560, 622)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+z_index = -3
+position = Vector2(410, 162)
+scale = Vector2(9.14205, 1.53543)
+amount = 13
+texture = ExtResource("22_2oprd")
+process_material = SubResource("ParticleProcessMaterial_p6c81")

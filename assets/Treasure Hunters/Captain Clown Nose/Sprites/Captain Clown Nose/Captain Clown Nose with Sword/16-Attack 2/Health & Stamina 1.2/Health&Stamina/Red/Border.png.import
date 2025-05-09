@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1w1a6begtv3o"
-path="res://.godot/imported/Border.png-7c765436d118824d2d97e3b39f41be6e.ctex"
+path="res://.godot/imported/Border.png-1d0f6b2fd73a7f7780a3a8155d6eda42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/16-Attack 2/Health & Stamina 1.2/Health&Stamina/Red/Border.png"
-dest_files=["res://.godot/imported/Border.png-7c765436d118824d2d97e3b39f41be6e.ctex"]
+source_file="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Captain Clown Nose/Captain Clown Nose with Sword/16-Attack 2/Health & Stamina 1.2/Health&Stamina/Red/Border.png"
+dest_files=["res://.godot/imported/Border.png-1d0f6b2fd73a7f7780a3a8155d6eda42.ctex"]
 
 [params]
 

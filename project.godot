@@ -23,7 +23,6 @@ driver/mix_rate=48000
 [autoload]
 
 MouseWithJoystick="*res://Scripts/Autoload/MouseWithJoystick.cs"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 

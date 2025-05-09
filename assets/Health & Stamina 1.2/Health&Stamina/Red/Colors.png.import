@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brd11f2wfya0"
-path="res://.godot/imported/Colors.png-c87b698762f1c482b4890b99c369817a.ctex"
+path="res://.godot/imported/Colors.png-4914d186dbf1f723f422cab26d0b6835.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Health & Stamina 1.2/Health&Stamina/Red/Colors.png"
-dest_files=["res://.godot/imported/Colors.png-c87b698762f1c482b4890b99c369817a.ctex"]
+source_file="res://Assets/Health & Stamina 1.2/Health&Stamina/Red/Colors.png"
+dest_files=["res://.godot/imported/Colors.png-4914d186dbf1f723f422cab26d0b6835.ctex"]
 
 [params]
 
