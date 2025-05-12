@@ -128,6 +128,16 @@ https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
   <img src="imgs/fondo.png" width="400"/>
 </details>
 
+# 12 de Mayo de 2025
+- **Implementando nuevo enemigo Pinky Star**:
+  - Se ha implementado un nuevo enemigo llamado Pinky Star. Este enemigo es un tipo de enemigo más agresivo que los otros. Se han añadido animaciones de ataque e idle y se esta diseñando la maquina de estados del mismo:
+    <details>
+      <summary>PinkyStar</summary>
+      <img src="imgs/pinkystar.png" width="400"/>
+    </details>
+- **Continuando de diseñar niveles**:
+  - Se esta terminando de diseñar la zona inicial del juego.
+
 ## ✅ TO-DO LIST  
 
 ### 🔧 Mecánicas del Personaje
