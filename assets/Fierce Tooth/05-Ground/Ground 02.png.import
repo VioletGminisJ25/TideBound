@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckx53ie63b8ik"
-path="res://.godot/imported/Ground 02.png-3b3695f658392a535afbbded1d0b4ffe.ctex"
+path="res://.godot/imported/Ground 02.png-3afa8b25c29c989beff031a28610e8a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fierce Tooth/05-Ground/Ground 02.png"
-dest_files=["res://.godot/imported/Ground 02.png-3b3695f658392a535afbbded1d0b4ffe.ctex"]
+source_file="res://Assets/Fierce Tooth/05-Ground/Ground 02.png"
+dest_files=["res://.godot/imported/Ground 02.png-3afa8b25c29c989beff031a28610e8a1.ctex"]
 
 [params]
 

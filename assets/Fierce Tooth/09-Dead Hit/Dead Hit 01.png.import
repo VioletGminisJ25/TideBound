@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1js6wosenuf7"
-path="res://.godot/imported/Dead Hit 01.png-aab759bfbcff935648ebf5db253932db.ctex"
+path="res://.godot/imported/Dead Hit 01.png-3b7d64152696476dd429c75b86d96f49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fierce Tooth/09-Dead Hit/Dead Hit 01.png"
-dest_files=["res://.godot/imported/Dead Hit 01.png-aab759bfbcff935648ebf5db253932db.ctex"]
+source_file="res://Assets/Fierce Tooth/09-Dead Hit/Dead Hit 01.png"
+dest_files=["res://.godot/imported/Dead Hit 01.png-3b7d64152696476dd429c75b86d96f49.ctex"]
 
 [params]
 

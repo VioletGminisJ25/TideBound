@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8brnt0p807e2"
-path="res://.godot/imported/Attack Effect 04.png-1816cb707b9b0309a3bd80c278dcadaf.ctex"
+path="res://.godot/imported/Attack Effect 04.png-eac0dff3684b68077d56f877a7af76fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Pink Star/11-Attack Effect/Attack Effect 04.png"
-dest_files=["res://.godot/imported/Attack Effect 04.png-1816cb707b9b0309a3bd80c278dcadaf.ctex"]
+source_file="res://Assets/Pink Star/11-Attack Effect/Attack Effect 04.png"
+dest_files=["res://.godot/imported/Attack Effect 04.png-eac0dff3684b68077d56f877a7af76fa.ctex"]
 
 [params]
 

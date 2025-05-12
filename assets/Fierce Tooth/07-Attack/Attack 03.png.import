@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://duv0he6xfcc6n"
-path="res://.godot/imported/Attack 03.png-1291fc372816d43e910f95c35024a793.ctex"
+path="res://.godot/imported/Attack 03.png-b25b94857ec12046170b8abe13e20672.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fierce Tooth/07-Attack/Attack 03.png"
-dest_files=["res://.godot/imported/Attack 03.png-1291fc372816d43e910f95c35024a793.ctex"]
+source_file="res://Assets/Fierce Tooth/07-Attack/Attack 03.png"
+dest_files=["res://.godot/imported/Attack 03.png-b25b94857ec12046170b8abe13e20672.ctex"]
 
 [params]
 

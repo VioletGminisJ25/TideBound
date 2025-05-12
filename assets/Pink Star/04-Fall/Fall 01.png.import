@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db0d5bemlusqm"
-path="res://.godot/imported/Fall 01.png-77a80801d20ec516505050a2f302d427.ctex"
+path="res://.godot/imported/Fall 01.png-999ce5c8a741d9219edb7ed885635faf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Pink Star/04-Fall/Fall 01.png"
-dest_files=["res://.godot/imported/Fall 01.png-77a80801d20ec516505050a2f302d427.ctex"]
+source_file="res://Assets/Pink Star/04-Fall/Fall 01.png"
+dest_files=["res://.godot/imported/Fall 01.png-999ce5c8a741d9219edb7ed885635faf.ctex"]
 
 [params]
 

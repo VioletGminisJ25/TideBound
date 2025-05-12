@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj5y5c6v85tr1"
-path="res://.godot/imported/Run 05.png-dcc78d12ccc83bc502e0d7797128bd78.ctex"
+path="res://.godot/imported/Run 05.png-49d8d0129e49aebdc9bffdf0a34e6274.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fierce Tooth/02-Run/Run 05.png"
-dest_files=["res://.godot/imported/Run 05.png-dcc78d12ccc83bc502e0d7797128bd78.ctex"]
+source_file="res://Assets/Fierce Tooth/02-Run/Run 05.png"
+dest_files=["res://.godot/imported/Run 05.png-49d8d0129e49aebdc9bffdf0a34e6274.ctex"]
 
 [params]
 

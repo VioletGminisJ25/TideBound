@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn8tk4at0gvxc"
-path="res://.godot/imported/Dead Ground 04.png-b9589f6938feb6bcee3f00b765280607.ctex"
+path="res://.godot/imported/Dead Ground 04.png-8dc014b1028c48fb663528297de1c5f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Pink Star/10-Dead Ground/Dead Ground 04.png"
-dest_files=["res://.godot/imported/Dead Ground 04.png-b9589f6938feb6bcee3f00b765280607.ctex"]
+source_file="res://Assets/Pink Star/10-Dead Ground/Dead Ground 04.png"
+dest_files=["res://.godot/imported/Dead Ground 04.png-8dc014b1028c48fb663528297de1c5f8.ctex"]
 
 [params]
 

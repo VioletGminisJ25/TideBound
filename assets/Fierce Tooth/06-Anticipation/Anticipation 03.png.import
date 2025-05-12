@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wvc52idnswgq"
-path="res://.godot/imported/Anticipation 03.png-0efd1630415b4d3c55c44cb58a44cbaa.ctex"
+path="res://.godot/imported/Anticipation 03.png-77d692c3096dfb1f08eea883c3f9712c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fierce Tooth/06-Anticipation/Anticipation 03.png"
-dest_files=["res://.godot/imported/Anticipation 03.png-0efd1630415b4d3c55c44cb58a44cbaa.ctex"]
+source_file="res://Assets/Fierce Tooth/06-Anticipation/Anticipation 03.png"
+dest_files=["res://.godot/imported/Anticipation 03.png-77d692c3096dfb1f08eea883c3f9712c.ctex"]
 
 [params]
 

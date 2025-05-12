@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgypvk2hpqaqr"
-path="res://.godot/imported/Anticipation 03.png-8a98f792103d038fb332f3e406ef5eff.ctex"
+path="res://.godot/imported/Anticipation 03.png-1f2d8ba363baf58f0e97f26188b07e73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Crabby/06-Anticipation/Anticipation 03.png"
-dest_files=["res://.godot/imported/Anticipation 03.png-8a98f792103d038fb332f3e406ef5eff.ctex"]
+source_file="res://Assets/Crabby/06-Anticipation/Anticipation 03.png"
+dest_files=["res://.godot/imported/Anticipation 03.png-1f2d8ba363baf58f0e97f26188b07e73.ctex"]
 
 [params]
 

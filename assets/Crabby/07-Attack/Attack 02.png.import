@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d21rwi6k2s1xy"
-path="res://.godot/imported/Attack 02.png-6544cb19f235078f62c5cce85a4d3b9a.ctex"
+path="res://.godot/imported/Attack 02.png-666e395a17d9baf3dcd64f9e05b823ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Crabby/07-Attack/Attack 02.png"
-dest_files=["res://.godot/imported/Attack 02.png-6544cb19f235078f62c5cce85a4d3b9a.ctex"]
+source_file="res://Assets/Crabby/07-Attack/Attack 02.png"
+dest_files=["res://.godot/imported/Attack 02.png-666e395a17d9baf3dcd64f9e05b823ee.ctex"]
 
 [params]
 

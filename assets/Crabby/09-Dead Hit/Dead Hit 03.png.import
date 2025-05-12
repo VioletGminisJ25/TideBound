@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7jty240bfpe0"
-path="res://.godot/imported/Dead Hit 03.png-cefd7779aaa06315015ac94cb091aea5.ctex"
+path="res://.godot/imported/Dead Hit 03.png-a99133fedbf625044954357a44d10a8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Crabby/09-Dead Hit/Dead Hit 03.png"
-dest_files=["res://.godot/imported/Dead Hit 03.png-cefd7779aaa06315015ac94cb091aea5.ctex"]
+source_file="res://Assets/Crabby/09-Dead Hit/Dead Hit 03.png"
+dest_files=["res://.godot/imported/Dead Hit 03.png-a99133fedbf625044954357a44d10a8a.ctex"]
 
 [params]
 

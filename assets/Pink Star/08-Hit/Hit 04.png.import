@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://iciuh2m7pc57"
-path="res://.godot/imported/Hit 04.png-40dd572e614fdbbe38b69705fd3220b6.ctex"
+path="res://.godot/imported/Hit 04.png-76dbdf834eeaa3122dce30a2f708fe54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Pink Star/08-Hit/Hit 04.png"
-dest_files=["res://.godot/imported/Hit 04.png-40dd572e614fdbbe38b69705fd3220b6.ctex"]
+source_file="res://Assets/Pink Star/08-Hit/Hit 04.png"
+dest_files=["res://.godot/imported/Hit 04.png-76dbdf834eeaa3122dce30a2f708fe54.ctex"]
 
 [params]
 
