@@ -117,7 +117,7 @@ Tidebound es un metroidvania en desarrollo con mecánicas de exploración, comba
 https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
 </details>
 
-## 📅 4 de mayo de 2025
+### 📅 4 de mayo de 2025
 - **Implementado sistema de atque**:Se ha implementado un sistema de ataque básico que permite al jugador atacar a los enemigos y aplicar daño. Este sistema incluye un área de ataque. A los enemigos se les ha añadido un estado Hit que les permite recibir daño y aplicar efectos visuales al recibirlo. Este sistema permite que el jugador y los enemigos sean empujados hacia atrás al recibir daño, lo que añade una nueva capa de estrategia al combate
   - **Problema encontrado:** : Cuando el personaje recibe daño este no tiene un tiempo de invulnerabilidad, lo que hace que el jugador pueda recibir daño de forma continua.
 
@@ -128,7 +128,7 @@ https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
   <img src="imgs/fondo.png" width="400"/>
 </details>
 
-# 12 de Mayo de 2025
+### 📅  12 de Mayo de 2025
 - **Implementando nuevo enemigo Pinky Star**:
   - Se ha implementado un nuevo enemigo llamado Pinky Star. Este enemigo es un tipo de enemigo más agresivo que los otros. Se han añadido animaciones de ataque e idle y se esta diseñando la maquina de estados del mismo:
     <details>
