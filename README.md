@@ -138,6 +138,11 @@ https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
 - **Continuando de diseñar niveles**:
   - Se esta terminando de diseñar la zona inicial del juego.
 
+### 📅 13 de Mayo de 2025
+- **Se ha implementado sistema de zoom de camara por zonas**:
+  - Se ha implementado un sistema de zoom de camara por zonas. Cuando el player esta en la zona, el zoom se ajusta a la zona. Cuando el player sale de la zona, el zoom se restaura a su tamaño normal. Todo eso con una animación de zoom.
+- **Se ha implemetando un fundido con tweens para cuando se topa el jugador con un pinncho**
+- **Se ha añadido un nuevo fondo para la zona**
 ## ✅ TO-DO LIST  
 
 ### 🔧 Mecánicas del Personaje
