@@ -9,13 +9,29 @@ public partial class DamageComponent : Area2D
 	[Export] public float PushForce = 100.0f;
 	[Export] public float PushDuration = 0.2f;
 	[Signal] public delegate void TakeDamageEventHandler(float DamageAmount);
+	private FadeEffect _fadeEffect;
+	private Marker2D _respawnMarker;
 
+
+	public override void _Ready()
+	{
+		_fadeEffect = GetNode<FadeEffect>("/root/Level1/CanvasLayer/ColorRect");
+		if (_fadeEffect == null)
+		{
+			GD.PushError("FadeEffect not found in DamageComponent node.");
+		}
+	}
 
 	private void _on_body_entered(Node2D body)
 	{
 		if(body.IsInGroup("Spikes")){
 			GD.Print("Spikes: Entity Entered");
-			GetParent<Node2D>().GlobalPosition = body.GetParent().GetNode<Marker2D>("Marker2D").GlobalPosition;
+			_respawnMarker =body.GetParent().GetNode<Marker2D>("Marker2D");
+			if (_fadeEffect != null)
+			{
+				_fadeEffect.FadedToBlack += OnFadedToBlack;
+				_fadeEffect.FadeToBlack(); // Iniciar fundido
+			}
 			return;
 		}
 		if (body.IsInGroup("Enemy"))
@@ -35,5 +51,18 @@ public partial class DamageComponent : Area2D
 		}
 		
 		
+	}
+	private void OnFadedToBlack()
+	{
+		// Reposicionar jugador al marker
+		if ( _respawnMarker != null)
+		{
+			GetParent<Node2D>().GlobalPosition = _respawnMarker.GlobalPosition;
+			GD.Print("DamageComponent: Player repositioned after fade");
+		}
+
+		// Desconectar señal y hacer fundido de regreso
+		_fadeEffect.FadedToBlack -= OnFadedToBlack;
+		_fadeEffect.FadeFromBlack();
 	}
 }
