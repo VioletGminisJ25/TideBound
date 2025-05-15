@@ -143,6 +143,15 @@ https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
   - Se ha implementado un sistema de zoom de camara por zonas. Cuando el player esta en la zona, el zoom se ajusta a la zona. Cuando el player sale de la zona, el zoom se restaura a su tamaño normal. Todo eso con una animación de zoom.
 - **Se ha implemetando un fundido con tweens para cuando se topa el jugador con un pinncho**
 - **Se ha añadido un nuevo fondo para la zona**
+- ### 📅 15 de Mayo de 2025
+- **Se ha finalizado de implementar y crear el nuevo enemigo Pinky Star**:
+  - Se ha implementado su maquina de estados y su animación.
+  - Se ha creado un nuevo script de Enemy llamado PinkyStar.cs.
+  - Se ha creado un nuevo script de StateMachine llamado PinkyStar.cs.
+  - Se ha creado un nuevo script de State llamado PinkyStar_Idle.cs.
+  - Se ha creado un nuevo script de State llamado PinkyStar_Run.cs.
+  - Se ha creado un nuevo script de State llamado PikyStar_Hit.cs.
+  - Se ha creado un nuevo script de State llamado PikyStar_Attack.cs.
 ## ✅ TO-DO LIST  
 
 ### 🔧 Mecánicas del Personaje
