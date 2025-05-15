@@ -27,7 +27,6 @@ public partial class Hit_BigRed : State
     public override void HandleInput(InputEvent @event) { }
 
     public void _on_timer_timeout(){
-        GD.Print("ENEMY: Hit State - Timer Timeout");
         fsm.TransitionTo("Run");
     }
 }

@@ -17,7 +17,6 @@ public partial class Idle_BigRed : State
         }
         else
         {
-            GD.PushError($"Enemy '{enemy.Name}' requires a Timer node named 'Timer' for the Run state.");
             fsm.TransitionTo("Idle"); // Or an error state
             return;
         }
@@ -32,7 +31,6 @@ public partial class Idle_BigRed : State
     public override void PhysicsUpdate(float delta) {
         if(raycast.IsColliding() && raycast.GetCollider() is Player player)
         {
-            GD.Print("ENEMY: Idle State - Raycast Collided with Player");
             fsm.TransitionTo("Attack");
         }
         
@@ -42,7 +40,6 @@ public partial class Idle_BigRed : State
     public void _on_timer_timeout(){
         if(fsm.currentState == this)
         {
-            GD.Print("ENEMY: Idle State - Timer Timeout");
             fsm.TransitionTo("Run");
         }
         

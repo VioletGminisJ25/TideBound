@@ -18,7 +18,6 @@ public partial class Run_BigRed : State
 
     public override void Enter()
     {
-        GD.Print("ENEMY: Run State - Enter");
 
         Timer timer = GetNodeOrNull<Timer>("Timer");
         if (timer != null)
@@ -74,7 +73,6 @@ public partial class Run_BigRed : State
 
     public override void Exit()
     {
-        GD.Print("ENEMY: Run State - Exit");
         if (enemy is CharacterBody2D character)
         {
             character.Velocity = Vector2.Zero;
@@ -90,7 +88,6 @@ public partial class Run_BigRed : State
     {
         if(fsm.currentState == this)
         {
-            GD.Print("ENEMY: Run State - Timer Timeout");
             fsm.TransitionTo("Idle");
         }
     }

@@ -255,7 +255,7 @@ size = Vector2(20, 22.5)
 z_index = -1
 collision_layer = 4
 script = ExtResource("1_nsvnc")
-Health = 5
+Health = 3
 damage = 5.0
 collisionShape = NodePath("CollisionShape2D")
 animatedSprite = NodePath("AnimatedSprite2D")
@@ -319,7 +319,6 @@ enemy = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="FSM/Hit"]
 wait_time = 0.5
-autostart = true
 
 [node name="HurtBox" parent="." instance=ExtResource("13_md1id")]
 collision_layer = 4
