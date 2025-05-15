@@ -36,6 +36,11 @@ public partial class Enemy : CharacterBody2D,DamageableObject
 	[Export]
 	public AnimatedSprite2D animatedSprite;
 
+	[Export]
+	public AnimationTree animationTree;
+
+
+
 	public Enemy()
 	{
 		health = health != 0 ? health : 5;
