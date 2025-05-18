@@ -158,6 +158,7 @@ https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
   - Se ha implementado su animacion en la maquina de estados y se ha hecho unas particulas de explosion en el enemigo que muere.
 
 - **Se ha implementado mechanismo de daño con el agua toxica**
+- **Se ha implementado el menu principal** 
 ## ✅ TO-DO LIST  
 
 ### 🔧 Mecánicas del Personaje
