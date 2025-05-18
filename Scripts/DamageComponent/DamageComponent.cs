@@ -25,7 +25,6 @@ public partial class DamageComponent : Area2D
 	private void _on_body_entered(Node2D body)
 	{
 		if(body.IsInGroup("Spikes")){
-			GD.Print("Spikes: Entity Entered");
 			_respawnMarker =body.GetParent().GetNode<Marker2D>("Marker2D");
 			if (_fadeEffect != null)
 			{
@@ -40,7 +39,6 @@ public partial class DamageComponent : Area2D
 			{
 				DamageAmount = enemy.damage;
 			}
-			GD.Print("DamageComponent: Entity Entered");
 			// Verificar si el cuerpo tiene un HealthComponent
 			if (GetParent().HasNode("HealthComponent") && GetParent().GetNode("HealthComponent") is HealthComponent targetHealth)
 			{
@@ -61,7 +59,6 @@ public partial class DamageComponent : Area2D
 	{
 		if (area.IsInGroup("Water"))
 		{
-			GD.Print("DamageComponent: Water Exited");
 			if (GetParent().HasMethod("switchToWater"))
 			{
 				GetParent<Node2D>().CallDeferred("switchToWater");
@@ -75,7 +72,6 @@ public partial class DamageComponent : Area2D
 	}
 	public void _on_area_entered(Area2D area)
 	{
-		GD.Print("DamageComponent: Water Entered");
 		if (area.IsInGroup("Water"))
 		{
 			if (GetParent().HasMethod("switchToWater"))

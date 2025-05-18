@@ -6,7 +6,7 @@ public partial class UI : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        var scene = GD.Load<PackedScene>("res://Scenes/Menu/menu.tscn");
+        var scene = GD.Load<PackedScene>("res://Scenes/UI/ui.tscn");
         var instance = scene.Instantiate();
         AddChild(instance);
     }

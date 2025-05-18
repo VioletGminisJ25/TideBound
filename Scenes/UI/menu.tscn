@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6dhjjxjfcuwb"]
+
+[ext_resource type="Script" uid="uid://jwvmkj0m0w4q" path="res://Scripts/Menu/Menu.cs" id="2_t1b1y"]
+[ext_resource type="Texture2D" uid="uid://dhu3grcuct21l" path="res://Assets/Fonts/ChatGPT Image 18 may 2025, 23_05_07.png" id="2_uk6bn"]
+[ext_resource type="Texture2D" uid="uid://dap6urbs3hxa0" path="res://Assets/Fonts/ChatGPT Image 18 may 2025, 23_08_41.png" id="3_wuk0b"]
+[ext_resource type="FontFile" uid="uid://6ecrsgdhjdr1" path="res://Assets/Fonts/MightySouly-lxggD.ttf" id="16_pu2cx"]
+
+[sub_resource type="Theme" id="Theme_pu2cx"]
+default_font = ExtResource("16_pu2cx")
+default_font_size = 201
+LinkButton/colors/font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_t1b1y"]
+colors = PackedColorArray(14.3647, 6.16471, 0.396078, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tjcm1"]
+gradient = SubResource("Gradient_t1b1y")
+width = 12
+height = 12
+fill = 1
+fill_from = Vector2(0.478632, 0.444444)
+fill_to = Vector2(0.679487, 0.67094)
+
+[sub_resource type="Curve" id="Curve_tjcm1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.916667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ugp1d"]
+curve = SubResource("Curve_tjcm1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ugp1d"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(925.13, 178.783, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_ugp1d")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb4ur"]
+atlas = ExtResource("3_wuk0b")
+region = Rect2(166, 124, 692, 210)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1b1y"]
+atlas = ExtResource("3_wuk0b")
+region = Rect2(173, 634, 682, 188)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pu2cx")
+script = ExtResource("2_t1b1y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uk6bn")
+expand_mode = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(966, 538)
+rotation = 3.14159
+scale = Vector2(1.0368, -3.00335)
+amount = 200
+texture = SubResource("GradientTexture2D_tjcm1")
+lifetime = 5.0
+randomness = 0.1
+visibility_rect = Rect2(-925.13, -178.783, 1850.26, 357.565)
+process_material = SubResource("ParticleProcessMaterial_ugp1d")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -477.0
+offset_right = 480.0
+offset_bottom = -267.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.566326, 0.566326)
+texture_normal = SubResource("AtlasTexture_rb4ur")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -300.0
+offset_right = 480.0
+offset_bottom = -97.9999
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.566326, 0.566326)
+texture_normal = SubResource("AtlasTexture_t1b1y")
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(0.403922, 0.65098, 0.270588, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -367.5
+offset_top = -837.0
+offset_right = 367.5
+offset_bottom = -591.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "TideBoud"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_quit_button_2_pressed"]

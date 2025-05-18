@@ -14,18 +14,24 @@ public partial class MouseWithJoystick : Node
 
     public Texture2D CustomCursorTexture;
 
-    private Vector2 virtualCursorPosition;
+    public Vector2 virtualCursorPosition;
     private Sprite2D cursorSprite;
     private float inactivityTimer = 0f;
     private float InactivityTime = 2f; // Tiempo antes de ocultar por inactividad
 
-    private Node2D playerNode;
+    public Node2D playerNode;
     private Vector2 previousPlayerPosition;
 
     public Vector2 VirtualCursorPosition => virtualCursorPosition;
 
     public override void _Ready()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+
         CustomCursorTexture = GD.Load<Texture2D>("res://Assets/Crosshair/crosshair.png");
 
         var players = GetTree().GetNodesInGroup("Player");
@@ -52,18 +58,26 @@ public partial class MouseWithJoystick : Node
                 Centered = true,
             };
             cursorSprite.ZIndex = 1000;
-            cursorSprite.Scale = new Vector2(0.75f, 0.75f); 
+            cursorSprite.Scale = new Vector2(0.75f, 0.75f);
+
             AddChild(cursorSprite);
             cursorSprite.GlobalPosition = virtualCursorPosition;
-            cursorSprite.Visible = true; 
+            cursorSprite.Visible = true;
         }
     }
 
+
     private bool IsUsingJoystick = false; 
     private bool IsUsingMouse = false;
+    public bool inmenu = false;
+
 
     public override void _Process(double delta)
     {
+        if (inmenu)
+        {
+            return;
+        }
         Vector2 joystickInput = GetJoystickMovement();
         Vector2 mouseDelta = Input.GetLastMouseVelocity();
 

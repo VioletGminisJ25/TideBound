@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Numerics;
 
 public partial class Attack_BigRed : State
 {
@@ -16,15 +17,14 @@ public partial class Attack_BigRed : State
         
     }
     public override void PhysicsUpdate(float delta) {
-    //     if(raycast.GetCollider() is not Player player)
-    //     {
-    //         GD.Print("ENEMY: Attack State - Raycast Collided with Player");
-    //         fsm.TransitionTo("Idle");
-    //     }
-        if(raycast.IsColliding() && raycast.GetCollider() is Player player)
+        if (raycast.IsColliding() && raycast.GetCollider() is Player player)
         {
-            GD.Print("ENEMY: Attack State - Raycast Collided with Player");
             player.CallDeferred("ApplyPushback", enemy.GlobalPosition, enemy.PushForce, enemy.PushDuration);
+            HealthComponent targetHealth = player.GetNodeOrNull<HealthComponent>("HealthComponent");
+            if (targetHealth != null)
+            {
+                targetHealth.TakeDamage(int.Parse(enemy.damage.ToString()));
+            }
         }
       }
     public override void HandleInput(InputEvent @event) { }
@@ -33,18 +33,11 @@ public partial class Attack_BigRed : State
     {
         if(fsm.currentState == this)
         {
-            GD.Print("ENEMY: Attack State - Timer Timeout");
             fsm.TransitionTo("Idle");
         }
     }
 
     public void _on_animated_sprite_2d_animation_finished(string animationName)
-    {
-        // if (animationName == "attack")
-        // {
-        //     GD.Print("ENEMY: Attack State - Animation Finished");
-        //     fsm.TransitionTo("Idle");
-        // }
-    }
+    {}
 
 }

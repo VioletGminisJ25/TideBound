@@ -6,7 +6,6 @@ public partial class Hit_BigRed : State
     [Export] Enemy enemy;
 
     public override void Enter() {
-        GD.Print("ENEMY: Hit State");
         enemy.animatedSprite.Play("hit");
         Timer timer = GetNodeOrNull<Timer>("Timer");
         if (timer != null)

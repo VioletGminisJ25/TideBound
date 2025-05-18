@@ -8,7 +8,6 @@ public partial class Idle_BigRed : State
 
     public override void Enter() {
         raycast.Enabled = true;
-        GD.Print("ENEMY: Idle State");
         enemy.animatedSprite.Play("idle");
         Timer timer = GetNodeOrNull<Timer>("Timer");
         if (timer != null)

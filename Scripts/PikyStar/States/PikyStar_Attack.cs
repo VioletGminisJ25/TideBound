@@ -43,7 +43,6 @@ public partial class PikyStar_Attack : State
     {
         if (fsm.currentState == this)
         {
-            GD.Print("ENEMY: Attack State - Timer Timeout");
             fsm.TransitionTo("Idle");
         }
     }

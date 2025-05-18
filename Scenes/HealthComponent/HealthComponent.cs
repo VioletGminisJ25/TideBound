@@ -9,6 +9,10 @@ public partial class HealthComponent : Node
     [Signal] public delegate void HealthChangedEventHandler(int newHealth);
     [Signal] public delegate void ObjectDestroyedEventHandler();
 
+
+    public override void _Ready()
+    {
+    }
     public void TakeDamage(int amount)
     {
         Health -= amount;

@@ -12,7 +12,6 @@ public partial class PinkyStar_Idle : State
     {
         animationMachine = (AnimationNodeStateMachinePlayback)enemy.animationTree.Get("parameters/playback");
         raycast.Enabled = true;
-        GD.Print("ENEMY: Idle State");
         animationMachine.Travel("idle");
         Timer timer = GetNodeOrNull<Timer>("Timer");
         if (timer != null)
@@ -39,7 +38,6 @@ public partial class PinkyStar_Idle : State
     {
         if (raycast.IsColliding() && raycast.GetCollider() is Player player)
         {
-            GD.Print("ENEMY: Idle State - Raycast Collided with Player");
             fsm.TransitionTo("Attack");
         }
 
@@ -50,7 +48,6 @@ public partial class PinkyStar_Idle : State
     {
         if (fsm.currentState == this)
         {
-            GD.Print("ENEMY: Idle State - Timer Timeout");
             fsm.TransitionTo("Run");
         }
 

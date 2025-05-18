@@ -30,9 +30,13 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 	public Timer _waterCooldown;
 
 	private bool died = false;
+	private TextureProgressBar progressBar;
+
 
 	public override void _Ready()
 	{
+
+		progressBar = GetNode<TextureProgressBar>("/root/Level1/Menu/UI/TextureProgressBar");
 		fsm = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		_healthComponent = GetNodeOrNull<HealthComponent>("HealthComponent");
 		if (_healthComponent == null)
@@ -59,7 +63,6 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 				if (targetHealth != null)
 				{
 					targetHealth.TakeDamage(1);
-					GD.Print("Player: Sword hit enemy, applying damage.");
 				}
 				else
 				{
@@ -92,7 +95,6 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 				if (targetHealth != null)
 				{
 					targetHealth.TakeDamage(1);
-					GD.Print("Player: Sword hit enemy, applying damage.");
 				}
 				else
 				{
@@ -109,7 +111,7 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 
 
 	public override void _PhysicsProcess(double delta)
-	{	
+	{
 		if (died)
 		{
 			fsm.Travel("dead");
@@ -126,7 +128,6 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 				_isBeingPushed = false;
 				_pushTimer = 0.0f;
 				_velocity = Vector2.Zero;
-				GD.Print("Push ended");
 			}
 
 			Velocity = _velocity;
@@ -177,8 +178,14 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 		GetNode("MovementComponent").QueueFree();
 		GetNode("HookComponent").QueueFree();
 		GetNode("HurtBox").QueueFree();
+		this.SetCollisionMaskValue(3, false);
 		died = true;
 
+	}
+	public void _on_health_component_health_changed(int newHealth)
+	{
+		GD.Print("Player: Health changed to " + newHealth);
+		progressBar.Value = newHealth;
 	}
 
 }

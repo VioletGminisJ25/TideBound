@@ -21,7 +21,6 @@ public partial class PinkyStar_Run : State
     {
         animationMachine = (AnimationNodeStateMachinePlayback)enemy.animationTree.Get("parameters/playback");
 
-        GD.Print("ENEMY: Run State - Enter");
 
         Timer timer = GetNodeOrNull<Timer>("Timer");
         if (timer != null)
@@ -77,7 +76,6 @@ public partial class PinkyStar_Run : State
 
     public override void Exit()
     {
-        GD.Print("ENEMY: Run State - Exit");
         if (enemy is CharacterBody2D character)
         {
             character.Velocity = Vector2.Zero;
@@ -93,7 +91,6 @@ public partial class PinkyStar_Run : State
     {
         if (fsm.currentState == this)
         {
-            GD.Print("ENEMY: Run State - Timer Timeout");
             fsm.TransitionTo("Idle");
         }
     }
@@ -115,7 +112,6 @@ public partial class PinkyStar_Run : State
         float pathLength = path.Curve.GetBakedLength();
         if (pathLength <= 0f)
         {
-            GD.Print("Path length is zero or negative, cannot move on path.");
             return; // Avoid division by zero
         }
 
@@ -165,7 +161,6 @@ public partial class PinkyStar_Run : State
     // Helper function to set sprite/scale direction
     private void SetVisualDirection(bool isMovingForward)
     {
-        GD.Print(enemy.animatedSprite);
         if (enemy.animatedSprite != null)
         {
             enemy.animatedSprite.GetParent<Node2D>().Scale = new Vector2(!isMovingForward ? 1 : -1, -1);

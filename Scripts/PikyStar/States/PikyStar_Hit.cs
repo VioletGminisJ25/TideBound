@@ -13,7 +13,6 @@ public partial class PikyStar_Hit : State
         animationMachine = (AnimationNodeStateMachinePlayback)enemy.animationTree.Get("parameters/playback");
 
 
-        GD.Print("ENEMY: Hit State");
         animationMachine.Travel("hit");
         Timer timer = GetNodeOrNull<Timer>("Timer");
         if (timer != null)
@@ -38,7 +37,6 @@ public partial class PikyStar_Hit : State
 
     public void _on_timer_timeout()
     {
-        GD.Print("ENEMY: Hit State - Timer Timeout");
         fsm.TransitionTo("Run");
     }
 }
