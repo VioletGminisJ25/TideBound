@@ -152,6 +152,12 @@ https://github.com/user-attachments/assets/2b0041ee-7ff2-4bcf-a25b-5fdd719b7e5f
   - Se ha creado un nuevo script de State llamado PinkyStar_Run.cs.
   - Se ha creado un nuevo script de State llamado PikyStar_Hit.cs.
   - Se ha creado un nuevo script de State llamado PikyStar_Attack.cs.
+
+### 📅 18 de Mayo de 2025
+- **Se ha implementado la animacion de muerte del enemigo BigRed y PinkyStar**:
+  - Se ha implementado su animacion en la maquina de estados y se ha hecho unas particulas de explosion en el enemigo que muere.
+
+- **Se ha implementado mechanismo de daño con el agua toxica**
 ## ✅ TO-DO LIST  
 
 ### 🔧 Mecánicas del Personaje
