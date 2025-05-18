@@ -15,8 +15,9 @@ public partial class HealthComponent : Node
         EmitSignal(SignalName.HealthChanged, Health);
         GD.Print("HealthComponent: Taking damage : " + Health);
 
-        if (Health <= 0)
+        if (Health < 0)
         {
+            Health = 0;
             EmitSignal(SignalName.ObjectDestroyed);
             // Opcionalmente, puedes añadir lógica para la destrucción aquí
         }

@@ -26,7 +26,7 @@ public partial class Enemy : CharacterBody2D,DamageableObject
 	}
 
 	[Export]
-	double damage;
+	public double damage;
 
 	[Export] public Player player;
 

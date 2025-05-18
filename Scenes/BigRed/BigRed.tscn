@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c7m1fecdodnd8"]
+[gd_scene load_steps=47 format=3 uid="uid://c7m1fecdodnd8"]
 
 [ext_resource type="Script" uid="uid://dpochhmyi6wko" path="res://Scripts/BigRed/BigRed.cs" id="1_nsvnc"]
 [ext_resource type="Texture2D" uid="uid://eiaqfynjw3f4" path="res://Assets/Big_Red/Idle_(32 x 32).png" id="2_g2paw"]
@@ -226,6 +226,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [&"idle"]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_wgar3"]
 resource_name = "hit"
@@ -242,21 +278,82 @@ tracks/0/keys = {
 "values": [&"hit"]
 }
 
+[sub_resource type="Animation" id="Animation_x8t3y"]
+resource_name = "dead"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.276062),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_67m76"]
 _data = {
 &"RESET": SubResource("Animation_k8h2x"),
+&"dead": SubResource("Animation_x8t3y"),
 &"hit": SubResource("Animation_wgar3")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i8pw"]
 size = Vector2(20, 22.5)
 
+[sub_resource type="Curve" id="Curve_x54jx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.536885, 0.674157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_bf4sq"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.45098, 0.0784314, 1)
+
 [node name="BigRed" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape", "animatedSprite") groups=["Enemy"]]
 z_index = -1
 collision_layer = 4
 script = ExtResource("1_nsvnc")
-Health = 3
-damage = 5.0
+Health = 5
+damage = 2.0
 collisionShape = NodePath("CollisionShape2D")
 animatedSprite = NodePath("AnimatedSprite2D")
 
@@ -270,6 +367,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jq83g")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.534094
 flip_h = true
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
@@ -332,10 +430,31 @@ shape = SubResource("RectangleShape2D_2i8pw")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("14_x8t3y")
+Health = 5
 metadata/_custom_type_script = "uid://du6lygry8rxjj"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -5)
+initial_velocity_max = 30.22
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.5
+linear_accel_min = 0.72
+linear_accel_max = 0.72
+damping_max = 21.905
+scale_amount_curve = SubResource("Curve_x54jx")
+color_ramp = SubResource("Gradient_bf4sq")
+hue_variation_max = 0.95
 
 [connection signal="timeout" from="FSM/Idle/Timer" to="FSM/Idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="FSM/Run/Timer" to="FSM/Run" method="_on_timer_timeout"]
 [connection signal="timeout" from="FSM/Attack/Timer" to="FSM/Attack" method="_on_timer_timeout"]
 [connection signal="timeout" from="FSM/Hit/Timer" to="FSM/Hit" method="_on_timer_timeout"]
 [connection signal="body_entered" from="HurtBox" to="HurtBox" method="_on_body_entered"]
+[connection signal="ObjectDestroyed" from="HealthComponent" to="." method="_on_health_component_object_destroyed"]

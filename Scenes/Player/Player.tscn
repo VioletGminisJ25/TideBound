@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://c5wxkdm4h2g5p"]
+[gd_scene load_steps=52 format=3 uid="uid://c5wxkdm4h2g5p"]
 
 [ext_resource type="Script" uid="uid://c6gf8srd0rbuj" path="res://Scripts/Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Material/Player/PlayerFrames.tres" id="2_5wx5r"]
@@ -55,18 +55,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../HurtBox/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_xjy0m"]
@@ -380,6 +368,9 @@ animation = &"attack2"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4wape"]
 animation = &"attack3"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_epg6k"]
+animation = &"dead"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fk5o5"]
 animation = &"fall"
 
@@ -437,12 +428,20 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cj01"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_825xp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ji083"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_e5iqy"]
 states/Start/position = Vector2(149, 53)
 states/attack1/node = SubResource("AnimationNodeAnimation_jmcll")
 states/attack1/position = Vector2(369, 246)
 states/attack2/node = SubResource("AnimationNodeAnimation_4wape")
 states/attack2/position = Vector2(189, 197)
+states/dead/node = SubResource("AnimationNodeAnimation_epg6k")
+states/dead/position = Vector2(678, 115)
 states/fall/node = SubResource("AnimationNodeAnimation_fk5o5")
 states/fall/position = Vector2(408, -11)
 states/hit/node = SubResource("AnimationNodeAnimation_825xp")
@@ -453,8 +452,8 @@ states/jump/node = SubResource("AnimationNodeAnimation_0kmp4")
 states/jump/position = Vector2(261, -11)
 states/run/node = SubResource("AnimationNodeAnimation_i5acl")
 states/run/position = Vector2(581, 179)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_epg6k"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0u84n"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_esmjy"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_6tu5v"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0objx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_1e6p3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yb677"), "attack2", "idle", SubResource("AnimationNodeStateMachineTransition_i2g7t"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_t26db"), "run", "attack1", SubResource("AnimationNodeStateMachineTransition_fk5o5"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_4wape"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_spxdj"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_w71ue")]
-graph_offset = Vector2(-242, -20)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_epg6k"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0u84n"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_esmjy"), "idle", "attack1", SubResource("AnimationNodeStateMachineTransition_6tu5v"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0objx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_1e6p3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yb677"), "attack2", "idle", SubResource("AnimationNodeStateMachineTransition_i2g7t"), "attack1", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_t26db"), "run", "attack1", SubResource("AnimationNodeStateMachineTransition_fk5o5"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_4wape"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_spxdj"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_w71ue"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_8cj01"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_825xp"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_ji083")]
+graph_offset = Vector2(7, 56)
 
 [sub_resource type="Gradient" id="Gradient_blt6w"]
 offsets = PackedFloat32Array(0, 0.735751)
@@ -556,8 +555,15 @@ target_position = Vector2(0.100021, 244)
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("8_fk5o5")
+Health = 10
 metadata/_custom_type_script = "uid://du6lygry8rxjj"
 
+[node name="WaterCooldown" type="Timer" parent="."]
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="HurtBox" method="_on_area_exited"]
 [connection signal="body_entered" from="HurtBox" to="HurtBox" method="_on_body_entered"]
 [connection signal="area_entered" from="AnimatedSprite2D/swordHit" to="." method="_on_sword_hit_area_entered"]
 [connection signal="body_entered" from="AnimatedSprite2D/swordHit" to="." method="_on_sword_hit_body_entered"]
+[connection signal="ObjectDestroyed" from="HealthComponent" to="." method="_on_health_component_object_destroyed"]
+[connection signal="timeout" from="WaterCooldown" to="." method="_on_water_cooldown_timeout"]

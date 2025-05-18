@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bxum51jo6eeh0"]
+[gd_scene load_steps=79 format=3 uid="uid://bxum51jo6eeh0"]
 
 [ext_resource type="Script" uid="uid://cfmqt8le7ge2u" path="res://Scripts/PikyStar/PinkyStar.cs" id="1_1q61n"]
 [ext_resource type="Texture2D" uid="uid://dh6gnm5ng7sfy" path="res://Assets/Pink Star/07-Attack/Attack 01.png" id="1_3xe0p"]
@@ -254,14 +254,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/path = NodePath("CPUParticles2D2:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qg8pt"]
@@ -291,18 +315,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CPUParticles2D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.127503, 0.317971),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_pabjy"]
@@ -390,10 +402,64 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_7tt8x"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.161346),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s7j6d"]
 _data = {
 &"RESET": SubResource("Animation_kgn7r"),
 &"attack": SubResource("Animation_qg8pt"),
+&"dead": SubResource("Animation_7tt8x"),
 &"hit": SubResource("Animation_pabjy"),
 &"idle": SubResource("Animation_ocde6"),
 &"run": SubResource("Animation_u0t5v")
@@ -401,6 +467,9 @@ _data = {
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tyhte"]
 animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bki1a"]
+animation = &"dead"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1q61n"]
 animation = &"hit"
@@ -428,16 +497,20 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_06vio"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_upvbl"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1q61n"]
 states/attack/node = SubResource("AnimationNodeAnimation_tyhte")
 states/attack/position = Vector2(698, 159)
+states/dead/node = SubResource("AnimationNodeAnimation_bki1a")
+states/dead/position = Vector2(772, 72)
 states/hit/node = SubResource("AnimationNodeAnimation_1q61n")
 states/hit/position = Vector2(560, 228)
 states/idle/node = SubResource("AnimationNodeAnimation_5giau")
-states/idle/position = Vector2(531, 81)
+states/idle/position = Vector2(531, 82)
 states/run/node = SubResource("AnimationNodeAnimation_7tt8x")
 states/run/position = Vector2(390, 178)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bki1a"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_i3esk"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_8oid0"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_aafg6"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_wooc3"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_2hd8d"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_06vio")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bki1a"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_i3esk"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_8oid0"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_aafg6"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_wooc3"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_2hd8d"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_06vio"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_upvbl")]
 graph_offset = Vector2(-30, 42)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_lau3t"]
@@ -452,6 +525,13 @@ frame_2/duration = 0.2
 frame_3/texture = ExtResource("43_sfvrx")
 frame_3/duration = 0.2
 
+[sub_resource type="Curve" id="Curve_bki1a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.536885, 0.674157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_i3esk"]
+colors = PackedColorArray(0.891569, 0.000639176, 0.891788, 1, 0.478032, 0.616705, 1, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bki1a"]
 size = Vector2(26, 26)
 
@@ -459,6 +539,8 @@ size = Vector2(26, 26)
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_1q61n")
+Health = 6
+damage = 2.0
 collisionShape = NodePath("CollisionShape2D")
 animatedSprite = NodePath("AnimationComponent/AnimatedSprite2D")
 animationTree = NodePath("AnimationComponent/AnimationTree")
@@ -486,7 +568,7 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="RayCast2D" type="RayCast2D" parent="AnimationComponent"]
 rotation = -3.14159
 scale = Vector2(1, -1)
-target_position = Vector2(-47, 0)
+target_position = Vector2(-34, -8.61962e-05)
 collision_mask = 11
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimationComponent"]
@@ -494,10 +576,29 @@ z_index = -1
 position = Vector2(-11, 10)
 rotation = -3.14159
 scale = Vector2(1, -1)
+emitting = false
 amount = 1
 texture = SubResource("AnimatedTexture_lau3t")
 one_shot = true
 gravity = Vector2(0, 0)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="AnimationComponent"]
+position = Vector2(0, 6)
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -5)
+initial_velocity_max = 30.22
+orbit_velocity_max = 0.5
+linear_accel_min = 0.72
+linear_accel_max = 0.72
+damping_max = 21.905
+scale_amount_curve = SubResource("Curve_bki1a")
+color_ramp = SubResource("Gradient_i3esk")
+hue_variation_max = 0.95
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("ControlledNode")]
 script = ExtResource("40_hoqu7")
@@ -551,4 +652,5 @@ shape = SubResource("RectangleShape2D_bki1a")
 [connection signal="timeout" from="FSM/Idle/Timer" to="FSM/Idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="FSM/Run/Timer" to="FSM/Run" method="_on_timer_timeout"]
 [connection signal="timeout" from="FSM/Attack/Timer" to="FSM/Attack" method="_on_timer_timeout"]
+[connection signal="ObjectDestroyed" from="HealthComponent" to="." method="_on_health_component_object_destroyed"]
 [connection signal="body_entered" from="hurtBox" to="hurtBox" method="_on_body_entered"]
