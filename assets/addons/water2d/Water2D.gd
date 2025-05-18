@@ -158,3 +158,5 @@ func set_wave_distance_attenuation( _value ):
 func set_wave_time_attenuation( _value ):
 	wave_time_attenuation = _value
 	material.set_shader_parameter("wave_time_attenuation", _value)
+
+

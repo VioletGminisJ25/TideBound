@@ -27,8 +27,9 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 	private HealthComponent _healthComponent;
 	private float _currentPushForce = 0.0f;
 	private float _currentPushDuration = 0.0f;
+	public Timer _waterCooldown;
 
-
+	private bool died = false;
 
 	public override void _Ready()
 	{
@@ -38,6 +39,7 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 		{
 			GD.PushError("HealthComponent not found in Player node.");
 		}
+		_waterCooldown = GetNodeOrNull<Timer>("WaterCooldown");
 	}
 
 	/**
@@ -51,7 +53,8 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 		{
 			DamageComponent hurt = (DamageComponent)area;
 			hurt.GetParent().CallDeferred("ApplyPushback", GlobalPosition, PushForce, PushDuration);
-			if(hurt.GetParent().HasNode("HealthComponent")){
+			if (hurt.GetParent().HasNode("HealthComponent"))
+			{
 				HealthComponent targetHealth = hurt.GetParent().GetNode<HealthComponent>("HealthComponent");
 				if (targetHealth != null)
 				{
@@ -71,9 +74,10 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 	}
 	public void _on_sword_hit_body_entered(Node2D node)
 	{
-		
-		if(node.IsInGroup("Enemy")){
-			if(node.HasMethod("ApplyPushback"))
+
+		if (node.IsInGroup("Enemy"))
+		{
+			if (node.HasMethod("ApplyPushback"))
 			{
 				GD.Print("Player: Sword hit enemy, applying pushback.");
 				node.CallDeferred("ApplyPushback", GlobalPosition, PushForce, PushDuration);
@@ -100,16 +104,21 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 				GD.PushError("Enemy does not have a HealthComponent.");
 			}
 		}
-		
+
 	}
 
-	
+
 	public override void _PhysicsProcess(double delta)
-	{
-		
+	{	
+		if (died)
+		{
+			fsm.Travel("dead");
+			return;
+		}
+
 		if (_isBeingPushed)
 		{
-			_velocity  =  new Vector2(_pushDirection.X * PushForce * 3, Mathf.Lerp(Velocity.Y, _pushDirection.Y * PushForce, 90f * (float)delta));
+			_velocity = new Vector2(_pushDirection.X * PushForce * 3, Mathf.Lerp(Velocity.Y, _pushDirection.Y * PushForce, 90f * (float)delta));
 
 			_pushTimer += (float)delta;
 			if (_pushTimer >= PushDuration) // Usa la duración base del jugador aquí
@@ -119,13 +128,40 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 				_velocity = Vector2.Zero;
 				GD.Print("Push ended");
 			}
-			
+
 			Velocity = _velocity;
 		}
-		MoveAndSlide();
 
+		MoveAndSlide();
 	}
 
+	private bool _isInWater = false;
+
+	public void ApplyToxicEffect()
+	{
+
+		_healthComponent.TakeDamage(1);
+		fsm.Travel("hit");
+		if (_isInWater)
+		{
+			_waterCooldown.Start();
+		}
+		else
+		{
+			_waterCooldown.Stop();
+		}
+	}
+
+	public void switchToWater()
+	{
+		_isInWater = !_isInWater;
+		ApplyToxicEffect();
+	}
+
+	public void _on_water_cooldown_timeout()
+	{
+		ApplyToxicEffect();
+	}
 	public void ApplyPushback(Vector2 sourcePosition, float force, float duration)
 	{
 		_pushDirection = (GlobalPosition - sourcePosition).Normalized();
@@ -134,6 +170,15 @@ public partial class Player : CharacterBody2D, AttackInterface, IHook
 		_isBeingPushed = true;
 		_pushTimer = 0.0f;
 		fsm.Travel("hit");
+	}
+
+	public void _on_health_component_object_destroyed()
+	{
+		GetNode("MovementComponent").QueueFree();
+		GetNode("HookComponent").QueueFree();
+		GetNode("HurtBox").QueueFree();
+		died = true;
+
 	}
 
 }
