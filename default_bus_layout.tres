@@ -1,0 +1,68 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://ck6a5aar661vr"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+threshold = -31.5
+ratio = 2.1
+gain = 8.3
+attack_us = 2000.0
+release_ms = 277.0
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "Reverb"
+room_size = 0.7
+damping = 0.3
+hipass = 0.52
+dry = 0.5
+wet = 0.24
+
+[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_j3pel"]
+resource_name = "StereoEnhance"
+pan_pullout = 3.03
+time_pullout_ms = 3.35
+surround = 0.19
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
+resource_name = "Reverb"
+room_size = 0.35
+damping = 0.48
+spread = 0.47
+dry = 0.58
+wet = 0.26
+
+[sub_resource type="AudioEffectEQ6" id="AudioEffectEQ6_j3pel"]
+resource_name = "EQ6"
+band_db/32_hz = 19.9
+band_db/100_hz = 12.1
+band_db/320_hz = -0.5
+band_db/10000_hz = 4.2
+
+[resource]
+bus/1/name = &"Sum"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"Reverb"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.267241
+bus/2/send = &"Sum"
+bus/2/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectReverb_j3pel")
+bus/2/effect/1/enabled = true
+bus/3/name = &"MenuMusic"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 2.25149
+bus/3/send = &"Sum"
+bus/3/effect/0/effect = SubResource("AudioEffectStereoEnhance_j3pel")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectReverb_g28q7")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectEQ6_j3pel")
+bus/3/effect/2/enabled = true

@@ -27,23 +27,32 @@ public partial class Key : RigidBody2D
             }
         }
         INITIAL_VELOCITY = this.LinearVelocity;
+        player.Play("idle");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        if(INITIAL_VELOCITY.X != LinearVelocity.X)
-        {
-            animatedSprite.Stop();
-            player.Stop();
-        }
+
     }
 
     public void _on_body_entered(Node2D body)
     {
         if (body is Player)
         {
-            
+            player.Stop();
+        }
+    }
+
+    public void destroy()
+    {
+        QueueFree();
+    }
+    public void _on_animation_finished(String anim_name)
+    {
+        if (anim_name == "destroy")
+        {
+            QueueFree();
         }
     }
 }

@@ -1,15 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1t0mk60ypsn6"]
+[gd_scene load_steps=12 format=3 uid="uid://b1t0mk60ypsn6"]
 
-[ext_resource type="Texture2D" uid="uid://cuxe7fajghlqr" path="res://Assets/Chest/Idle/1.png" id="1_mtmrk"]
+[ext_resource type="Texture2D" uid="uid://dfd1t87xc5c8l" path="res://Assets/Chest/Unlocked/1.png" id="1_h8vtn"]
+[ext_resource type="Script" uid="uid://c2k4g72bj8dgx" path="res://Scripts/Chest/Chest.cs" id="1_jo2bd"]
+[ext_resource type="Texture2D" uid="uid://bvd7f7fwhhn5p" path="res://Assets/Chest/Unlocked/2.png" id="2_jo2bd"]
+[ext_resource type="Texture2D" uid="uid://bcqaypv6orxct" path="res://Assets/Chest/Unlocked/3.png" id="3_svd0o"]
+[ext_resource type="Texture2D" uid="uid://ci6g5s02q36w8" path="res://Assets/Chest/Unlocked/4.png" id="4_kchpr"]
+[ext_resource type="Texture2D" uid="uid://3ygbhs0ffvyt" path="res://Assets/Chest/Unlocked/5.png" id="5_f846t"]
+[ext_resource type="Texture2D" uid="uid://cabimdik7m26a" path="res://Assets/Chest/Unlocked/6.png" id="6_xpnlq"]
+[ext_resource type="Texture2D" uid="uid://dlpo2jajpaqvv" path="res://Assets/Chest/Unlocked/7.png" id="7_wc66l"]
+[ext_resource type="Texture2D" uid="uid://ce2ylj44557e2" path="res://Assets/Chest/Unlocked/8.png" id="8_pgovn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hdso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h8vtn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h8vtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jo2bd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_svd0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kchpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f846t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xpnlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wc66l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pgovn")
+}],
+"loop": false,
+"name": &"open",
+"speed": 7.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w66p"]
 size = Vector2(30, 24)
 
-[node name="chest" type="RigidBody2D"]
+[node name="chest" type="RigidBody2D" groups=["Chest"]]
+z_index = -2
 collision_layer = 8
+mass = 500.0
+script = ExtResource("1_jo2bd")
 
-[node name="chest" type="Sprite2D" parent="."]
-texture = ExtResource("1_mtmrk")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2hdso")
+autoplay = "default"
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

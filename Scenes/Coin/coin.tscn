@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=3 uid="uid://h06f7vm2p0bl"]
+
+[ext_resource type="Texture2D" uid="uid://gkbjdfmtqrkm" path="res://Assets/Coin/01.png" id="1_bbafa"]
+[ext_resource type="Script" uid="uid://c63rerntvw11c" path="res://Scripts/Coin/Coin.cs" id="1_ywtkp"]
+[ext_resource type="Texture2D" uid="uid://xvmeikxxbiou" path="res://Assets/Coin/02.png" id="2_ywtkp"]
+[ext_resource type="Texture2D" uid="uid://dre43gsis6fqo" path="res://Assets/Coin/03.png" id="3_tqkpo"]
+[ext_resource type="Texture2D" uid="uid://io3kwy53427h" path="res://Assets/Coin/04.png" id="4_q106a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06grd"]
+size = Vector2(9, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p1cn3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bbafa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ywtkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tqkpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q106a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="Animation" id="Animation_bbafa"]
+resource_name = "destroy"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ywtkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqkpo"]
+_data = {
+&"RESET": SubResource("Animation_ywtkp"),
+&"destroy": SubResource("Animation_bbafa")
+}
+
+[node name="Coin" type="RigidBody2D" groups=["Coin"]]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_ywtkp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_06grd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p1cn3")
+autoplay = "default"
+frame_progress = 0.143162
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tqkpo")
+}

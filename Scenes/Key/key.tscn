@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbogme8t44hul"]
+[gd_scene load_steps=20 format=3 uid="uid://bbogme8t44hul"]
 
 [ext_resource type="Script" uid="uid://b0kr4r1l0jlpx" path="res://Scripts/Key/Key.cs" id="1_3uwkc"]
 [ext_resource type="Texture2D" uid="uid://b0xdpxprtsjrh" path="res://Assets/Chest/Chest Key/Idle/1.png" id="1_wnl1u"]
@@ -60,6 +60,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_qthri"]
 resource_name = "idle"
@@ -77,18 +101,74 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_57k1g"]
+resource_name = "destroy"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y7hvr"]
 _data = {
 &"RESET": SubResource("Animation_t7fm7"),
+&"destroy": SubResource("Animation_57k1g"),
 &"idle": SubResource("Animation_qthri")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57k1g"]
 size = Vector2(7, 15)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[sub_resource type="Gradient" id="Gradient_57k1g"]
+offsets = PackedFloat32Array(0.342342, 1)
+colors = PackedColorArray(0.933333, 0.858824, 0.513726, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y4gp5"]
+gradient = SubResource("Gradient_57k1g")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.487179, 0.423077)
+fill_to = Vector2(0.230769, 0.141026)
+
+[sub_resource type="Curve" id="Curve_grhix"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.557377, 1), 0.0, 0.0, 0, 0, Vector2(0.983607, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Key" type="RigidBody2D" groups=["Key"]]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 3
 input_pickable = true
 mass = 0.91
 physics_material_override = SubResource("PhysicsMaterial_qnhdv")
@@ -102,7 +182,8 @@ script = ExtResource("1_3uwkc")
 sprite_frames = SubResource("SpriteFrames_ovxyi")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.817888
+frame = 1
+frame_progress = 0.93573
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
@@ -114,3 +195,24 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_57k1g")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 5)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture2D_y4gp5")
+lifetime = 0.5
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(4, 4)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, -5)
+initial_velocity_max = 30.14
+linear_accel_max = 5.0
+scale_amount_min = 0.0
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_grhix")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

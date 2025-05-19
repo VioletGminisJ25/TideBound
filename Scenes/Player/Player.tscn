@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c5wxkdm4h2g5p"]
+[gd_scene load_steps=54 format=3 uid="uid://c5wxkdm4h2g5p"]
 
 [ext_resource type="Script" uid="uid://c6gf8srd0rbuj" path="res://Scripts/Player/Player.cs" id="1_xogcc"]
 [ext_resource type="SpriteFrames" uid="uid://cus6qous1vuhg" path="res://Material/Player/PlayerFrames.tres" id="2_5wx5r"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bbaxyok1ocfum" path="res://Scenes/DamageComponent/damage_component.tscn" id="6_t26db"]
 [ext_resource type="Texture2D" uid="uid://devq86n0at7jj" path="res://Assets/Treasure Hunters/Captain Clown Nose/Sprites/Dust Particles/Jump 05.png" id="7_o1ueq"]
 [ext_resource type="Script" uid="uid://du6lygry8rxjj" path="res://Scenes/HealthComponent/HealthComponent.cs" id="8_fk5o5"]
+[ext_resource type="Script" uid="uid://5bgodqicjawc" path="res://Scripts/ItemCollector/ItemCollector.cs" id="9_825xp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk5o5"]
 size = Vector2(20, 27)
@@ -489,9 +490,12 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.794872, 0.0897436)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ji083"]
+size = Vector2(30, 33)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationTree") groups=["Player"]]
 collision_layer = 3
-collision_mask = 13
+collision_mask = 5
 script = ExtResource("1_xogcc")
 PushForce = 50.445
 animationTree = NodePath("AnimationTree")
@@ -579,10 +583,19 @@ target_position = Vector2(0.100021, 244)
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("8_fk5o5")
-Health = 10
+Health = 20
 metadata/_custom_type_script = "uid://du6lygry8rxjj"
 
 [node name="WaterCooldown" type="Timer" parent="."]
+
+[node name="ItemCollector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("9_825xp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemCollector"]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_ji083")
 
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
 [connection signal="area_exited" from="HurtBox" to="HurtBox" method="_on_area_exited"]
@@ -592,3 +605,4 @@ metadata/_custom_type_script = "uid://du6lygry8rxjj"
 [connection signal="HealthChanged" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="ObjectDestroyed" from="HealthComponent" to="." method="_on_health_component_object_destroyed"]
 [connection signal="timeout" from="WaterCooldown" to="." method="_on_water_cooldown_timeout"]
+[connection signal="body_entered" from="ItemCollector" to="ItemCollector" method="_on_body_entered"]

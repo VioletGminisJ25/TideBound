@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://dwu4pv3h1svyj"]
+[gd_scene load_steps=68 format=4 uid="uid://dwu4pv3h1svyj"]
 
 [ext_resource type="TileSet" uid="uid://8j210w2qgbcc" path="res://Material/TileSet/TileSet.tres" id="1_06b82"]
 [ext_resource type="Script" uid="uid://buobib4x4ch7w" path="res://Scripts/Levels/Level1/Level1.cs" id="1_snvte"]
@@ -29,6 +29,8 @@
 [ext_resource type="Script" uid="uid://cyohp3jflc2cv" path="res://Scripts/Water/ToxicWater.cs" id="23_rd2vd"]
 [ext_resource type="Script" uid="uid://cf1qtjwgpgwk4" path="res://Scripts/ZoomTrigger/ZoomTrigger.cs" id="24_xawdx"]
 [ext_resource type="Script" uid="uid://b27xl04y7k1as" path="res://Scripts/FadeEffect/FadeEffect.cs" id="26_efsfe"]
+[ext_resource type="AudioStream" uid="uid://b13n7eek2ofcs" path="res://Assets/Sounds/AmbientSound.wav" id="30_wspup"]
+[ext_resource type="PackedScene" uid="uid://h06f7vm2p0bl" path="res://Scenes/Coin/coin.tscn" id="31_0a0w2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uqlrs"]
 
@@ -452,9 +454,11 @@ script = ExtResource("1_w3ot6")
 position = Vector2(323, 221)
 
 [node name="Barrel" parent="Barrels" instance=ExtResource("12_n5ptj")]
+z_index = -2
 position = Vector2(-251, -1)
 
 [node name="Barrel2" parent="Barrels" instance=ExtResource("12_n5ptj")]
+z_index = -2
 position = Vector2(-251, 24)
 
 [node name="Spikes" type="Node2D" parent="."]
@@ -765,7 +769,7 @@ script = ExtResource("17_3hula")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Line", "Cursor") instance=ExtResource("8_h7mdq")]
 z_index = -1
-position = Vector2(348, 188)
+position = Vector2(359, 236)
 Line = NodePath("../Line2D")
 Cursor = NodePath("../cursor")
 
@@ -849,6 +853,7 @@ surface_deformation_strength = 0.3
 metadata/_custom_type_script = "uid://b5a7drn2phtrp"
 
 [node name="Area2D" type="Area2D" parent="Water2D" groups=["Water"]]
+visible = false
 collision_layer = 4
 script = ExtResource("23_rd2vd")
 
@@ -871,6 +876,7 @@ surface_deformation_strength = 0.3
 metadata/_custom_type_script = "uid://b5a7drn2phtrp"
 
 [node name="Area2D" type="Area2D" parent="Water2D3" groups=["Water"]]
+visible = false
 collision_layer = 4
 script = ExtResource("23_rd2vd")
 
@@ -897,15 +903,16 @@ collision_layer = 4
 script = ExtResource("23_rd2vd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water2D2/Area2D"]
+visible = false
 position = Vector2(-0.484863, 10.52)
 shape = SubResource("RectangleShape2D_et44u")
 
-[node name="chest" parent="." instance=ExtResource("19_8fhce")]
-position = Vector2(560, 622)
-
-[node name="RigidBody2D" parent="chest" instance=ExtResource("22_p6c81")]
-position = Vector2(-385, -706)
+[node name="RigidBody2D" parent="." instance=ExtResource("22_p6c81")]
+position = Vector2(177, -74)
 scale = Vector2(1.46964, 1.46964)
+
+[node name="chest" parent="." instance=ExtResource("19_8fhce")]
+position = Vector2(574, 623)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
@@ -969,6 +976,77 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("26_efsfe")
 DefaultFadeDuration = 0.4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_wspup")
+volume_db = -8.858
+autoplay = true
+bus = &"Reverb"
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(516, 196)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(733, 182)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(1047, 188)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(855, 431)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(900, 430)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(1150, 708)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(2137, 949)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(2175, 949)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(1834, 626)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(1755, 562)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(2197, 468)
+
+[node name="Coin13" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(2546, 452)
+
+[node name="Coin14" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(2412, 263)
+
+[node name="Coin16" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(2138, -204)
+
+[node name="Coin17" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(1656, -190)
+
+[node name="Coin18" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(1180, -317)
+
+[node name="Coin19" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(540, -138)
+
+[node name="Coin20" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(-313, -276)
+
+[node name="Coin21" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(-389, 16)
+
+[node name="Coin15" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(2510, 261)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("31_0a0w2")]
+position = Vector2(2159, 949)
 
 [connection signal="body_entered" from="CameraTriggers/Area2D" to="CameraTriggers/Area2D" method="OnBodyEntered"]
 [connection signal="body_exited" from="CameraTriggers/Area2D" to="CameraTriggers/Area2D" method="OnBodyExited"]
